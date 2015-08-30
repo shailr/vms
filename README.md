@@ -1,2 +1,0 @@
-# vms
-Volunteer Management System
