@@ -1,0 +1,20 @@
+*.pyc
+*.out
+*.xcf
+*.egg
+
+# temporary files from vim and emacs
+*~
+*#
+.#*
+*.swp
+*.swo
+
+# Virtualenv
+pip-selfcheck.json
+bin/
+lib/
+include/
+
+# Mac
+.DS_Store
