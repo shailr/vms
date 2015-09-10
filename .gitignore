@@ -10,6 +10,9 @@
 *.swp
 *.swo
 
+# Bower Components
+static/bower_components
+
 # Virtualenv
 pip-selfcheck.json
 bin/
