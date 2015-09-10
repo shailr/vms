@@ -2,11 +2,18 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework_nested import routers
+
+from authentication.views import AccountViewSet
+
 from views import HelloWorldView
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
+
+router = routers.SimpleRouter()
+router.register(r'accounts', AccountViewSet)
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,5 +24,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^_/hello_world$', HelloWorldView.as_view()),
+
+    url(r'^api/v1/', include(router.urls)),
+
     url(r'^$', DefaultTemplateView.as_view()),
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)
