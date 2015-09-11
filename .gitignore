@@ -14,10 +14,10 @@
 node_modules/
 
 # Bower Components
-static/bower_components/
+vms/static/bower_components/
 
 # Virtualenv
-vms/
+venv/
 
 # Mac
 .DS_Store
