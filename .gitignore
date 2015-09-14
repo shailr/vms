@@ -2,6 +2,7 @@
 *.out
 *.xcf
 *.egg
+*.sqlite3
 
 # temporary files from vim and emacs
 *~
@@ -10,15 +11,13 @@
 *.swp
 *.swo
 
+node_modules/
+
 # Bower Components
-static/bower_components
+vms/static/bower_components/
 
 # Virtualenv
-pip-selfcheck.json
-bin/
-lib/
-include/
-.Python
+venv/
 
 # Mac
 .DS_Store
