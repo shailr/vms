@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 
 from rest_framework_nested import routers
 
-from authentication.views import AccountViewSet, LoginView
+from authentication.views import AccountViewSet, LoginView, LogoutView
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -25,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^api/v1/', include(router.urls)),
 
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
+
+    url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
     url(r'^.*$', DefaultTemplateView.as_view()),
 )

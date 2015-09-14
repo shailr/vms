@@ -11,6 +11,7 @@
     var Authentication = {
       register: register,
       login: login,
+      logout: logout,
       getAuthenticatedAccount: getAuthenticatedAccount,
       isAuthenticated: isAuthenticated,
       setAuthenticatedAccount: setAuthenticatedAccount,
@@ -53,6 +54,21 @@
       }
     }
 
+    function logout() {
+      return $http.post('/api/v1/auth/logout/')
+        .then(logoutSuccessFn, logoutErrorFn);
+
+      function logoutSuccessFn() {
+        Authentication.unauthenticate();
+
+        window.location = '/';
+      }
+
+      function logoutErrorFn() {
+        console.log('THIS IS MASSIVE');
+      }
+    }
+
     function getAuthenticatedAccount() {
       if (!$cookies.authenticatedAccount) {
         return;
@@ -73,4 +89,4 @@
       delete $cookies.authenticatedAccount;
     }
   }
-})()
+})();
