@@ -2,7 +2,8 @@ angular
   .module('vms', [
     'vms.routes',
     'vms.authentication',
-    'vms.config'
+    'vms.config',
+    'vms.layout'
   ]);
 
 angular
