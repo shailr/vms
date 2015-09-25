@@ -2,6 +2,9 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 from django.db import models
 
+from core.models import TimeStampedModel
+
+
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
         if not email:
@@ -22,7 +25,8 @@ class AccountManager(BaseUserManager):
 
         return account
 
-class Account(AbstractBaseUser):
+
+class Account(AbstractBaseUser, TimeStampedModel):
     email = models.EmailField(unique=True)
 
     first_name = models.CharField(max_length=40, blank=True)
@@ -33,9 +37,6 @@ class Account(AbstractBaseUser):
     organization = models.CharField(max_length=40, blank=True)
 
     is_admin = models.BooleanField(default=False)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     objects = AccountManager()
 
