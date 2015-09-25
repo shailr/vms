@@ -4,6 +4,8 @@ from django.db import models
 
 from core.models import TimeStampedModel
 
+from organizations.model import Organization
+
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
@@ -34,7 +36,7 @@ class Account(AbstractBaseUser, TimeStampedModel):
 
     mobile = models.CharField(max_length=20, blank=True)
 
-    organization = models.CharField(max_length=40, blank=True)
+    organization = models.ForeignKey(Organization)
 
     is_admin = models.BooleanField(default=False)
 
