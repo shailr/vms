@@ -4,7 +4,7 @@ from django.db import models
 
 from core.models import TimeStampedModel
 
-from organizations.model import Organization
+from organizations.models import Organization
 
 
 class AccountManager(BaseUserManager):
