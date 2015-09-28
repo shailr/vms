@@ -7,7 +7,7 @@ class TimeStampedModel(models.Model):
     and ``updated_at`` fields
     """
 
-    created_at = models.DateTiemField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:

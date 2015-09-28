@@ -2,7 +2,7 @@ from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 
 from organizations.models import Organization
-from organization.serializers import OrganizationSerializer
+from organizations.serializers import OrganizationSerializer
 
 
 class OrganizationViewSet():

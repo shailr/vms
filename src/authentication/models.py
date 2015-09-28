@@ -4,7 +4,7 @@ from django.db import models
 
 from core.models import TimeStampedModel
 
-from organizations.model import Organization
+from organizations.models import Organization
 
 
 class AccountManager(BaseUserManager):
@@ -36,7 +36,7 @@ class Account(AbstractBaseUser, TimeStampedModel):
 
     mobile = models.CharField(max_length=20, blank=True)
 
-    organization = models.ForeignKey(Organization)
+    organization = models.ForeignKey(Organization, null=True)
 
     is_admin = models.BooleanField(default=False)
 
