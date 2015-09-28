@@ -17,7 +17,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Application.objects.create(**validated_data)
 
-    def update(seld, instance, validated_data):
+    def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
         instance.details = validated_data.get('details', instance.details)
 
@@ -26,6 +26,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
         return instance
 
     def get_validation_exclusions(self, *args, **kwargs):
-        exclusions = super(PostSerializer, self).get_validation_exclusions()
+        exclusions = super(ApplicatiionSerializer,
+                           self).get_validation_exclusions()
 
         return exclusions + ['organization']
