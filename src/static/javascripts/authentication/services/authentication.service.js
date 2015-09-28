@@ -27,7 +27,7 @@
       }).then(registerSuccessFn, registerErrorFn);
 
       function registerSuccessFn() {
-        Authenticate.login(email, password);
+        Authentication.login(email, password);
       }
 
       function registerErrorFn() {
