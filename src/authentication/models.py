@@ -36,7 +36,7 @@ class Account(AbstractBaseUser, TimeStampedModel):
 
     mobile = models.CharField(max_length=20, blank=True)
 
-    organization = models.ForeignKey(Organization)
+    organization = models.ForeignKey(Organization, null=True)
 
     is_admin = models.BooleanField(default=False)
 
