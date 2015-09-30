@@ -3,7 +3,8 @@ angular
     'vms.routes',
     'vms.authentication',
     'vms.config',
-    'vms.layout'
+    'vms.layout',
+    'vms.organizations'
   ]);
 
 angular

@@ -7,5 +7,5 @@
     ]);
 
   angular
-    .module('vms.layout.controllers', []);
+    .module('vms.layout.controllers', ['vms.organizations.services']);
 })();
