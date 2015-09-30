@@ -18,7 +18,10 @@
       Organizations.all().then(organizationsSuccessFn, organizationsErrorFn);
 
       $scope.$on('organization.created', function (event, org) {
-        vm.organizations.unshift(org);
+        //TODO: Fix unshift
+        //vm.organizations.unshift(org);
+
+        console.log('Supposed to unshift');
       });
 
       $scope.$on('organization.created.err', function () {

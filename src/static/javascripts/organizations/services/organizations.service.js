@@ -3,7 +3,7 @@
 
   angular
     .module('vms.organizations.services')
-    .factory('Organiztions', Organizations);
+    .factory('Organizations', Organizations);
 
   Organizations.$inject = ['$http'];
 
