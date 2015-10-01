@@ -19,6 +19,8 @@
         location: vm.location
       });
 
+      console.log('--------------Create deom controller', vm);
+
       $scope.closeThisDialog();
 
       Organizations.create(vm.name, vm.phone, vm.location)
