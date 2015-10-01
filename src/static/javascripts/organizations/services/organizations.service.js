@@ -20,8 +20,12 @@
       return $http.get('/api/v1/organizations/');
     }
 
-    function create() {
-      return $http.post('/api/v1/organizations/');
+    function create(name, phone, location) {
+      return $http.post('/api/v1/organizations/', {
+        name: name,
+        phone: phone,
+        location: location
+      });
     }
   }
 })();

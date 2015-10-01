@@ -12,8 +12,7 @@
 
     vm.columns = [];
 
-    // TODO: Fix This
-    //activate();
+    activate();
 
     function activate() {
       $scope.$watchCollection(function () { return $scope.organizations; },
@@ -36,15 +35,14 @@
     }
 
     function approximateShortestColumn() {
-      if (vm.columns.length > 0) {
-        var scores = vm.columns.map(columnMapFn);
+      var scores = vm.columns.map(columnMapFn);
 
-        return scores.indexOf(Math.min.apply(this, scores));
-      }
+      return scores.indexOf(Math.min.apply(this, scores));
 
       function columnMapFn(column) {
         var lengths = column.map(function (element) {
-          return element.content.length;
+          console.log(element);
+          return element.name.length;
         });
 
         return lengths.reduce(sum, 0) * column.length;
