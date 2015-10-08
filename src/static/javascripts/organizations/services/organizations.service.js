@@ -10,7 +10,7 @@
   function Organizations($http) {
     var Organizations= {
       all: all,
-      create: create,
+      create: create
     };
 
     return Organizations;

@@ -4,7 +4,8 @@ angular
     'vms.authentication',
     'vms.config',
     'vms.layout',
-    'vms.organizations'
+    'vms.organizations',
+    'vms.applications'
   ]);
 
 angular

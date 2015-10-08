@@ -3,10 +3,12 @@ from rest_framework import serializers
 from applications.models import Application
 
 from organizations.serializers import OrganizationSerializer
+from authentication.serializers import AccountSerializer
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
     organization = OrganizationSerializer(read_only=True, required=False)
+    users = AccountSerializer(read_only=True, required=False)
 
     class Meta:
         model = Application
@@ -29,4 +31,4 @@ class ApplicationSerializer(serializers.ModelSerializer):
         exclusions = super(ApplicatiionSerializer,
                            self).get_validation_exclusions()
 
-        return exclusions + ['organization']
+        return exclusions + ['organization', 'users']

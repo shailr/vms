@@ -16,6 +16,10 @@
       controller: 'LoginController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/authentication/login.html'
+    }).when('/applications'{
+      controller: 'DashboardController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applications/dashboard.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

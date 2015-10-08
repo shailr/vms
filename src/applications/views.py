@@ -15,11 +15,11 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         return False
 
 
-# Need to implement this
-# def perform_create(self, serizalizer):
-#     instance = serizalizer.save(organization=self.request.organization)
+def perform_create(self, serializer):
+    print self.request.user.organization
 
-#     return super(ApplicationViewSet, self).perform_create(serializer)
+    return super(ApplicationViewSet, self).perform_create(serializer)
+
 
 class OrganizationApplicationsViewSet(viewsets.ViewSet):
     queryset = Application.objects.select_related('organization').all()
