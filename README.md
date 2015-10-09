@@ -1,5 +1,4 @@
-# vms
-# Volunteer Management System
+# Nation Builder India
 
 ##Deployment Guide
 AWS Primer: http://rogueleaderr.com/post/65157477648/the-idiomatic-guide-to-deploying-django-in
