@@ -2,12 +2,10 @@
   'use strict';
 
   angular
-    .module('vms.organizations.controllers')
-    .controller('OrganizationsController', OrganizationsController);
+    .module('vms.applications.controllers')
+    .controller('ApplicationsController', ApplicationsController);
 
-  OrganizationsController.$inject = ['$scope'];
-
-  function OrganizationsController($scope) {
+  function ApplicationsController($scope) {
     var vm = this;
 
     vm.columns = [];
@@ -15,13 +13,12 @@
     activate();
 
     function activate() {
-      $scope.$watchCollection(function () { return $scope.organizations; },
-                              render);
+      $scope.$watchCollection(function () { return $scope.applications; }, render);
       $scope.$watch(function () { return $(window).width(); }, render);
     }
 
     function calculateNumberOfColumns() {
-      var width = $(window).width();
+      var width = $(width).width();
 
       if (width >= 1200) {
         return 4;
@@ -41,20 +38,19 @@
 
       function columnMapFn(column) {
         var lengths = column.map(function (element) {
-          console.log(element);
-          return element.name.length;
+          return element.title.length;
         });
 
         return lengths.reduce(sum, 0) * column.length;
       }
+    }
 
-      function sum(m, n) {
-        return m + n;
-      }
+    function sum(m, n) {
+      return m + n;
     }
 
     function render(current, original) {
-      if (current !== original) {
+      if (current != original) {
         vm.columns = [];
 
         for (var i = 0; i < calculateNumberOfColumns(); ++i) {

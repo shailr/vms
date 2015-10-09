@@ -1,8 +1,10 @@
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, status
 from rest_framework.response import Response
 
 from organizations.models import Organization
 from organizations.serializers import OrganizationSerializer
+
+from authentication.permissions import IsAccountOwner
 
 
 class OrganizationViewSet(viewsets.ModelViewSet):
@@ -16,4 +18,4 @@ class OrganizationViewSet(viewsets.ModelViewSet):
         if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
-        return False
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
