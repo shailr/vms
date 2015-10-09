@@ -5,7 +5,7 @@
     .module('vms.applications.controllers')
     .controller('ApplicationsController', ApplicationsController);
 
-  function ApplicationController($scope) {
+  function ApplicationsController($scope) {
     var vm = this;
 
     vm.columns = [];
@@ -58,7 +58,7 @@
         }
 
         for (var i = 0; i < current.length; ++i) {
-          var columm = approximateShortestColumn();
+          var column = approximateShortestColumn();
 
           vm.columns[column].push(current[i]);
         }

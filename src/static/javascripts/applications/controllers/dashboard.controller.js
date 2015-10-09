@@ -25,7 +25,7 @@
         vm.applications.shift();
       });
 
-      function applicationsSuccesFn(data, status, headers, config) {
+      function applicationsSuccessFn(data, status, headers, config) {
         vm.applications = data.data;
       }
 

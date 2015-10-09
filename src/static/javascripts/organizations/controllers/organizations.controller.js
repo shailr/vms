@@ -17,7 +17,7 @@
     function activate() {
       $scope.$watchCollection(function () { return $scope.organizations; },
                               render);
-      $scope.$watch(function () { return $(window).width(); }, render)
+      $scope.$watch(function () { return $(window).width(); }, render);
     }
 
     function calculateNumberOfColumns() {

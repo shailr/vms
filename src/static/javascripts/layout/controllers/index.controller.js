@@ -29,6 +29,7 @@
       });
 
       function organizationsSuccessFn(data, status, headers, config) {
+        console.log('here in orgsuccess', data);
         vm.organizations = data.data;
       }
 

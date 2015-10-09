@@ -8,7 +8,7 @@
   Applications.$inject = ['$http'];
 
   function Applications($http) {
-    var Application = {
+    var Applications = {
       all: all,
       create: create,
       get: get

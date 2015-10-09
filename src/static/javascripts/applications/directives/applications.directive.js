@@ -7,7 +7,7 @@
 
   function applications() {
     var directive = {
-      controller: 'ApplicationController',
+      controller: 'ApplicationsController',
       controllerAs: 'vm',
       restrict: 'E',
       scope: {
