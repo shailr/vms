@@ -10,6 +10,12 @@
       <a class="navbar-brand" href="/">VMS</a>
     </div> <!-- ./navbar-header -->
 
+    <ul class="nav navbar-nav pull-left">
+      {% if user.is_authenticated %}
+        <li><a href="/applications">Application</a></li>
+      {% endif %}
+    </ul>
+
     <div class="collapse navbar-collapse" id="vms-nav">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
