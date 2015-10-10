@@ -17,7 +17,7 @@
     return Applications;
 
     function all() {
-      return $http.get('/ap1/v1/applications/');
+      return $http.get('/api/v1/applications/');
     }
 
     function create(title) {
