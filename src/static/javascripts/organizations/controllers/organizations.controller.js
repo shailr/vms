@@ -41,7 +41,6 @@
 
       function columnMapFn(column) {
         var lengths = column.map(function (element) {
-          console.log(element);
           return element.name.length;
         });
 

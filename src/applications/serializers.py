@@ -8,12 +8,12 @@ from authentication.serializers import AccountSerializer
 
 class ApplicationSerializer(serializers.ModelSerializer):
     organization = OrganizationSerializer(read_only=True, required=False)
-    users = AccountSerializer(read_only=True, required=False)
+    creator = AccountSerializer(read_only=True, required=False)
 
     class Meta:
         model = Application
 
-        fields = ('id', 'title', 'details', 'organization')
+        fields = ('id', 'title', 'details', 'organization', 'creator')
         read_only_fields = ('id', 'created_at', 'updated_at')
 
     def create(self, validated_data):

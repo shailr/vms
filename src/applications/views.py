@@ -12,13 +12,11 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
         return False
-
-
-def perform_create(self, serializer):
-    print self.request.user.organization
-
-    return super(ApplicationViewSet, self).perform_create(serializer)
 
 
 class OrganizationApplicationsViewSet(viewsets.ViewSet):

@@ -11,7 +11,11 @@ class Application(TimeStampedModel):
     details = models.TextField()
 
     organization = models.ForeignKey(Organization, null=True)
-    users = models.ManyToManyField(Account)
+
+    # TODO: Come back to edit this
+    # users = models.ManyToManyField(Account)
+
+    creator = models.ForeignKey(Account, null=True)
 
     def __unicode__(self):
         return self.title

@@ -17,12 +17,13 @@
     return Applications;
 
     function all() {
-      return $http.get('/ap1/v1/applications/');
+      return $http.get('/api/v1/applications/');
     }
 
-    function create(title) {
+    function create(title, details) {
       return $http.post('/api/v1/applications/', {
-        title: title
+        title: title,
+        details: details
       });
     }
 
