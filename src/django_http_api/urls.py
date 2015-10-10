@@ -6,6 +6,7 @@ from rest_framework_nested import routers
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from organizations.views import OrganizationViewSet
+from applications.views import ApplicationViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -15,6 +16,7 @@ from views import DefaultTemplateView
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'organizations', OrganizationViewSet)
+router.register(r'applications', ApplicationViewSet)
 
 urlpatterns = patterns(
     '',

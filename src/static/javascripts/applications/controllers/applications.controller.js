@@ -18,7 +18,7 @@
     }
 
     function calculateNumberOfColumns() {
-      var width = $(width).width();
+      var width = $(window).width();
 
       if (width >= 1200) {
         return 4;
