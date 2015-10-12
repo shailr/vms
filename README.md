@@ -8,7 +8,6 @@ Heroku Deployment Primer: https://devcenter.heroku.com/articles/getting-started-
 - Install Python
 - Install Pip (http://pip.readthedocs.org/en/stable/installing/)
 - Clone using https (git clone https://github.com/indusaction/vms.git)
-- Change directory to src
 - Setup virtualenv
   - pip install virtualenv
   - virtualenv venv
