@@ -15,6 +15,8 @@ class StageViewSet(viewsets.ModelViewSet):
         if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
+        return False
+
 
 def perform_create(self, serializer):
     instance = serializer.save(application=self.request.user.curr_application,

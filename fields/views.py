@@ -15,18 +15,18 @@ class FieldViewSet(viewsets.ModelViewSet):
         return False
 
 
-# Need to implement this
-# def perform_create(self, serizalizer):
-#     instance = serizalizer.save(organization=self.request.organization)
+def perform_create(self, serializer):
+    instance = serializer.save(application=self.request.user.curr_application)
 
-#     return super(ApplicationViewSet, self).perform_create(serializer)
+    return super(FieldViewSet, self).perform_create(serializer)
+
 
 class ApplicationFieldsViewSet(viewsets.ViewSet):
     queryset = Field.objects.select_related('application').all()
     serializer_class = FieldSerializer
 
-    def list(self, request, application=None):
-        queryset = self.queryset.filter(application_name=application)
+    def list(self, request, application_name=None):
+        queryset = self.queryset.filter(application__name=application_name)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
