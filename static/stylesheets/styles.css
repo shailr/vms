@@ -1,0 +1,11 @@
+.btn-add-new-organization{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.btn-add-new-application{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
