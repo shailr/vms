@@ -14,7 +14,7 @@
 node_modules/
 
 # Bower Components
-src/static/bower_components/
+static/bower_components/
 
 # Virtualenv
 venv/
