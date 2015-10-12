@@ -1,0 +1,27 @@
+{
+  "name": "vms",
+  "version": "0.0.1",
+  "homepage": "https://github.com/indusaction/vms",
+  "authors": [
+    "Vibhor Meshram <vibhor@indusaction.org>"
+  ],
+  "description": "Volunteer and Application Management system for Indusaction",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "~1.4.5",
+    "angular-route": "~1.4.5",
+    "angular": "~1.4.5",
+    "bootstrap-material-design": "~0.3.0",
+    "bootstrap": "~3.3.5",
+    "ngDialog": "~0.5.1",
+    "underscore": "~1.8.3"
+  }
+}
