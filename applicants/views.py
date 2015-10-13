@@ -6,11 +6,11 @@ from applicants.serializers import ApplicantSerializer
 
 
 class ApplicantViewSet(viewsets.ModelViewSet):
-    queryset = Applicant.object.order_by('creted_at')
+    queryset = Applicant.objects.order_by('creted_at')
     serializer_class = ApplicantSerializer
 
     def get_permissions(self):
-        if self.request.methods in permissions.SAFE_METHODS:
+        if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
 
         return False
