@@ -5,7 +5,6 @@ from todos.models import Todo
 from authentication.serializers import AccountSerializer
 
 from applicants.serializers import ApplicantSerializer
-from applicants.models import Applicant
 
 
 class TodoSerializer(serializers.ModelSerializer):
@@ -16,14 +15,14 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
 
-        fields = ('id', 'todo', 'created_by', 'assignee',
-                  'created_at', 'updated_at')
+        fields = ('id', 'todo', 'created_by', 'assignee', 'applicant',
+                  'created_at', 'updated_at', 'due_date')
 
-        read_only_fields = ('id', 'created_at', 'updated_at',
+        read_only_fields = ('id', 'created_at', 'updated_at', 'applicant',
                             'created_by', 'assignee')
 
         def get_validation_exclusions(self, *args, **kwargs):
             exclusions = super(TodoSerializer,
                                self).get_validation_exclusions()
 
-            return exclusions + ['created', 'assignee', 'applicant']
+            return exclusions + ['created_by', 'assignee', 'applicant']
