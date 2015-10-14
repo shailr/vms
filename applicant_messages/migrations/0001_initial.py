@@ -2,31 +2,30 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import datetime
 from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('applicants', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Todo',
+            name='Message',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False,
                                         auto_created=True, primary_key=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('todo', models.TextField()),
-                ('due_date',
-                 models.DateTimeField(default=datetime.datetime.now,
-                                      blank=True)),
-                ('assignee', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-                ('created_by', models.ForeignKey(related_name='creator',
-                                                 to=settings.AUTH_USER_MODEL)),
+                ('message', models.TextField()),
+                ('type', models.CharField(max_length=1,
+                                          choices=[('1', 'sms'),
+                                                   ('2', 'email')])),
+                ('applicant', models.ForeignKey(to='applicants.Applicant')),
+                ('sender', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'abstract': False,
