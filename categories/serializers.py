@@ -24,4 +24,4 @@ class CategorySerializer(serializers.ModelSerializer):
             exclusions = super(CategorySerializer,
                                self).get_validation_exclusions()
 
-            return exclusions + ['created_by']
+            return exclusions + ['created_by', 'applicant']
