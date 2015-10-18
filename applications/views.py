@@ -1,8 +1,11 @@
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
+from rest_framework.decorators import list_route
 
 from applications.models import Application
 from applications.serializers import ApplicationSerializer
+
+from authentication.permissions import IsAccountOwner
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
@@ -18,13 +21,30 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
         return False
 
+    @list_route(permission_classes=[IsAccountOwner])
+    def overview(self, request):
+        applications = Application.objects.filter(users=request.user,
+                                                  organization=request.user.organization,
+                                                  archived=False)
 
-class OrganizationApplicationsViewSet(viewsets.ViewSet):
-    queryset = Application.objects.select_related('organization').all()
-    serializer_class = ApplicationSerializer
+        serializer = self.get_serializer(applications, many=True)
 
-    def list(self, request, organization=None):
-        queryset = self.queryset.filter(organization__name=organization)
-        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+    @list_route(permission_classes=[IsAccountOwner])
+    def all_accessible(self, request):
+        applications = Application.objects.filter(users=request.user,
+                                                  organization=request.user.organization)
+
+        serializer = self.get_serializer(applications, many=True)
+
+        return Response(serializer.data)
+
+    @list_route(permission_classes=[IsAccountOwner])
+    def archived(self, request):
+        applications = Application.objects.filter(organization=request.user.organization,
+                                                  archived=True)
+
+        serializer = self.get_serializer(applications, many=True)
 
         return Response(serializer.data)
