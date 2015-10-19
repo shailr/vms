@@ -18,7 +18,7 @@ router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'organizations', OrganizationViewSet)
 router.register(r'applications', ApplicationViewSet)
-router.register(r'stages', StagesViewSet)
+router.register(r'stages', StageViewSet)
 
 # TODO: Implement organizations_router
 # TODO: Implement accounts_router
