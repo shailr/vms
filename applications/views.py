@@ -48,3 +48,10 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(applications, many=True)
 
         return Response(serializer.data)
+
+
+    def perform_create(self, serializer):
+        instance = serializer.save(creator=self.request.user,
+                                   users=[self.request.user])
+
+        return super(ApplicationViewSet, self).perform_create(serializer)
