@@ -9,7 +9,7 @@
     var directive = {
       restrict: 'E',
       scope: {
-        post: '='
+        application: '='
       },
       templateUrl: '/static/templates/applications/application.html'
     };

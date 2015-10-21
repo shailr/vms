@@ -12,14 +12,13 @@
 
     <ul class="nav navbar-nav pull-left">
       {% if user.is_authenticated %}
-        <li><a href="/applications">Application</a></li>
+        <li><a href="/applications">Applications</a></li>
       {% endif %}
     </ul>
 
     <div class="collapse navbar-collapse" id="vms-nav">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
-          <li><a href="/+{{ user.username }}">+{{ user.username }}</a></li>
           <li><a href="/+{{ user.username }}/settings">Settings</a></li>
           <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
         {% else %}

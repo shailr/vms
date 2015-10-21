@@ -3,7 +3,13 @@
     <div class="well">
       <div class="application">
         <div class="application_title">
-          TODO: FIGURE OUT WHY IT'S NOT WORKING
+          <a href="/applications/{{ application.title }}">
+            {{ application.title }}
+          </a>
+          <hr />
+          {{ application.users.length }} Users
+          <hr />
+          {{ application.applicant_set.length }} Applicants
         </div>
       </div>
     </div>
