@@ -26,7 +26,8 @@ router.register(r'stages', StageViewSet)
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
 )
-applications_router.register(r'stages', ApplicationStagesViewSet)
+
+#applications_router.register(r'stages', ApplicationStagesViewSet)
 
 urlpatterns = patterns(
     '',

@@ -14,7 +14,7 @@
     activate();
 
     function activate() {
-      Applications.all()
+      Applications.overview()
         .then(applicationsSuccessFn, applicationsErrorFn);
 
       $scope.$on('application.created', function(event, application) {

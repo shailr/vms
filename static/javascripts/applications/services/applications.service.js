@@ -11,10 +11,15 @@
     var Applications = {
       all: all,
       create: create,
-      get: get
+      get: get,
+      overview: overview
     };
 
     return Applications;
+
+    function overview() {
+      return $http.get('/api/v1/applications/overview/')
+    }
 
     function all() {
       return $http.get('/api/v1/applications/');
