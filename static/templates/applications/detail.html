@@ -1,0 +1,16 @@
+<h1>{{ vm.application.title }}</h1>
+<hr />
+<a href='/applications/8/applicants'>
+  <h2>{{ vm.application.applicant_set.length }} Applicants</h2>
+</a>
+<hr />
+<h3>Status: {{ vm.application.archived === false ? "Active" : "Archived"}}</h3>
+<a href="/applications/{{ vm.application.id }}">Archive</a>
+<hr />
+<h2>Creator</h2>
+{{ vm.application.creator }}
+<!-- TODO: COME BACK HERE TO CHANGE THE CREATOR to the first_name of the creator -->
+<!-- Will have to modify the signup form -->
+<h2>Stages</h2>
+<a href="/applications/{{ vm.application.id }}/stages">Edit</a>
+<div ng-repeat="stage in vm.application.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}</div>

@@ -1,4 +1,3 @@
-
 from rest_framework import serializers
 
 from applications.models import Application
@@ -10,18 +9,17 @@ from authentication.serializers import AccountSerializer
 class ApplicationSerializer(serializers.ModelSerializer):
     organization = OrganizationSerializer(read_only=True, required=False)
     creator = AccountSerializer(read_only=True, required=False)
-    users = AccountSerializer(read_only=True, required=False, many=True)
 
     class Meta:
         model = Application
 
         fields = ('id', 'title', 'details', 'organization',
-                  'creator', 'archived', 'users',)
-        read_only_fields = ('id', 'organization', 'users',
+                  'creator', 'archived', 'applicant_set')
+        read_only_fields = ('id', 'organization', 'applicant_set',
                             'created_at', 'updated_at',)
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(ApplicatiionSerializer,
                            self).get_validation_exclusions()
 
-        return exclusions + ['organization', 'users', 'creator']
+        return exclusions + ['organization', 'creator']

@@ -23,9 +23,9 @@ router.register(r'stages', StageViewSet)
 # TODO: Implement organizations_router
 # TODO: Implement accounts_router
 
-applications_router = routers.NestedSimpleRouter(
-    router, r'applications', lookup='application'
-)
+# applications_router = routers.NestedSimpleRouter(
+#     router, r'applications', lookup='application'
+# )
 
 #applications_router.register(r'stages', ApplicationStagesViewSet)
 
@@ -33,8 +33,6 @@ urlpatterns = patterns(
     '',
 
     url(r'^api/v1/', include(router.urls)),
-
-    url(r'^api/v1/', include(applications_router.urls)),
 
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
 

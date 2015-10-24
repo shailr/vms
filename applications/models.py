@@ -13,7 +13,7 @@ class Application(TimeStampedModel):
 
     organization = models.ForeignKey(Organization, null=True)
 
-    users = models.ManyToManyField(Account, related_name='applications')
+    #users = models.ManyToManyField(Account, related_name='applications')
 
     creator = models.ForeignKey(Account, null=True)
 

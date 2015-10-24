@@ -32,8 +32,8 @@
       });
     }
 
-    function get(organization) {
-      return $http.get('/api/v1/organizations/' + organization + '/applications/');
+    function get(id) {
+      return $http.get('/api/v1/applications/' + id + '/');
     }
   }
 })();

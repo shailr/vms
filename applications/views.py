@@ -23,8 +23,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
     @list_route(permission_classes=[IsAccountOwner])
     def overview(self, request):
-        applications = Application.objects.filter(users=request.user,
-                                                  organization=request.user.organization,
+        applications = Application.objects.filter(organization=request.user.organization,
                                                   archived=False)
 
         serializer = self.get_serializer(applications, many=True)
@@ -52,6 +51,6 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         instance = serializer.save(creator=self.request.user,
-                                   users=[self.request.user])
+                                   organization=self.request.user.organization)
 
         return super(ApplicationViewSet, self).perform_create(serializer)

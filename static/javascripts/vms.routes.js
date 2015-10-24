@@ -20,6 +20,10 @@
       controller: 'DashboardController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applications/dashboard.html'
+    }).when('/applications/:id', {
+      controller: 'ApplicationDetailController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applications/detail.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',
