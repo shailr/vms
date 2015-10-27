@@ -5,6 +5,8 @@ from rest_framework.decorators import list_route
 from applications.models import Application
 from applications.serializers import ApplicationSerializer
 
+from stages.models import Stage
+
 from authentication.permissions import IsAccountOwner
 
 

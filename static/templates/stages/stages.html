@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="stage in vm.stages">
+    <stage stage="stage"></stage>
+  </div>
+  <div ng-hide="vm.stages && vm.stages.length">
+    <div class="col-sm-12 no-applciations-here">
+      <em>No stages yet.</em>
+    </div>
+  </div>
+</div>

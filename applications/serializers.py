@@ -14,9 +14,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
 
         fields = ('id', 'title', 'details', 'organization',
-                  'creator', 'archived', 'applicant_set')
+                  'creator', 'archived', 'applicant_set', 'stage_set',)
         read_only_fields = ('id', 'organization', 'applicant_set',
-                            'created_at', 'updated_at',)
+                            'created_at', 'updated_at', 'stage_set',)
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(ApplicatiionSerializer,

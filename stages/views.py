@@ -2,6 +2,7 @@ from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 
 from stages.models import Stage
+from applications.models import Application
 from stages.serializers import StageSerializer
 
 
@@ -18,19 +19,23 @@ class StageViewSet(viewsets.ModelViewSet):
         return False
 
 
-def perform_create(self, serializer):
-    instance = serializer.save(application=self.request.user.curr_application,
-                               assignee=self.request.user)
+    def perform_create(self, serializer):
+        print "perform create"
+        instance = serializer.save(assignee=self.request.user,
+                                   application=self.request.data['application'])
+        print "perform create after saving assignee"
 
-    return super(PostViewSet, self).perform_create(serializer)
+        print "instance saved = ", instance
+
+        return super(StageViewSet, self).perform_create(serializer)
 
 
 class ApplicationStagesViewSet(viewsets.ViewSet):
-    queryset = Stage.objects.select_related('application').all()
+    queryset = Stage.objects.all()
     serializer_class = StageSerializer
 
-    def list(self, request, application_name=None):
-        queryset = self.queryset.filter(application__name=application_name)
+    def list(self, request, application_pk=None):
+        queryset = self.queryset.filter(application__pk=application_pk)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)

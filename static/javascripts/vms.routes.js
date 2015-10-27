@@ -24,6 +24,10 @@
       controller: 'ApplicationDetailController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applications/detail.html'
+    }).when('/applications/:id/stages', {
+      controller: 'StageListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/stages/stage-list.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

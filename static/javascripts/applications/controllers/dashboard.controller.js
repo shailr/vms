@@ -5,6 +5,8 @@
     .module('vms.applications.controllers')
     .controller('DashboardController', DashboardController);
 
+  DashboardController.$inject = ['$scope', 'Authentication', 'Applications'];
+
   function DashboardController($scope, Authentication, Applications) {
     var vm = this;
 

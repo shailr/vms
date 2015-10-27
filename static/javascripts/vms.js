@@ -5,7 +5,8 @@ angular
     'vms.config',
     'vms.layout',
     'vms.organizations',
-    'vms.applications'
+    'vms.applications',
+    'vms.stages'
   ]);
 
 angular

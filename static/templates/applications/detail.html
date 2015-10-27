@@ -13,4 +13,4 @@
 <!-- Will have to modify the signup form -->
 <h2>Stages</h2>
 <a href="/applications/{{ vm.application.id }}/stages">Edit</a>
-<div ng-repeat="stage in vm.application.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}</div>
+<div ng-repeat="stage in vm.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}, {{ stage.applicant_set.length }} Applicants</div>

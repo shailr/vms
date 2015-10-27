@@ -24,7 +24,7 @@
         .then(createApplicationSuccessFn, createApplicationErrorFn);
 
       function createApplicationSuccessFn(data, status, headers, config) {
-        console.log('Post created');
+        console.log('Application created');
       }
 
       function createApplicationErrorFn(data, status, headers, config) {
