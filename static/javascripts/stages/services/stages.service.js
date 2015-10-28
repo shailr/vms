@@ -17,7 +17,6 @@
     return Stages;
 
     function all(id) {
-      console.log('here in all ', id);
       return $http.get('/api/v1/applications/' + id + '/stages/');
     }
 

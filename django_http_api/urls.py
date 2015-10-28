@@ -7,6 +7,7 @@ from rest_framework_nested import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from organizations.views import OrganizationViewSet
 from applications.views import ApplicationViewSet
+from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet
 from stages.views import ApplicationStagesViewSet, StageViewSet
 
 from views import DefaultTemplateView
@@ -19,11 +20,13 @@ router.register(r'accounts', AccountViewSet)
 router.register(r'organizations', OrganizationViewSet)
 router.register(r'applications', ApplicationViewSet)
 router.register(r'stages', StageViewSet)
+router.register(r'applicants', ApplicantViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
 )
 applications_router.register(r'stages', ApplicationStagesViewSet)
+applications_router.register(r'applicants', ApplicationApplicantsViewSet)
 
 # TODO: Implement organizations_router
 # TODO: Implement accounts_router

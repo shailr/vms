@@ -6,6 +6,10 @@
           <a href="/applications/{{ application.id }}">
             {{ application.title }}
           </a>
+          <hr />
+          <a href="/applications/{{ application.id }}/applicants">
+            {{ application.applicant_set.length }} Applicants
+          </a>
         </div>
       </div>
     </div>

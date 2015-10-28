@@ -24,7 +24,6 @@
 
         for (var i = 0; i < current.length; i++) {
           vm.stages.push(current[i]);
-          console.log('here in render');
         }
       }
     }

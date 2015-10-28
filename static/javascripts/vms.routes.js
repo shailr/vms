@@ -28,6 +28,10 @@
       controller: 'StageListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/stages/stage-list.html'
+    }).when('/applications/:id/applicants', {
+      controller: 'ApplicantListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applicants/applicant-list.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

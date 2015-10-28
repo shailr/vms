@@ -20,12 +20,8 @@ class StageViewSet(viewsets.ModelViewSet):
 
 
     def perform_create(self, serializer):
-        print "perform create"
         instance = serializer.save(assignee=self.request.user,
                                    application=self.request.data['application'])
-        print "perform create after saving assignee"
-
-        print "instance saved = ", instance
 
         return super(StageViewSet, self).perform_create(serializer)
 

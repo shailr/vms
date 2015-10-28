@@ -6,7 +6,8 @@ angular
     'vms.layout',
     'vms.organizations',
     'vms.applications',
-    'vms.stages'
+    'vms.stages',
+    'vms.applicants'
   ]);
 
 angular

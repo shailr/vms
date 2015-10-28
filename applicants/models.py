@@ -10,15 +10,15 @@ from stages.models import Stage
 
 
 class Applicant(TimeStampedModel):
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    email = models.EmailField()
+    first_name = models.CharField(max_length=20, blank=True)
+    last_name = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
 
     SOURCE_CHOICES = (
         (u'1', u'Choice1'),
         (u'2', u'Choice2'),
     )
-    source = models.CharField(max_length=1, choices=SOURCE_CHOICES)
+    source = models.CharField(blank=True, max_length=1, choices=SOURCE_CHOICES)
 
     mobile = models.CharField(max_length=20)
 

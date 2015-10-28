@@ -14,7 +14,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
 
         fields = ('id', 'title', 'details', 'organization',
-                  'creator', 'archived', 'applicant_set', 'stage_set',)
+                  'creator', 'archived', 'applicant_set', 'stage_set',
+                  'created_at', 'updated_at',)
         read_only_fields = ('id', 'organization', 'applicant_set',
                             'created_at', 'updated_at', 'stage_set',)
 

@@ -5,6 +5,7 @@ from applicants.models import Applicant
 from authentication.serializers import AccountSerializer
 
 from applications.serializers import ApplicationSerializer
+from applications.models import Application
 
 
 class ApplicantSerializer(serializers.ModelSerializer):
@@ -20,8 +21,16 @@ class ApplicantSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'created_at', 'updated_at',
                             'created_by', 'application',)
 
-        def get_validation_exclusions(self, *args, **kwargs):
-            exclusions = super(ApplicationSerializer,
-                               self).get_validaion_exclusions()
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(ApplicationSerializer,
+                           self).get_validaion_exclusions()
 
-            return exclusions + ['application', 'created_by']
+        return exclusions + ['application', 'created_by']
+
+    def create(self, validated_data):
+        id = validated_data['application']['id']
+        application = Application.objects.get(pk=id)
+
+        validated_data['application'] = application
+
+        return Applicant.objects.create(**validated_data)

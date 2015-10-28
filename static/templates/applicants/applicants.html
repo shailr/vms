@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="applicant in vm.applicants">
+    <applicant applicant="applicant"></applicant>
+  </div>
+  <div ng-hide="vm.applicants && vm.applicants.length">
+    <div class="col-sm-12 no-applciations-here">
+      <em>No applicants yet.</em>
+    </div>
+  </div>
+</div>

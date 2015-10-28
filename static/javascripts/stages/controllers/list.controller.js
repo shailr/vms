@@ -30,7 +30,6 @@
 
       function stageListSuccessFn(data, status, headers, config) {
         vm.stages = data.data;
-        console.log('vm.stages = ', vm.stages);
       }
 
       function stageListErrorFn(data, status, headers, config) {
