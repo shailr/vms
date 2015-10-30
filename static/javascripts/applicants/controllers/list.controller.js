@@ -29,7 +29,6 @@
       });
 
       function applicantListSuccessFn(data, status, headers, config) {
-        console.log('vm.applicants = ', data.data);
         vm.applicants = data.data;
       }
 

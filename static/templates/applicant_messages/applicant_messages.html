@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="applicant in vm.applicants">
+    <applicant_message applicant_message="applicant_message"></applicant_message>
+  </div>
+  <div ng-hide="vm.applicant_messages && vm.applicant_messages.length">
+    <div class="col-sm-12 no-applciations-here">
+      <em>No messages yet.</em>
+    </div>
+  </div>
+</div>

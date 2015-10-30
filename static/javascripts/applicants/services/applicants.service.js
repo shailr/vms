@@ -15,7 +15,6 @@
     return Applicants;
 
     function all(id) {
-      console.log(id);
       return $http.get('/api/v1/applications/' + id + '/applicants/');
     }
 

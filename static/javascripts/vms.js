@@ -7,7 +7,8 @@ angular
     'vms.organizations',
     'vms.applications',
     'vms.stages',
-    'vms.applicants'
+    'vms.applicants',
+    'vms.applicant_messages'
   ]);
 
 angular
