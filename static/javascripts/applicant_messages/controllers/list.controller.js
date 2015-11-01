@@ -2,10 +2,12 @@
   'use strict';
 
   angular
-    .module('vms.applicant_messags.controllers')
+    .module('vms.applicant_messages.controllers')
     .controller('MessageListController', MessageListController);
 
-  function MessageListController($location, $routeParams, $scope, ApplicantMessages) {
+  MessageListController.$inject = ['$routeParams', '$scope', 'ApplicantMessages'];
+
+  function MessageListController($routeParams, $scope, ApplicantMessages) {
     var vm = this;
 
     vm.applicant_messages = [];

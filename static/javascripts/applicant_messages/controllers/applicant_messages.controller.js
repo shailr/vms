@@ -22,7 +22,7 @@
       if (current != original) {
         vm.applicant_messags = [];
 
-        for (var i = 0; i < current.kength; i++) {
+        for (var i = 0; i < current.length; i++) {
           vm.applicants.push(current[i]);
         }
       }

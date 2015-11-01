@@ -5,6 +5,8 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantsController', ApplicantsController);
 
+  ApplicantsController.$inject = ['$scope'];
+
   function ApplicantsController($scope) {
     var vm = this;
 

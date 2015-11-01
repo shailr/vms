@@ -40,7 +40,7 @@
         }
       }
 
-      function messageGetErrorFn(data, status, headers, config) {
+      function applicantGetErrorFn(data, status, headers, config) {
         console.log('MASSIVE THROBBING ERROR IN NEW MESSAGE CONTROLLER');
       }
     }

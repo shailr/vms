@@ -5,6 +5,8 @@
     .module('vms.applicant_messages.services')
     .factory('ApplicantMessages', ApplicantMessages);
 
+  ApplicantMessages.$inject = ['$http', 'Applicants'];
+
   function ApplicantMessages($http, Applicants) {
     var ApplicantMessages = {
       all: all,
@@ -15,7 +17,7 @@
     return ApplicantMessages;
 
     function all(id) {
-      return $http.get('/api/v1/applicants/' + id + '/applicant_messages/')
+      return $http.get('/api/v1/applicants/' + id + '/applicant_messages/');
     }
 
     function create(applicant, message) {
