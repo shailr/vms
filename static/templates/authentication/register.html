@@ -10,6 +10,22 @@
         </div>
 
         <div class="form-group">
+          <label for="register__first_name">First Name</label>
+          <input class="form-control" id="register__first_name" ng-model="vm.data.first_name" placeholder="First Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="register__last_name">Last Name</label>
+          <input class="form-control" id="register__last_name" ng-model="vm.data.last_name" placeholder="Last Name" />
+        </div>
+
+        <!-- TODO: Add validation -->
+        <div class="form-group">
+          <label for="register__mobile">Mobile</label>
+          <input class="form-control" id="register__mobile" ng-model="vm.data.mobile" placeholder="ex. 8095964981" />
+        </div>
+
+        <div class="form-group">
           <label for="register__password">Password</label>
           <input type="password" class="form-control" id="register__password" ng-model="vm.password" placeholder="ex. Password" />
         </div>

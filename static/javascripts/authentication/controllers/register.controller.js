@@ -12,6 +12,8 @@
 
     vm.register = register;
 
+    vm.data = {};
+
     activate();
 
     function activate() {
@@ -21,7 +23,8 @@
     }
 
     function register() {
-      Authentication.register(vm.email, vm.password);
+      console.log(vm.data);
+      Authentication.register(vm.email, vm.password, vm.data);
     }
   }
 })();

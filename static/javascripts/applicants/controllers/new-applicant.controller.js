@@ -21,20 +21,18 @@
         .then(ApplicationGetSuccessFn, ApplicationGetErrorFn);
 
       function ApplicationGetSuccessFn(data, status, headers, config) {
-        $rootScope.$broadcast('applicant.created', {
-          application: data.data,
-          data: vm.data
-        });
-
         vm.application = data.data;
-
-        $scope.closeThisDialog();
 
         Applicants.create(vm.application, vm.data)
           .then(createApplicantSuccessFn, createApplicantErrorFn);
 
         function createApplicantSuccessFn(data, status, headers, config) {
-          console.log('Applicant Created. Applicant = ', data.data);
+          $rootScope.$broadcast('applicant.created', {
+            application: data.data,
+            data: vm.data
+          });
+
+          $scope.closeThisDialog();
         }
 
         function createApplicantErrorFn(data, status, headers, config) {

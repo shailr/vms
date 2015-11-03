@@ -20,13 +20,19 @@
 
     return Authentication;
 
-    function register(email, password) {
+    function register(email, password, data) {
+      console.log('data', data);
+
       return $http.post('/api/v1/accounts/', {
         password: password,
-        email: email
+        email: email,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        mobile: data.mobile
       }).then(registerSuccessFn, registerErrorFn);
 
-      function registerSuccessFn() {
+      function registerSuccessFn(data, status, headers, config) {
+        console.log(data.data);
         Authentication.login(email, password);
       }
 
