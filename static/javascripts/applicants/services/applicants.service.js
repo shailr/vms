@@ -5,6 +5,8 @@
     .module('vms.applicants.services')
     .factory('Applicants', Applicants);
 
+  Applicants.$inject = ['$http', 'Applications'];
+
   function Applicants($http, Applications) {
     var Applicants = {
       all: all,

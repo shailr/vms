@@ -5,7 +5,7 @@
     .module('vms.applicants.controllers')
     .controller('NewApplicantController', NewApplicantController);
 
-  NewApplicantController = ['$routeParams', '$rootScope', '$scope', 'Applicants', 'Applications'];
+  NewApplicantController.$inject = ['$routeParams', '$rootScope', '$scope', 'Applicants', 'Applications'];
 
   function NewApplicantController($routeParams, $rootScope, $scope, Applicants, Applications) {
     var vm = this;
@@ -21,19 +21,19 @@
         .then(ApplicationGetSuccessFn, ApplicationGetErrorFn);
 
       function ApplicationGetSuccessFn(data, status, headers, config) {
-        $rootScope.$broadcast('applicant.created', {
-          application: data.data,
-          data: vm.data
-        });
-
         vm.application = data.data;
-
-        $scope.closeThisDialog();
 
         Applicants.create(vm.application, vm.data)
           .then(createApplicantSuccessFn, createApplicantErrorFn);
 
         function createApplicantSuccessFn(data, status, headers, config) {
+          $rootScope.$broadcast('applicant.created', {
+            application: vm.application,
+            data: vm.data
+          });
+
+          $scope.closeThisDialog();
+
           console.log('Applicant Created. Applicant = ', data.data);
         }
 

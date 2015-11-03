@@ -5,26 +5,15 @@
     .module('vms.notes.services')
     .factory('Notes', Notes);
 
-  Notes.$inject = ['$http', 'Notes'];
-
-  function Notes($http, Notes) {
+  function Notes() {
     var Notes = {
-      all: all,
-      create: create,
-      get: get
+      test: test
     };
 
     return Notes;
 
-    function all(id) {
-      return $http.get('/api/v1/applicants/' + id + '/notes/');
-    }
-
-    function create(applicant, note) {
-      return $http.post('/api/v1/notes/', {
-        applicant: applicant,
-        note: note
-      });
+    function test() {
+      console.log('successful');
     }
   }
 })();

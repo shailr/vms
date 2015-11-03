@@ -10,7 +10,7 @@ from applicants.models import Applicant
 class Note(TimeStampedModel):
     note = models.TextField()
 
-    user = models.ForeignKey(Account)
+    creator = models.ForeignKey(Account)
 
     applicant = models.ForeignKey(Applicant)
 

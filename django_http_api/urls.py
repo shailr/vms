@@ -9,7 +9,7 @@ from organizations.views import OrganizationViewSet
 from applications.views import ApplicationViewSet
 from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet
 from stages.views import ApplicationStagesViewSet, StageViewSet
-from applicant_messages.views import ApplicantMessagesViewSet, MessagesViewSet
+from notes.views import NoteViewSet, ApplicantNoteViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -22,7 +22,7 @@ router.register(r'organizations', OrganizationViewSet)
 router.register(r'applications', ApplicationViewSet)
 router.register(r'stages', StageViewSet)
 router.register(r'applicants', ApplicantViewSet)
-router.register(r'applicant_messages', MessagesViewSet)
+router.register(r'notes', NoteViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
@@ -32,9 +32,8 @@ applications_router.register(r'applicants', ApplicationApplicantsViewSet)
 
 applicants_router = routers.NestedSimpleRouter(
     router, r'applicants', lookup='applicant'
-
 )
-applicants_router.register(r'applicant_messages', ApplicantMessagesViewSet)
+applicants_router.register(r'notes', ApplicantNoteViewSet)
 
 # TODO: IMPLEMENT THE FOLLOWING
 # applicants_router.register(r'todos', ApplicantTodosViewSet)

@@ -36,6 +36,10 @@
       controller: 'ApplicantListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/applicant-list.html'
+    }).when('/applicants/:id/notes', {
+      controller: 'NoteListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/notes/note-list.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

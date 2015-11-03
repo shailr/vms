@@ -153,7 +153,6 @@ INSTALLED_APPS = (
     'history',
     'categories',
     'todos',
-    'applicant_messages',
     'notes',
     'grievances',
     # Uncomment the next line to enable the admin:
