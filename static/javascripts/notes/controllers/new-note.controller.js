@@ -5,41 +5,43 @@
     .module('vms.notes.controllers')
     .controller('NewNoteController', NewNoteController);
 
-  function NewNoteController($routeParams, $rootScope, $scope, Notes, Applicants) {
+  NewNoteController.$inject = ['$routeParams', '$rootScope', '$scope', 'Applicants', 'Notes']
+
+  function NewNoteController($routeParams, $rootScope, $scope, Applicants, Notes) {
     var vm = this;
 
     vm.id = $routeParams.id;
 
     vm.data = {};
 
+    vm.submit = submit;
+
     function submit() {
       Applicants.get(vm.id)
-        .then(applicantGetSuccesFn, applicantGetErrorFn);
+        .then(applicantGetSuccessFn, applicantGetErrorFn);
 
       function applicantGetSuccessFn(data, status, headers, config) {
-        $rootScope.$broadcast('note.created', {
-          applicant: data.data,
-          data: vm.data
-        });
-
         vm.applicant = data.data;
 
-        $scope.closeThisDialog();
-
-        Notes.create(vm.applicant, vm.data)
+        Notes.create(vm.applicant, vm.data.note)
           .then(createNoteSuccessFn, createNoteErrorFn);
 
         function createNoteSuccessFn(data, status, headers, config) {
-          console.log('Note create successfullt. Note = ', data.data);
+          $rootScope.$broadcast('note.created', {
+            applicant: data.data,
+            data: vm.data
+          });
+
+          $scope.closeThisDialog();
         }
 
         function createNoteErrorFn(data, status, headers, config) {
-          console.log('Error while create Note in NewNoteController');
+          console.log('Error in create note in new note controller');
         }
       }
 
-      function applicantGetErrorFn(data, status, headers, config) {
-        console.log('Error while getting the applicant in new Not Controller');
+      function applicationGetErrorFn(data, status, headers, config) {
+        console.log('Error in Applicant get in new note controller');
       }
     }
   }

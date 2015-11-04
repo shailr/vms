@@ -5,14 +5,16 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', '$scope', 'Applicants', 'ApplicantMessages'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', '$scope', 'Applicants', 'Notes'];
 
-  function ApplicantDetailController($location, $routeParams, $scope, Applicants, ApplicantMessages) {
+  function ApplicantDetailController($location, $routeParams, $scope, Applicants, Notes) {
     var vm = this;
 
     vm.applicant = undefined;
 
-    vm.applicant_messages = [];
+    //vm.applicant_messages = [];
+
+    vm.notes = [];
 
     activate();
 
@@ -25,16 +27,27 @@
       function applicantDetailSuccessFn(data, status, headers, config) {
         vm.applicant = data.data;
 
-        ApplicantMessages.all(vm.applicant.id)
-          .then(applicantMessagesAllSuccessFn, applicantMessagesAllErrorFn);
+        Notes.all(vm.applicant.id)
+          .then(applicantNotesAllSuccessFn, applicantNotesAllErrorFn);
 
-        function applicantMessagesAllSuccessFn(data, status, headers, config) {
-          vm.applicant_messages = data.data;
+        function applicantNotesAllSuccessFn(data, status, headers, config) {
+          vm.notes = data.data;
         }
 
-        function applicantMessagesAllErrorFn(data, status, headers, config) {
-          console.log('Error while retrieving messages');
+        function applicantNotesAllErrorFn(data, status, headers, config) {
+          console.log('Error while retrieving notes');
         }
+
+        // ApplicantMessages.all(vm.applicant.id)
+        //   .then(applicantMessagesAllSuccessFn, applicantMessagesAllErrorFn);
+
+        // function applicantMessagesAllSuccessFn(data, status, headers, config) {
+        //   vm.applicant_messages = data.data;
+        // }
+
+        // function applicantMessagesAllErrorFn(data, status, headers, config) {
+        //   console.log('Error while retrieving messages');
+        // }
         // TODO: Add the following things:
 
         // vm.applicant_messages = [];

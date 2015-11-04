@@ -8,20 +8,17 @@ from applicants.serializers import ApplicantSerializer
 
 
 class NoteSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    creator = AccountSerializer(read_only=True, required=False)
     applicant = ApplicantSerializer(read_only=True, required=False)
 
     class Meta:
         model = Note
 
-        fields = ('id', 'note', 'user', 'applicant',
-                  'created_at', 'updated_at')
+        fields = ('id', 'note', 'creator', 'applicant', 'created_at', 'updated_at')
 
-        read_only_fields = ('id', 'created_at', 'updated_at',
-                            'applicant', 'user')
+        read_only_fields = ('id', 'created_at', 'updated_at', 'applicant', 'creator')
 
-        def get_validation_exclusions(self, *args, **kwargs):
-            exclusions = super(MessageSerializer,
-                               self).get_validation_exclusions()
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(NoteSerializer, self).get_validation_exclusions()
 
-            return exclusions + ['user', 'applicant']
+        return exclusion + ['creator', 'applicant']

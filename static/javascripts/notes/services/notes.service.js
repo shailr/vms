@@ -5,13 +5,12 @@
     .module('vms.notes.services')
     .factory('Notes', Notes);
 
-  Notes.$inject = ['$http', 'Notes'];
+  Notes.$inject = ['$http'];
 
-  function Notes($http, Notes) {
+  function Notes($http) {
     var Notes = {
       all: all,
-      create: create,
-      get: get
+      create: create
     };
 
     return Notes;

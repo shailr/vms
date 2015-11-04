@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="note in vm.notes">
+    <note note="note"></note>
+  </div>
+  <div ng-hide="vm.notes && vm.notes.length">
+    <div class="col-sm-12 no-notes-here">
+      <em>No notes yet.</em>
+    </div>
+  </div>
+</div>
