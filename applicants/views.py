@@ -39,3 +39,14 @@ class ApplicationApplicantsViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class StageApplicantsViewSet(viewsets.ViewSet):
+    queryset = Applicant.objects.all()
+    serializer_class = ApplicantSerializer
+
+    def list(self, request, stage_pk=None):
+        queryset = self.queryset.filter(stage__pk=stage_pk)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)

@@ -7,6 +7,7 @@ from authentication.serializers import AccountSerializer
 from applications.serializers import ApplicationSerializer
 from applications.models import Application
 
+from stages.models import Stage
 
 class ApplicantSerializer(serializers.ModelSerializer):
     application = ApplicationSerializer(read_only=True, required=False)
@@ -31,6 +32,9 @@ class ApplicantSerializer(serializers.ModelSerializer):
         id = validated_data['application']['id']
         application = Application.objects.get(pk=id)
 
+        stage = Stage.objects.get(application=application, order=0)
+
         validated_data['application'] = application
+        validated_data['stage'] = stage
 
         return Applicant.objects.create(**validated_data)

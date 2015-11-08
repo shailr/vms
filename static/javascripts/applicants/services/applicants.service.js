@@ -8,6 +8,7 @@
   function Applicants($http, Applications) {
     var Applicants = {
       all: all,
+      allFromStage: allFromStage,
       create: create,
       get: get
     };
@@ -16,6 +17,10 @@
 
     function all(id) {
       return $http.get('/api/v1/applications/' + id + '/applicants/');
+    }
+
+    function allFromStage(id) {
+      return $http.get('/api/v1/stages/' + id + '/applicants/');
     }
 
     function create(application, data) {

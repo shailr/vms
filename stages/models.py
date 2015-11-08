@@ -14,5 +14,7 @@ class Stage(TimeStampedModel):
 
     assignee = models.ForeignKey(Account, null=True)
 
+    order = models.IntegerField(default=0)
+
     def __unicode__(self):
         return self.name

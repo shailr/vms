@@ -31,4 +31,4 @@ class NoteSerializer(serializers.ModelSerializer):
 
         validated_data['applicant'] = applicant
 
-        return Message.objects.create(**validated_data)
+        return Note.objects.create(**validated_data)

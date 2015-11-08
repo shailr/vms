@@ -36,6 +36,18 @@
       controller: 'ApplicantListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/applicant-list.html'
+    }).when('/applications/:app_id/applicants/:id/notes/new', {
+      controller: 'NewNoteController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/notes/new-note.html'
+    }).when('/applications/:app_id/applicants/:id/messages/new', {
+      controller: 'NewMessageController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/messages/new-message.html'
+    }).when('/stages/:stage_id/applicants', {
+      controller: 'StageApplicantsListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applicants/stage-applicants-list.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

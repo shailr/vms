@@ -7,7 +7,7 @@ from rest_framework_nested import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from organizations.views import OrganizationViewSet
 from applications.views import ApplicationViewSet
-from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet
+from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, StageApplicantsViewSet
 from stages.views import ApplicationStagesViewSet, StageViewSet
 from notes.views import NoteViewSet, ApplicantNotesViewSet
 from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
@@ -38,6 +38,11 @@ applicants_router = routers.NestedSimpleRouter(
 applicants_router.register(r'notes', ApplicantNotesViewSet)
 applicants_router.register(r'applicant_messages', ApplicantMessagesViewSet)
 
+stages_router = routers.NestedSimpleRouter(
+    router, r'stages', lookup='stage'
+)
+stages_router.register(r'applicants', StageApplicantsViewSet)
+
 urlpatterns = patterns(
     '',
 
@@ -50,6 +55,8 @@ urlpatterns = patterns(
     url(r'^api/v1/', include(applications_router.urls)),
 
     url(r'^api/v1/', include(applicants_router.urls)),
+
+    url(r'^api/v1/', include(stages_router.urls)),
 
     url(r'^.*$', DefaultTemplateView.as_view()),
 )
