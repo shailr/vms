@@ -150,7 +150,8 @@ INSTALLED_APPS = (
     'stages',
     'fields',
     'applicants',
-    'notes'
+    'notes',
+    'applicant_messages',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

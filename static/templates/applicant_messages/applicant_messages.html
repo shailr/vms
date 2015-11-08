@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="message in vm.messages">
+    <message message="message"></message>
+  </div>
+  <div ng-hide="vm.messages && vm.messages.length">
+    <div class="col-sm-12 no-messages-here">
+      <em>No messages yet.</em>
+    </div>
+  </div>
+</div>

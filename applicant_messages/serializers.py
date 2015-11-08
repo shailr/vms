@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from notes.models import Note
+from applicant_messages.models import Message
 
 from applicants.models import Applicant
 
@@ -9,21 +9,24 @@ from authentication.serializers import AccountSerializer
 from applicants.serializers import ApplicantSerializer
 
 
-class NoteSerializer(serializers.ModelSerializer):
-    creator = AccountSerializer(read_only=True, required=False)
+class MessageSerializer(serializers.ModelSerializer):
+    sender = AccountSerializer(read_only=True, required=False)
     applicant = ApplicantSerializer(read_only=True, required=False)
 
     class Meta:
-        model = Note
+        model = Message
 
-        fields = ('id', 'note', 'creator', 'applicant', 'created_at', 'updated_at')
+        fields = ('id', 'message', 'sender', 'applicant',
+                  'created_at', 'updated_at', 'type')
 
-        read_only_fields = ('id', 'created_at', 'updated_at', 'applicant', 'creator')
+        read_only_fields = ('id', 'created_at', 'updated_at',
+                            'applicant', 'sender')
 
     def get_validation_exclusions(self, *args, **kwargs):
-        exclusions = super(NoteSerializer, self).get_validation_exclusions()
+        exclusions = super(MessageSerializer,
+                           self).get_validation_exclusions()
 
-        return exclusion + ['creator', 'applicant']
+        return exclusions + ['sender', 'applicant']
 
     def create(self, validated_data):
         id = validated_data['applicant']['id']

@@ -5,14 +5,14 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', '$scope', 'Applicants', 'Notes'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages'];
 
-  function ApplicantDetailController($location, $routeParams, $scope, Applicants, Notes) {
+  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages) {
     var vm = this;
 
     vm.applicant = undefined;
 
-    //vm.applicant_messages = [];
+    vm.messages = [];
 
     vm.notes = [];
 
@@ -38,19 +38,18 @@
           console.log('Error while retrieving notes');
         }
 
-        // ApplicantMessages.all(vm.applicant.id)
-        //   .then(applicantMessagesAllSuccessFn, applicantMessagesAllErrorFn);
+        ApplicantMessages.all(vm.applicant.id)
+          .then(applicantMessagesAllSuccessFn, applicantMessagesAllErrorFn);
 
-        // function applicantMessagesAllSuccessFn(data, status, headers, config) {
-        //   vm.applicant_messages = data.data;
-        // }
+        function applicantMessagesAllSuccessFn(data, status, headers, config) {
+          vm.messages = data.data;
+        }
 
-        // function applicantMessagesAllErrorFn(data, status, headers, config) {
-        //   console.log('Error while retrieving messages');
-        // }
+        function applicantMessagesAllErrorFn(data, status, headers, config) {
+          console.log('Error while retrieving messages');
+        }
         // TODO: Add the following things:
 
-        // vm.applicant_messages = [];
         // vm.notes = [];
         // vm.todos = [];
         // vm.grievances = [];

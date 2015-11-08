@@ -1,0 +1,17 @@
+<form role="form" ng-submit="vm.submit()">
+  <div class="form-group">
+    <label for="applicant_message__message">Message</label>
+    <input class="form-control"
+           id="applicant_message__message"
+           rows="3"
+           placeholder="Write the message here..."
+           ng-model="vm.data.message">
+    </input>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+</form>

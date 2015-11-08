@@ -28,7 +28,7 @@
 
         function createNoteSuccessFn(data, status, headers, config) {
           $rootScope.$broadcast('note.created', {
-            applicant: data.data,
+            applicant: vm.applicant,
             data: vm.data
           });
 
