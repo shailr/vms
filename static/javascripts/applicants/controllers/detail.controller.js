@@ -27,6 +27,8 @@
       function applicantDetailSuccessFn(data, status, headers, config) {
         vm.applicant = data.data;
 
+        vm.applicant.data = JSON.parse(vm.applicant.data);
+
         Notes.all(vm.applicant.id)
           .then(applicantNotesAllSuccessFn, applicantNotesAllErrorFn);
 

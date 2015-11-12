@@ -1,0 +1,202 @@
+
+<form role="form" ng-submit="vm.update()">
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td> <label for="name">Your Name : </label>
+          <input id="name" name="name" type="text" class="form-control" placeholder="Name" ng-model="vm.data.data.volunteer_name"></td>
+        <td><label for="organization">Organization : </label>
+          <input id="organization" name="organization" type="text" class="form-control" placeholder="Name of Organization/GRC No" ng-model="vm.data.data.organization"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <label for="applicant__mobile">Mobile</label>
+    <input class="form-control"
+           id="applicant__mobile"
+           rows="3"
+           placeholder="e.g. 8095964981"
+           ng-model="vm.data.mobile">
+    </input>
+  </div>
+
+  <div id="categories" class="form-group">
+    <table class="table table-bordered">
+      <tr>
+        <td><label for="cat_1">Category</label></td>
+        <td>
+          <label for="EWS">EWS</label>
+          <input class="cat_radio" id="EWS" name="category" value="EWS" type="radio" ng-model="vm.data.data.category">&nbsp;&nbsp;&nbsp;
+          <label for="SC_ST">SC/ST</label>
+          <input class="cat_radio" id="SC_ST" name="category" value="SC_ST" type="radio" ng-model="vm.data.data.category">&nbsp;&nbsp;&nbsp;
+          <label for="OBC_NC">OBC (Non Creamy)</label>
+          <input class="cat_radio" id="OBC_NC" name="category" value="OBC_NC" type="radio" ng-model="vm.data.data.category">&nbsp;&nbsp;&nbsp;
+          <label for="Physically_Mentally_challenged">Physically/Mentally challenged</label>
+          <input class="cat_radio" id="Physically_Mentally_challenged" name="category" value="Physically_Mentally_challenged" type="radio" ng-model="vm.data.data.category">&nbsp;&nbsp;&nbsp;
+          <label for="Orphan">Orphan</label>
+          <input class="cat_radio" id="Orphan" name="category" value="Orphan" type="radio" ng-model="vm.data.data.category">&nbsp;&nbsp;&nbsp;
+          <label for="Transgender">Transgender</label>
+          <input class="cat_radio" id="Transgender" name="category" value="Transgender" type="radio" ng-model="vm.data.data.category">&nbsp;&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <label for="no_of_children">*No. of eligible children:</label>
+    <input id="no_of_children" name="no_of_children" type="number" min="0" class="form-control" placeholder="No. of eligible children" >
+  </div>
+  <div class="form-group" id="children_details_cont">
+    <!-- Details of each child -->
+    <table class="table table-responsive table-bordered table-striped">
+      <tr><th colspan="4">Details:</th></tr>
+      <tr>
+        <th>*Name of child</th>
+        <th>*Age</th>
+        <th>*Gender</th>
+        <th>*Any Disability</th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td> <label for="father_name">Father's Name:</label>
+          <input id="father_name" name="father_name" type="text" class="form-control" placeholder="Name of Father" ng-model="vm.data.data.father_name"></td>
+        <td><label for="father_occupation">Father's Occupation:</label>
+          <input id="father_occupation" name="father_occupation" type="text" class="form-control" placeholder="Occupation of Father" ng-model="vm.data.data.father_occupation"></td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td><label for="mother_name">Mother's Name:</label>
+          <input id="mother_name" name="mother_name" type="text" class="form-control" placeholder="Name of Mother" ng-model="vm.data.data.mother_name"></td>
+        <td><label for="mother_occupation">Mother's Occupation:</label>
+          <input id="mother_occupation" name="mother_occupation" type="text" class="form-control" placeholder="Occupation of Mother" ng-model="vm.data.data.mother_occupation"></td>
+      </tr>
+    </table>
+
+  </div>
+  <div id="documents">
+    <label for="documents">Documents</label>
+    <table class="table table-striped">
+      <tr>
+        <td>Address Proof</td>
+        <td>
+          <label for="AadhaarCard">Aadhaar Card</label>
+          <input class="doc_chkbox" id="AadhaarCard" name="doc_list[]" value="AadhaarCard" type="checkbox" ng-model="vm.data.data.address.aadhar">&nbsp;&nbsp;
+          <label for="PanCard">Pan Card</label>
+          <input class="doc_chkbox" id="PanCard" name="doc_list[]" value="PanCard" type="checkbox" ng-model="vm.data.data.address.pan">&nbsp;&nbsp;
+          <label for="RationCard">Ration Card</label>
+          <input class="doc_chkbox" id="RationCard" name="doc_list[]" value="RationCard" type="checkbox" ng-model="vm.data.data.address.ration">&nbsp;&nbsp;
+          <label for="VoterCard">Voter Card</label>
+          <input class="doc_chkbox" id="VoterCard" name="doc_list[]" value="VoterCard" type="checkbox" ng-model="vm.data.data.address.voter">&nbsp;&nbsp;
+          <label for="Licence">Licence</label>
+          <input class="doc_chkbox" id="Licence" name="doc_list[]" value="Licence" type="checkbox" ng-model="vm.data.data.address.licence">&nbsp;&nbsp;
+          <label for="Elec_WaterBill">Elec/Water Bill</label>
+          <input class="doc_chkbox" id="Elec_WaterBill" name="doc_list[]" value="Elec_WaterBill" type="checkbox" ng-model="vm.data.data.address.bill">&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>Birth Certificate</td>
+        <td>
+          <label for="HospitalRecord">Hospital Record</label>
+          <input class="doc_chkbox" id="HospitalRecord" name="doc_list[]" value="HospitalRecord" type="checkbox" ng-model="vm.data.data.birth.hospital">&nbsp;&nbsp;
+          <label for="AnganwadiRecord">Anganwadi Record</label>
+          <input class="doc_chkbox" id="AnganwadiRecord" name="doc_list[]" value="AnganwadiRecord" type="checkbox" ng-model="vm.data.data.birth.anganwadi" birth.>&nbsp;&nbsp;
+          <label for="BirthCertificate">Birth Certificate</label>
+          <input class="doc_chkbox" id="BirthCertificate" name="doc_list[]" value="BirthCertificate" type="checkbox" ng-model="vm.data.data.birth.birth">&nbsp;&nbsp;
+          <label for="SelfAffidavit">Self Affidavit</label>
+          <input class="doc_chkbox" id="SelfAffidavit" name="doc_list[]" value="SelfAffidavit" type="checkbox" ng-model="vm.data.data.birth.self">&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>Income Certificate</td>
+        <td>
+          <label for="BPLCard">BPL Card</label>
+          <input class="doc_chkbox" id="BPLCard" name="doc_list[]" value="BPLCard" type="checkbox" ng-model="vm.data.data.income.bpl">&nbsp;&nbsp;
+          <label for="AAYRationCard">AAY Ration Card</label>
+          <input class="doc_chkbox" id="AAYRationCard" name="doc_list[]" value="AAYRationCard" type="checkbox" ng-model="vm.data.data.income.ration">&nbsp;&nbsp;
+          <label for="FoodSecurityCard">Food Security Card</label>
+          <input class="doc_chkbox" id="FoodSecurityCard" name="doc_list[]" value="FoodSecurityCard" type="checkbox" ng-model="vm.data.data.income.food">&nbsp;&nbsp;
+          <label for="IncomeCertificate">Income Certificate</label>
+          <input class="doc_chkbox" id="IncomeCertificate" name="doc_list[]" value="IncomeCertificate" type="checkbox" ng-model="vm.data.data.income.income">&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>Category Certificate</td>
+        <td>
+          <label for="CasteCertificate">Delhi Caste Certificate</label>
+          <input class="doc_chkbox" id="CasteCertificate" name="doc_list[]" value="CasteCertificate" type="checkbox" ng-model="vm.data.data.category.caste">&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>Disability Certificate</td>
+        <td>
+          <label for="MedicalCertificate">Medical Certificate from Govt. Hospital</label>
+          <input class="doc_chkbox" id="MedicalCertificate" name="doc_list[]" value="MedicalCertificate" type="checkbox" ng-model="vm.data.data.disability.medical">&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>Orphan Certificate</td>
+        <td>
+          <label for="OrphanCertificate">Certificate from WCD</label>
+          <input class="doc_chkbox" id="OrphanCertificate" name="doc_list[]" value="OrphanCertificate" type="checkbox" ng-model="vm.data.data.orphan.orphan">&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <label for="alt_phone">Alternate Phone No. (10 digits):</label>
+    <input id="alt_phone" name="alt_phone" type="text" class="form-control" placeholder="Phone No." ng-model="vm.data.data.alternate_number">
+  </div>
+
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td rowspan="5"><label>Address: </label></td>
+      </tr>
+      <tr>
+        <td><input id="line_1" name="line_1" type="text" class="form-control" placeholder="House No." ng-model="vm.data.data.address.house_no"></td>
+      </tr>
+      <tr>
+        <td><input id="line_2" name="line_2" type="text" class="form-control" placeholder="Area" ng-model="vm.data.data.address.area"></td>
+      </tr>
+      <tr>
+        <td><input id="line_3" name="line_3" type="text" class="form-control" placeholder="Locality" ng-model="vm.data.data.address.locality"></td>
+      </tr>
+      <tr>
+        <td><input id="addr_pincode" name="addr_pincode" type="number" class="form-control" min="0" placeholder="Pin Code" ng-model="vm.data.data.address.pin"></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="form-group">
+    <label for="RTE1">Did you know anything about RTE Section 12?</label>
+    <input class="rte_chkbox" id="RTE1" name="knew_rte[]" value="RTE1" type="checkbox" ng-model="vm.data.data.knowledge.rte">
+    <br>
+    <label for="RTE2">Did you know about Documents Required and the documentation procedure?</label>
+    <input class="rte_chkbox" id="RTE2" name="knew_rte[]" value="RTE2" type="checkbox" ng-model="vm.data.data.knowledge.docs">
+    <br>
+    <label for="RTE3">Did you know that the school cannot charge anything for Admission, Tuition, uniform and
+      books?</label>
+    <input class="rte_chkbox" id="RTE3" name="knew_rte[]" value="RTE3" type="checkbox" ng-model="vm.data.data.knowledge.school">
+    <br>
+    <br>
+  </div>
+
+
+  <br>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Update
+    </button>
+  </div>
+</form>

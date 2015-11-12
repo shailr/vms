@@ -7,12 +7,20 @@
 
   NewApplicantController = ['$routeParams', '$rootScope', '$scope', 'Applicants', 'Applications'];
 
-  function NewApplicantController($routeParams, $rootScope, $scope, Applicants, Applications) {
+  function NewApplicantController($location, $routeParams, $rootScope, $scope, Applicants, Applications) {
     var vm = this;
 
     vm.id = $routeParams.id;
 
-    vm.data = {};
+    vm.data = {
+      address: {},
+      birth: {},
+      income: {},
+      category: {},
+      disability: {},
+      orphan: {},
+      knowledge: {}
+    };
 
     vm.submit = submit;
 
@@ -28,15 +36,17 @@
 
         function createApplicantSuccessFn(data, status, headers, config) {
           $rootScope.$broadcast('applicant.created', {
-            application: data.data,
+            applicant: data.data,
             data: vm.data
           });
 
-          $scope.closeThisDialog();
+          $location.url('/applications/' + vm.id + '/applicants/');
         }
 
         function createApplicantErrorFn(data, status, headers, config) {
           console.log('MASSIVE THROBBING ERROR IN NEW APPLICANT CONTROLLER');
+
+          $location.url('/applications/' + vm.id);
         }
       }
 

@@ -12,12 +12,12 @@
 
     vm.applicants = [];
 
+    vm.id = $routeParams.id;
+
     activate();
 
     function activate() {
-      var id = $routeParams.id;
-
-      Applicants.all(id)
+      Applicants.all(vm.id)
         .then(applicantListSuccessFn, applicantListErrorFn);
 
       $scope.$on('applicant.created', function(event, applicant) {

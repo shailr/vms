@@ -10,7 +10,8 @@
       all: all,
       allFromStage: allFromStage,
       create: create,
-      get: get
+      get: get,
+      update: update
     };
 
     return Applicants;
@@ -26,8 +27,15 @@
     function create(application, data) {
       return $http.post('/api/v1/applicants/', {
         application: application,
-        mobile: data.mobile
+        mobile: data.mobile,
+        data: JSON.stringify(data)
       });
+    }
+
+    function update(applicant) {
+      applicant.data = JSON.stringify(applicant.data);
+
+      return $http.put('/api/v1/applicants/' + applicant.id + '/', applicant);
     }
 
     function get(id) {
