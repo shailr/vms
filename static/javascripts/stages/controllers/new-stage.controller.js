@@ -28,8 +28,6 @@
 
         console.log('vm.application', vm.application);
 
-        $scope.closeThisDialog();
-
         Stages.create(vm.application, vm.name)
           .then(createStageSuccessFn, createStageErrorFn);
 

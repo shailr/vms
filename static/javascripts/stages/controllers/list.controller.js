@@ -12,12 +12,12 @@
 
     vm.stages = [];
 
+    vm.id = $routeParams.id;
+
     activate();
 
     function activate() {
-      var id = $routeParams.id;
-
-      Stages.all(id)
+      Stages.all(vm.id)
         .then(stageListSuccessFn, stageListErrorFn);
 
       $scope.$on('stage.created', function(event, stage) {
@@ -34,7 +34,7 @@
 
       function stageListErrorFn(data, status, headers, config) {
         console.log('MASSIVE THROBBING ERROR IN STAGE LIST CONTROLLER');
-        $location.url('/applications/' + id);
+        $location.url('/applications/' + vm.id);
       }
     }
   }
