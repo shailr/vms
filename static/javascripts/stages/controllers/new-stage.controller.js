@@ -5,14 +5,30 @@
     .module('vms.stages.controllers')
     .controller('NewStageController', NewStageController);
 
-  NewStageController.$inject = ['$routeParams', '$rootScope', '$scope', 'Stages', 'Applications'];
+  NewStageController.$inject = ['$location', '$routeParams', '$rootScope', '$scope', 'Stages', 'Applications', 'Authentication'];
 
-  function NewStageController($routeParams, $rootScope, $scope, Stages, Applications) {
+  function NewStageController($location, $routeParams, $rootScope, $scope, Stages, Applications, Authentication) {
     var vm = this;
 
     vm.id = $routeParams.id;
 
+    vm.accounts = [];
+
+    vm.assignee = undefined;
+
     vm.submit = submit;
+
+    Authentication.all()
+      .then(accountsGetSuccessFn, accountsGetErrorFn);
+
+    function accountsGetSuccessFn(data, status, headers, config) {
+      vm.accounts = data.data;
+      console.log("accounts = ", data.data);
+    }
+
+    function accountsGetErrorFn(data, status, headers, config) {
+      console.log("Error during accounts get in NewStageController");
+    }
 
     function submit() {
       Applications.get(vm.id)
@@ -26,19 +42,29 @@
 
         vm.application = data.data;
 
-        console.log('vm.application', vm.application);
+        Authentication.get(vm.assignee)
+          .then(accountGetSuccessFn, accountGetErrorFn);
 
-        Stages.create(vm.application, vm.name)
-          .then(createStageSuccessFn, createStageErrorFn);
+        function accountGetSuccessFn(data, status, headers, config) {
+          vm.assignee = data.data;
 
-        function createStageSuccessFn(data, status, headers, config) {
-          console.log('Stage Created');
-          console.log(data.data);
+          Stages.create(vm.application, vm.name, vm.assignee)
+            .then(createStageSuccessFn, createStageErrorFn);
+
+          function createStageSuccessFn(data, status, headers, config) {
+            console.log('Stage Created');
+            $location.url('/applications/' + vm.application.id + '/stages');
+          }
+
+          function createStageErrorFn(data, status, headers, config) {
+            console.log('MASSIVE THROBBING ERROR IN NEW STAGE CONTROLLER');
+            $rootScope.$broadcast('stage.created.error');
+            $location.url('/applications/' + vm.application.id + '/stages');
+          }
         }
 
-        function createStageErrorFn(data, status, headers, config) {
-          console.log('MASSIVE THROBBING ERROR IN NEW STAGE CONTROLLER');
-          $rootScope.$broadcast('stage.created.error');
+        function accountGetErrorFn(data, status, headers, config) {
+          console.log('Error while retireving account in NewStageController');
         }
       }
 

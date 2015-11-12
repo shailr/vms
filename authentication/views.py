@@ -11,7 +11,6 @@ from authentication.serializers import AccountSerializer
 
 
 class AccountViewSet(viewsets.ModelViewSet):
-    lookup_field = 'username'
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 

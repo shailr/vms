@@ -15,10 +15,20 @@
       getAuthenticatedAccount: getAuthenticatedAccount,
       isAuthenticated: isAuthenticated,
       setAuthenticatedAccount: setAuthenticatedAccount,
-      unauthenticate: unauthenticate
+      unauthenticate: unauthenticate,
+      all: all,
+      get: get
     };
 
     return Authentication;
+
+    function get(id) {
+      return $http.get('/api/v1/accounts/' + id + '/');
+    }
+
+    function all() {
+      return $http.get('/api/v1/accounts/');
+    }
 
     function register(email, password, data) {
       console.log('data', data);

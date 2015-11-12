@@ -18,10 +18,9 @@ class StageViewSet(viewsets.ModelViewSet):
 
         return False
 
-
     def perform_create(self, serializer):
-        instance = serializer.save(assignee=self.request.user,
-                                   application=self.request.data['application'])
+        instance = serializer.save(application=self.request.data['application'],
+                                   assignee=self.request.data['assignee'])
 
         return super(StageViewSet, self).perform_create(serializer)
 

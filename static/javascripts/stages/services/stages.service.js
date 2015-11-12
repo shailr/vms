@@ -20,10 +20,14 @@
       return $http.get('/api/v1/applications/' + id + '/stages/');
     }
 
-    function create(application, name) {
+    function create(application, name, assignee) {
+      console.log(assignee);
+      console.log(application);
+
       return $http.post('/api/v1/stages/', {
         application: application,
-        name: name
+        name: name,
+        assignee: assignee
       });
     }
 

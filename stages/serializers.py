@@ -4,6 +4,8 @@ from stages.models import Stage
 
 from applications.models import Application
 
+from authentication.models import Account
+
 from authentication.serializers import AccountSerializer
 
 from applications.serializers import ApplicationSerializer
@@ -28,8 +30,11 @@ class StageSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         id = validated_data['application']['id']
+        assignee_id = validated_data['assignee']['id']
         application = Application.objects.get(pk=id)
+        assignee = Account.objects.get(pk=assignee_id)
 
         validated_data['application'] = application
+        validated_data['assignee'] = assignee
 
         return Stage.objects.create(**validated_data)
