@@ -7,5 +7,5 @@
     ]);
 
   angular
-    .module('vms.layout.controllers', ['vms.organizations.services']);
+    .module('vms.layout.controllers', ['vms.organizations.services', 'chart.js']);
 })();

@@ -11,10 +11,15 @@
     var Stages = {
       all: all,
       create: create,
-      get: get
+      get: get,
+      allAcrossApplications: allAcrossApplications
     };
 
     return Stages;
+
+    function allAcrossApplications() {
+      return $http.get('/api/v1/stages/');
+    }
 
     function all(id) {
       return $http.get('/api/v1/applications/' + id + '/stages/');

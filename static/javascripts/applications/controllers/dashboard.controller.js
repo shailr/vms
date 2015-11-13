@@ -3,11 +3,11 @@
 
   angular
     .module('vms.applications.controllers')
-    .controller('DashboardController', DashboardController);
+    .controller('ApplicationsDashboardController', ApplicationsDashboardController);
 
-  DashboardController.$inject = ['$scope', 'Authentication', 'Applications'];
+  ApplicationsDashboardController.$inject = ['$scope', 'Authentication', 'Applications'];
 
-  function DashboardController($scope, Authentication, Applications) {
+  function ApplicationsDashboardController($scope, Authentication, Applications) {
     var vm = this;
 
     vm.isAuthenticated = Authentication.isAuthenticated();

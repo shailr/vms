@@ -52,7 +52,6 @@
 
     }
 
-
     function login(email, password) {
       return $http.post('/api/v1/auth/login/', {
         email: email,
@@ -86,11 +85,11 @@
     }
 
     function getAuthenticatedAccount() {
-      if (!$cookies.authenticatedAccount) {
+      if (!$cookies.get('authenticatedAccount')) {
         return;
       }
 
-      return JSON.parse($cookies.authenticatedAccount);
+      return JSON.parse($cookies.get('authenticatedAccount'));
     }
 
     function isAuthenticated() {
@@ -98,7 +97,7 @@
     }
 
     function setAuthenticatedAccount(account) {
-      $cookies.authenticatedAccount = JSON.stringify(account);
+      $cookies.put('authenticatedAccount', JSON.stringify(account));
     }
 
     function unauthenticate() {

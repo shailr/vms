@@ -34,3 +34,14 @@ class ApplicationStagesViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class AccountStagesViewSet(viewsets.ViewSet):
+    queryset = Stage.objects.all()
+    serializer_class = StageSerializer
+
+    def list(self, request, account_pk=None):
+        queryset = self.queryset.filter(assignee__pk=account_pk)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)

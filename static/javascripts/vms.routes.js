@@ -17,7 +17,7 @@
       controllerAs: 'vm',
       templateUrl: '/static/templates/authentication/login.html'
     }).when('/applications', {
-      controller: 'DashboardController',
+      controller: 'ApplicationsDashboardController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applications/dashboard.html'
     }).when('/applications/:id', {
@@ -60,6 +60,10 @@
       controller: 'StageApplicantsListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/stage-applicants-list.html'
+    }).when('/dashboard', {
+      controller: 'DashboardController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/layout/dashboard.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

@@ -8,7 +8,7 @@ from authentication.views import AccountViewSet, LoginView, LogoutView
 from organizations.views import OrganizationViewSet
 from applications.views import ApplicationViewSet
 from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, StageApplicantsViewSet
-from stages.views import ApplicationStagesViewSet, StageViewSet
+from stages.views import ApplicationStagesViewSet, StageViewSet, AccountStagesViewSet
 from notes.views import NoteViewSet, ApplicantNotesViewSet
 from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
 
@@ -43,6 +43,11 @@ stages_router = routers.NestedSimpleRouter(
 )
 stages_router.register(r'applicants', StageApplicantsViewSet)
 
+accounts_router = routers.NestedSimpleRouter(
+    router, r'stages', lookup='stage'
+)
+accounts_router.register(r'stages', AccountStagesViewSet)
+
 urlpatterns = patterns(
     '',
 
@@ -57,6 +62,8 @@ urlpatterns = patterns(
     url(r'^api/v1/', include(applicants_router.urls)),
 
     url(r'^api/v1/', include(stages_router.urls)),
+
+    url(r'^api/v1/', include(accounts_router.urls)),
 
     url(r'^.*$', DefaultTemplateView.as_view()),
 )
