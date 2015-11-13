@@ -13,21 +13,26 @@ class TodoViewSet(viewsets.ModelViewSet):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
 
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
         return False
 
 
-def perform_create(self, serializer):
-    instance = serializer.save(applicant=self.request.user.curr_applicant)
+    def perform_create(self, serializer):
+        instance = serializer.save(created_by=self.request.user,
+                                   assignee=self.request.data['assignee'],
+                                   applicant=self.request.data['applicant'])
 
-    return super(TodoViewSet, self).perform_create(serializer)
+        return super(TodoViewSet, self).perform_create(serializer)
 
 
 class ApplicantTodosViewSet(viewsets.ViewSet):
-    queryset = Todo.objects.select_related('applicant').all()
+    queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
-    def list(self, request, applicant_id=None):
-        queryset = self.queryset.filter(applicant__id=applicant_id)
+    def list(self, request, applicant_pk=None):
+        queryset = self.queryset.filter(applicant__pk=applicant_pk)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)

@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="todo in vm.todos">
+    <todo todo="todo"></todo>
+  </div>
+  <div ng-hide="vm.todos && vm.todos.length">
+    <div class="col-sm-12 no-todos-here">
+      <em>No todos</em>
+    </div>
+  </div>
+</div>

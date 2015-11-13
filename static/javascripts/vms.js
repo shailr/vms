@@ -9,7 +9,8 @@ angular
     'vms.stages',
     'vms.applicants',
     'vms.notes',
-    'vms.applicant_messages'
+    'vms.applicant_messages',
+    'vms.todos'
   ]);
 
 angular

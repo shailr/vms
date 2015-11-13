@@ -56,6 +56,10 @@
       controller: 'NewMessageController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/messages/new-message.html'
+    }).when('/applications/:app_id/applicants/:id/todos/new', {
+      controller: 'NewTodoController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/todos/new-todo.html'
     }).when('/stages/:stage_id/applicants', {
       controller: 'StageApplicantsListController',
       controllerAs: 'vm',

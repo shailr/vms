@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos'];
 
-  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages) {
+  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos) {
     var vm = this;
 
     vm.applicant = undefined;
@@ -15,6 +15,8 @@
     vm.messages = [];
 
     vm.notes = [];
+
+    vm.todos = [];
 
     activate();
 
@@ -50,10 +52,20 @@
         function applicantMessagesAllErrorFn(data, status, headers, config) {
           console.log('Error while retrieving messages');
         }
+
+        Todos.all(vm.applicant.id)
+          .then(applicantTodosAllSuccessFn, applicantTodosAllErrorFn);
+
+        function applicantTodosAllSuccessFn(data, status, headers, config) {
+          vm.todos = data.data;
+        }
+
+        function applicantTodosAllErrorFn(data, status, headers, config) {
+          console.log('Error while retrieving todos');
+        }
+
         // TODO: Add the following things:
 
-        // vm.notes = [];
-        // vm.todos = [];
         // vm.grievances = [];
         // vm.history = [];
       }

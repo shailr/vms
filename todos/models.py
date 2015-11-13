@@ -12,9 +12,11 @@ from datetime import datetime
 class Todo(TimeStampedModel):
     todo = models.TextField()
 
-    created_by = models.ForeignKey(Account, related_name='creator')
+    created_by = models.ForeignKey(Account, related_name='creator', null=True)
 
-    assignee = models.ForeignKey(Account)
+    assignee = models.ForeignKey(Account, null=True)
+
+    applicant = models.ForeignKey(Applicant, null=True)
 
     due_date = models.DateTimeField(default=datetime.now, blank=True)
 

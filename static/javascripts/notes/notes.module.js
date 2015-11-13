@@ -15,5 +15,5 @@
     .module('vms.notes.controllers', []);
 
   angular
-    .module('vms.notes.directives', ['ngDialog']);
+    .module('vms.notes.directives', []);
 })();

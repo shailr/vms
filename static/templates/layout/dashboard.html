@@ -1,7 +1,8 @@
-Applicants assigned to you
+<h2>Welcome {{ vm.user.first_name }}</h2>
 
-{{ vm.stages }}
-{{ vm.applicants }}
+<h3>Applicants assigned to you</h3>
+
+<h4>{{ vm.stages.length }} {{ vm.applicants }}</h4>
 
 <!-- TODO Fix the charts -->
 <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"></canvas>
