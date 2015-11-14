@@ -16,6 +16,12 @@
       controller: 'LoginController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/authentication/login.html'
+    }).when('/settings', {
+      templateUrl: '/static/templates/authentication/settings.html'
+    }).when('/settings/profile', {
+      controller: 'UpdateAccountController',
+      controllerAs:'vm',
+      templateUrl: '/static/templates/authentication/update-account.html'
     }).when('/applications', {
       controller: 'ApplicationsDashboardController',
       controllerAs: 'vm',

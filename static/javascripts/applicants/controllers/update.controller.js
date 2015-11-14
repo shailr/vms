@@ -48,7 +48,6 @@
 
         $location.url('/applications/' + app_id + '/applicants/' + id);
       }
-
     }
   }
 })();

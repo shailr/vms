@@ -17,7 +17,8 @@
       setAuthenticatedAccount: setAuthenticatedAccount,
       unauthenticate: unauthenticate,
       all: all,
-      get: get
+      get: get,
+      update: update
     };
 
     return Authentication;
@@ -50,6 +51,10 @@
         console.log('MASSIVE ERROR');
       }
 
+    }
+
+    function update(account) {
+      return $http.put('/api/v1/accounts/' + account.id + '/', account);
     }
 
     function login(email, password) {
