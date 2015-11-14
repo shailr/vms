@@ -5,9 +5,9 @@
     .module('vms.notes.controllers')
     .controller('NewNoteController', NewNoteController);
 
-  NewNoteController.$inject = ['$location', '$routeParams', '$rootScope', 'Applicants', 'Notes']
+  NewNoteController.$inject = ['$location', '$routeParams', '$rootScope', 'Applicants', 'Notes', 'History']
 
-  function NewNoteController($location, $routeParams, $rootScope, Applicants, Notes) {
+  function NewNoteController($location, $routeParams, $rootScope, Applicants, Notes, History) {
     var vm = this;
 
     vm.id = $routeParams.id;
@@ -33,6 +33,19 @@
             applicant: vm.applicant,
             data: vm.data
           });
+
+          console.log("note = ", data.data);
+
+          History.create(vm.applicant, "An internal note was created at " + data.data.created_at)
+            .then(historyCreateSuccessFn, historyCreateErrorFn);
+
+          function historyCreateSuccessFn(data, status, headers, config) {
+            console.log('history = ', data.data);
+          }
+
+          function historyCreateErrorFn(data, status, headers, config) {
+            console.log('History creation failed');
+          }
 
           $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id);
         }

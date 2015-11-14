@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History'];
 
-  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos) {
+  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History) {
     var vm = this;
 
     vm.applicant = undefined;
@@ -17,6 +17,8 @@
     vm.notes = [];
 
     vm.todos = [];
+
+    vm.histories = [];
 
     activate();
 
@@ -62,6 +64,17 @@
 
         function applicantTodosAllErrorFn(data, status, headers, config) {
           console.log('Error while retrieving todos');
+        }
+
+        History.all(vm.applicant.id)
+          .then(applicantHistoryAllSuccessFn, applicantHistoryAllErrorFn);
+
+        function applicantHistoryAllSuccessFn(data, status, headers, config) {
+          vm.histories = data.data;
+        }
+
+        function applicantHistoryAllErrorFn(data, status, headers, config) {
+          console.log('Error while fetching history');
         }
 
         // TODO: Add the following things:

@@ -12,6 +12,7 @@ from stages.views import ApplicationStagesViewSet, StageViewSet, AccountStagesVi
 from notes.views import NoteViewSet, ApplicantNotesViewSet
 from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
 from todos.views import TodoViewSet, ApplicantTodosViewSet
+from history.views import HistoryViewSet, ApplicantHistoryViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -27,6 +28,7 @@ router.register(r'applicants', ApplicantViewSet)
 router.register(r'notes', NoteViewSet)
 router.register(r'applicant_messages', MessagesViewSet)
 router.register(r'todos', TodoViewSet)
+router.register(r'history', HistoryViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
@@ -40,6 +42,7 @@ applicants_router = routers.NestedSimpleRouter(
 applicants_router.register(r'notes', ApplicantNotesViewSet)
 applicants_router.register(r'applicant_messages', ApplicantMessagesViewSet)
 applicants_router.register(r'todos', ApplicantTodosViewSet)
+applicants_router.register(r'history', ApplicantHistoryViewSet)
 
 stages_router = routers.NestedSimpleRouter(
     router, r'stages', lookup='stage'

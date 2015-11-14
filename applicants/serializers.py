@@ -31,7 +31,7 @@ class ApplicantSerializer(serializers.ModelSerializer):
         id = validated_data['application']['id']
         application = Application.objects.get(pk=id)
 
-        stage = Stage.objects.get(application=application, order=0)
+        stage = Stage.objects.latest('created_at')
 
         validated_data['application'] = application
         validated_data['stage'] = stage

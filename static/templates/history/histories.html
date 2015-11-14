@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="history in vm.histories">
+    <history history="history"></history>
+  </div>
+  <div ng-hide="vm.histories && vm.histories.length">
+    <div class="col-sm-12 no-notes-here">
+      <em>No history yet, which is absurd. Please check the code. Contact Vibhor</em>
+    </div>
+  </div>
+</div>

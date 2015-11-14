@@ -10,7 +10,8 @@ angular
     'vms.applicants',
     'vms.notes',
     'vms.applicant_messages',
-    'vms.todos'
+    'vms.todos',
+    'vms.history'
   ]);
 
 angular
