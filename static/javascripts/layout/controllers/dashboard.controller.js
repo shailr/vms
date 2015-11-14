@@ -5,9 +5,9 @@
     .module('vms.layout.controllers')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$location', 'Authentication', 'Applicants', 'Stages'];
+  DashboardController.$inject = ['$location', 'Authentication', 'Applicants', 'Stages', 'Todos'];
 
-  function DashboardController($location, Authentication, Applicants, Stages) {
+  function DashboardController($location, Authentication, Applicants, Stages, Todos) {
     var vm = this;
 
     vm.user = undefined;
@@ -17,6 +17,8 @@
     vm.labels = [];
 
     vm.data = [];
+
+    vm.todos = [];
 
     vm.applicants = 0;
 
@@ -42,6 +44,23 @@
 
             function StageGetErrorFn(data, status, headers, config) {
               console.log('Error in Layout DashboardController');
+
+              $location.url('/');
+            }
+          }
+        }
+
+        if(vm.user.todos_assigned) {
+          for (var i = 0; i < vm.user.todos_assigned.length; i++) {
+            Todos.get(vm.user.todos_assigned[i])
+              .then(TodosGetSuccessFn, TodosGetErrorFn);
+
+            function TodosGetSuccessFn(data, status, headers, config) {
+              vm.todos.push(data.data);
+            }
+
+            function TodosGetErrorFn(data, status, headers, config) {
+              console.log('Error in layout DashboardController');
 
               $location.url('/');
             }

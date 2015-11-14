@@ -10,7 +10,8 @@
   function Todos($http) {
     var Todos = {
       all: all,
-      create: create
+      create: create,
+      get: get
     };
 
     return Todos;
@@ -25,6 +26,10 @@
         todo: todo,
         assignee: assignee
       });
+    }
+
+    function get(id) {
+      return $http.get('/api/v1/todos/' + id + '/');
     }
   }
 })();
