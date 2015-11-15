@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'applicant_messages',
     'todos',
     'history',
+    'tags',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

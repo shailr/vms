@@ -23,7 +23,7 @@ class NoteSerializer(serializers.ModelSerializer):
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(NoteSerializer, self).get_validation_exclusions()
 
-        return exclusion + ['creator', 'applicant']
+        return exclusions + ['creator', 'applicant']
 
     def create(self, validated_data):
         id = validated_data['applicant']['id']

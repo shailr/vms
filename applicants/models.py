@@ -21,4 +21,4 @@ class Applicant(TimeStampedModel):
     application = models.ForeignKey(Application, null=True)
 
     def __unicode__(self):
-        return self.first_name
+        return self.mobile
