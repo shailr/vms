@@ -14,6 +14,7 @@ from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
 from todos.views import TodoViewSet, ApplicantTodosViewSet
 from history.views import HistoryViewSet, ApplicantHistoryViewSet
 from tags.views import TagViewSet, ApplicantTagsViewSet
+from inboxmessages.views import InboxMessageViewSet, AccountInboxMessageViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -31,6 +32,7 @@ router.register(r'applicant_messages', MessagesViewSet)
 router.register(r'todos', TodoViewSet)
 router.register(r'history', HistoryViewSet)
 router.register(r'tags', TagViewSet)
+router.register(r'inboxmessages', InboxMessageViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
@@ -56,6 +58,7 @@ accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
 accounts_router.register(r'stages', AccountStagesViewSet)
+accounts_router.register(r'inboxmessages', AccountInboxMessageViewSet)
 
 tags_router = routers.NestedSimpleRouter(
     router, r'tags', lookup='tag'

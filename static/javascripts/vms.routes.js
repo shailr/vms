@@ -22,6 +22,10 @@
       controller: 'UpdateAccountController',
       controllerAs:'vm',
       templateUrl: '/static/templates/authentication/update-account.html'
+    }).when('/inbox', {
+      controller: 'InboxMessagesListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/inboxmessages/message-list.html'
     }).when('/applications', {
       controller: 'ApplicationsDashboardController',
       controllerAs: 'vm',

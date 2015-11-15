@@ -7,10 +7,13 @@ from inboxmessages.serializers import InboxMessageSerializer
 
 class InboxMessageViewSet(viewsets.ModelViewSet):
     queryset = InboxMessage.objects.order_by('created_at')
-    serializer_class = HistorySerializere
+    serializer_class = InboxMessageSerializer
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST' or self.request.method == 'PUT':
             return (permissions.AllowAny(),)
 
         return False

@@ -12,7 +12,8 @@ angular
     'vms.applicant_messages',
     'vms.todos',
     'vms.history',
-    'vms.tags'
+    'vms.tags',
+    'vms.inboxmessages'
   ]);
 
 angular

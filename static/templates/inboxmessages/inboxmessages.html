@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="inboxmessage in vm.inboxmessages">
+    <a href="javascript:void(0)" ng-click="vm.read(inboxmessage)"><inboxmessage inboxmessage="inboxmessage"></inboxmessage></a>
+  </div>
+  <div ng-hide="vm.inboxmessages && vm.inboxmessages.length">
+    <div class="col-sm-12 no-notes-here">
+      <em>Nothing to show here! You have been trolled, my boy/girl</em>
+    </div>
+  </div>
+</div>
