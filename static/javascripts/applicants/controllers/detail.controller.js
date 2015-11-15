@@ -5,12 +5,14 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags'];
 
-  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History) {
+  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History, Tags) {
     var vm = this;
 
     vm.applicant = undefined;
+
+    vm.tags = [];
 
     vm.messages = [];
 
@@ -32,6 +34,17 @@
         vm.applicant = data.data;
 
         vm.applicant.data = JSON.parse(vm.applicant.data);
+
+        Tags.allFromApplicant(vm.applicant.id)
+          .then(applicantTagsAllSuccessFn, applicantTagsAllErrorFn);
+
+        function applicantTagsAllSuccessFn(data, status, headers, config) {
+          vm.tags = data.data;
+        }
+
+        function applicantTagsAllErrorFn(data, status, headers, config) {
+          console.log('Error while fetching tags in ApplicantDetailController');
+        }
 
         Notes.all(vm.applicant.id)
           .then(applicantNotesAllSuccessFn, applicantNotesAllErrorFn);

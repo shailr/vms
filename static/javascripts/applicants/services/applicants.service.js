@@ -9,6 +9,7 @@
     var Applicants = {
       all: all,
       allFromStage: allFromStage,
+      allFromTag: allFromTag,
       create: create,
       get: get,
       update: update
@@ -22,6 +23,10 @@
 
     function allFromStage(id) {
       return $http.get('/api/v1/stages/' + id + '/applicants/');
+    }
+
+    function allFromTag(id) {
+      return $http.get('/api/v1/tags/' + id + '/applicants/');
     }
 
     function create(application, data) {

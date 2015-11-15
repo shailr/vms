@@ -23,6 +23,10 @@ class TagSerializer(serializers.ModelSerializer):
         return exclusions + ['applicants']
 
     def create(self, validated_data):
+        id = validated_data['applicant']['id']
+        applicant = Applicant.objects.get(pk=id)
+
         tag, created = Tag.objects.get_or_create(tag=validated_data['tag'])
+        tag.applicants.add(applicant)
 
         return tag

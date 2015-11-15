@@ -7,12 +7,13 @@ from rest_framework_nested import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from organizations.views import OrganizationViewSet
 from applications.views import ApplicationViewSet
-from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, StageApplicantsViewSet
+from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, StageApplicantsViewSet, TagApplicantsViewSet
 from stages.views import ApplicationStagesViewSet, StageViewSet, AccountStagesViewSet
 from notes.views import NoteViewSet, ApplicantNotesViewSet
 from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
 from todos.views import TodoViewSet, ApplicantTodosViewSet
 from history.views import HistoryViewSet, ApplicantHistoryViewSet
+from tags.views import TagViewSet, ApplicantTagsViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -29,6 +30,7 @@ router.register(r'notes', NoteViewSet)
 router.register(r'applicant_messages', MessagesViewSet)
 router.register(r'todos', TodoViewSet)
 router.register(r'history', HistoryViewSet)
+router.register(r'tags', TagViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
@@ -43,6 +45,7 @@ applicants_router.register(r'notes', ApplicantNotesViewSet)
 applicants_router.register(r'applicant_messages', ApplicantMessagesViewSet)
 applicants_router.register(r'todos', ApplicantTodosViewSet)
 applicants_router.register(r'history', ApplicantHistoryViewSet)
+applicants_router.register(r'tags', ApplicantTagsViewSet)
 
 stages_router = routers.NestedSimpleRouter(
     router, r'stages', lookup='stage'
@@ -50,9 +53,14 @@ stages_router = routers.NestedSimpleRouter(
 stages_router.register(r'applicants', StageApplicantsViewSet)
 
 accounts_router = routers.NestedSimpleRouter(
-    router, r'stages', lookup='stage'
+    router, r'accounts', lookup='account'
 )
 accounts_router.register(r'stages', AccountStagesViewSet)
+
+tags_router = routers.NestedSimpleRouter(
+    router, r'tags', lookup='tag'
+)
+tags_router.register(r'applicants', TagApplicantsViewSet)
 
 urlpatterns = patterns(
     '',
@@ -70,6 +78,8 @@ urlpatterns = patterns(
     url(r'^api/v1/', include(stages_router.urls)),
 
     url(r'^api/v1/', include(accounts_router.urls)),
+
+    url(r'^api/v1/', include(tags_router.urls)),
 
     url(r'^.*$', DefaultTemplateView.as_view()),
 )

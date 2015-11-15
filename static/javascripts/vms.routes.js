@@ -54,6 +54,14 @@
       controller: 'ApplicantListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/applicant-list.html'
+    }).when('/applications/:app_id/applicants/:id/tags/new', {
+      controller: 'NewTagController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/tags/new-tag.html'
+    }).when('/applications/:app_id/tags/:tag_id/applicants', {
+      controller: 'TagApplicantsListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/tags/tag-applicants-list.html'
     }).when('/applications/:app_id/applicants/:id/notes/new', {
       controller: 'NewNoteController',
       controllerAs: 'vm',

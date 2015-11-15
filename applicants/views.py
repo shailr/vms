@@ -57,7 +57,7 @@ class TagApplicantsViewSet(viewsets.ViewSet):
     serializer_class = ApplicantSerializer
 
     def list(self,request, tag_pk=None):
-        queryset = self.queryset.filter(tag__pk=tag_pk)
+        queryset = self.queryset.filter(tags__pk=tag_pk)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
