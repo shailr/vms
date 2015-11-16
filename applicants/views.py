@@ -12,7 +12,7 @@ from applications.models import Application
 
 
 class ApplicantViewSet(viewsets.ModelViewSet):
-    queryset = Applicant.objects.order_by('creted_at')
+    queryset = Applicant.objects.order_by('created_at')
     serializer_class = ApplicantSerializer
 
     def get_permissions(self):
