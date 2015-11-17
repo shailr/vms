@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from authentication.models import Account
 
 from message_templates.models import MessageTemplate
+from message_templates.serializers import MessageTemplateSerializer
 
 
 class MessageTemplateViewSet(viewsets.ModelViewSet):

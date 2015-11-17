@@ -26,6 +26,14 @@
       controller: 'InboxMessagesListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/inboxmessages/message-list.html'
+    }).when('/templates', {
+      controller: 'MessageTemplatesListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/message_templates/list.html'
+    }).when('/templates/new', {
+      controller: 'NewMessageTemplateController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/message_templates/new-template.html'
     }).when('/applications', {
       controller: 'ApplicationsDashboardController',
       controllerAs: 'vm',

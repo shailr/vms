@@ -13,7 +13,8 @@ angular
     'vms.todos',
     'vms.history',
     'vms.tags',
-    'vms.inboxmessages'
+    'vms.inboxmessages',
+    'vms.message_templates'
   ]);
 
 angular

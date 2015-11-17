@@ -1,0 +1,10 @@
+<div class="row" ng-cloak>
+  <div ng-repeat="message_template in vm.message_templates">
+    <message_template message_template="message_template"></message_template>
+  </div>
+  <div ng-hide="vm.message_templates && vm.message_templates.length">
+    <div class="col-sm-12 no-messages-here">
+      <em>No templates yet.</em>
+    </div>
+  </div>
+</div>

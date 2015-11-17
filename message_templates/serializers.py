@@ -11,7 +11,7 @@ class MessageTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = MessageTemplate
 
-        fields = ('id', 'body', 'added_by', 'created_at', 'updated_at')
+        fields = ('id', 'body', 'added_by', 'created_at', 'updated_at', 'title')
 
         read_only_fields = ('id', 'created_at', 'updated_at', 'added_by')
 

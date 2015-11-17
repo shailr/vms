@@ -6,6 +6,8 @@ from authentication.models import Account
 
 
 class MessageTemplate(TimeStampedModel):
+    title = models.CharField(max_length=30, default="")
+
     body = models.TextField()
 
     added_by = models.ForeignKey(Account)
