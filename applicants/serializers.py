@@ -16,7 +16,8 @@ class ApplicantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Applicant
 
-        fields = ('id', 'data', 'mobile', 'created_by', 'application', 'created_at',)
+        fields = ('id', 'data', 'mobile', 'created_by', 'application',
+                  'created_at', 'starred', 'archived')
 
         read_only_fields = ('id', 'created_at', 'updated_at',
                             'created_by', 'application', 'created_at',)

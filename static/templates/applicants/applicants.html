@@ -1,6 +1,8 @@
 <div class="row" ng-cloak>
   <div ng-repeat="applicant in vm.applicants">
+    <a href="javascript:void(0)" ng-click="vm.toggleStar(applicant)">Starred = {{applicant.starred}}</a>
     <applicant applicant="applicant"></applicant>
+    <a href="javascript:void(0)" ng-click="vm.archive(applicant)">Archived = {{applicant.archived}}</a>
   </div>
   <div ng-hide="vm.applicants && vm.applicants.length">
     <div class="col-sm-12 no-applciations-here">

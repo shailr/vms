@@ -12,7 +12,9 @@
       allFromTag: allFromTag,
       create: create,
       get: get,
-      update: update
+      update: update,
+      toggleStar: toggleStar,
+      archive: archive
     };
 
     return Applicants;
@@ -40,6 +42,14 @@
     function update(applicant) {
       applicant.data = JSON.stringify(applicant.data);
 
+      return $http.put('/api/v1/applicants/' + applicant.id + '/', applicant);
+    }
+
+    function toggleStar(applicant) {
+      return $http.put('/api/v1/applicants/' + applicant.id + '/', applicant);
+    }
+
+    function archive(applicant) {
       return $http.put('/api/v1/applicants/' + applicant.id + '/', applicant);
     }
 

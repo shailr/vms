@@ -16,6 +16,10 @@ class Applicant(TimeStampedModel):
 
     stage = models.ForeignKey(Stage, null=True)
 
+    starred = models.BooleanField(default=False)
+
+    archived = models.BooleanField(default=False)
+
     created_by = models.ForeignKey(Account, null=True)
 
     application = models.ForeignKey(Application, null=True)

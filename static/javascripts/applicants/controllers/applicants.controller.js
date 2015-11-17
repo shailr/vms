@@ -5,12 +5,16 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantsController', ApplicantsController);
 
-  ApplicantsController.$inject = ['$scope'];
+  ApplicantsController.$inject = ['$scope', 'Applicants'];
 
-  function ApplicantsController($scope) {
+  function ApplicantsController($scope, Applicants) {
     var vm = this;
 
     vm.applicants = [];
+
+    vm.toggleStar = toggleStar;
+
+    vm.archive = archive;
 
     activate();
 
@@ -26,6 +30,22 @@
           vm.applicants.push(current[i]);
         }
       }
+    }
+
+    function toggleStar(applicant) {
+      var application_id = applicant.application.id;
+
+      applicant.starred = !applicant.starred;
+
+      Applicants.toggleStar(applicant);
+    }
+
+    function archive(applicant) {
+      var application_id = applicant.application.id;
+
+      applicant.archived = !applicant.archived;
+
+      Applicants.archive(applicant);
     }
   }
 })();
