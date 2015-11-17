@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 
@@ -56,8 +58,19 @@ class TagApplicantsViewSet(viewsets.ViewSet):
     queryset = Applicant.objects.all()
     serializer_class = ApplicantSerializer
 
-    def list(self,request, tag_pk=None):
+    def list(self, request, tag_pk=None):
         queryset = self.queryset.filter(tags__pk=tag_pk)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)
+
+
+class AccountApplicantsViewSet(viewsets.ViewSet):
+    queryset = Applicant.objects.all()
+    serializer_class = ApplicantSerializer
+
+    def list(self, request, account_pk=None):
+        queryset = self.queryset.filter(Q(stage__assignee__pk=account_pk) | Q(assignee__pk=account_pk))
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)

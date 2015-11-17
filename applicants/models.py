@@ -20,6 +20,8 @@ class Applicant(TimeStampedModel):
 
     archived = models.BooleanField(default=False)
 
+    assignee = models.ForeignKey(Account, related_name='applicants', null=True)
+
     created_by = models.ForeignKey(Account, null=True)
 
     application = models.ForeignKey(Application, null=True)
