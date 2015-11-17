@@ -1,10 +1,11 @@
 <div class="row" ng-cloak>
   <div ng-repeat="todo in vm.todos">
+    <a href="javascript:void(0)" ng-click="vm.toggleDone(todo)">Done = {{ todo.done }}</a>
     <todo todo="todo"></todo>
   </div>
   <div ng-hide="vm.todos && vm.todos.length">
     <div class="col-sm-12 no-todos-here">
-      <em>No todos</em>
+      <em>Yay! No todos for you!</em>
     </div>
   </div>
 </div>

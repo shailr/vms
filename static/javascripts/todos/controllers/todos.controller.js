@@ -5,12 +5,14 @@
     .module('vms.todos.controllers')
     .controller('TodosController', TodosController);
 
-  TodosController.$inject = ['$scope'];
+  TodosController.$inject = ['$scope', 'Todos'];
 
-  function TodosController($scope) {
+  function TodosController($scope, Todos) {
     var vm = this;
 
     vm.todos = [];
+
+    vm.toggleDone = toggleDone;
 
     activate();
 
@@ -25,6 +27,21 @@
         for (var i = 0; i < current.length; i++) {
           vm.todos.push(current[i]);
         }
+      }
+    }
+
+    function toggleDone(todo) {
+      todo.done = !todo.done;
+
+      Todos.update(todo)
+        .then(toggleDoneSuccessFn, toggleDoneErrorFn);
+
+      function toggleDoneSuccessFn(data, status, headers, config) {
+        console.log('Congrats on getting it done');
+      }
+
+      function toggleDoneErrorFn(data, status, headers, config) {
+        console.log('Error in toggleDone function in TodosController');
       }
     }
   }

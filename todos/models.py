@@ -18,6 +18,8 @@ class Todo(TimeStampedModel):
 
     applicant = models.ForeignKey(Applicant, null=True)
 
+    done = models.BooleanField(default=False)
+
     due_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __unicode__(self):

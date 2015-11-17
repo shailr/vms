@@ -19,7 +19,7 @@ class TodoSerializer(serializers.ModelSerializer):
         model = Todo
 
         fields = ('id', 'todo', 'created_by', 'assignee', 'applicant',
-                  'created_at', 'updated_at', 'due_date')
+                  'created_at', 'updated_at', 'due_date', 'done')
 
         read_only_fields = ('id', 'created_at', 'updated_at', 'applicant',
                             'created_by', 'assignee')
