@@ -11,7 +11,7 @@ from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, Sta
 from stages.views import ApplicationStagesViewSet, StageViewSet, AccountStagesViewSet
 from notes.views import NoteViewSet, ApplicantNotesViewSet
 from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
-from todos.views import TodoViewSet, ApplicantTodosViewSet
+from todos.views import TodoViewSet, ApplicantTodosViewSet, AccountTodosViewSet
 from history.views import HistoryViewSet, ApplicantHistoryViewSet
 from tags.views import TagViewSet, ApplicantTagsViewSet
 from inboxmessages.views import InboxMessageViewSet, AccountInboxMessageViewSet
@@ -61,6 +61,7 @@ accounts_router = routers.NestedSimpleRouter(
 )
 accounts_router.register(r'stages', AccountStagesViewSet)
 accounts_router.register(r'inboxmessages', AccountInboxMessageViewSet)
+accounts_router.register(r'todos', AccountTodosViewSet)
 
 tags_router = routers.NestedSimpleRouter(
     router, r'tags', lookup='tag'

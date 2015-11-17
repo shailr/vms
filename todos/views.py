@@ -36,3 +36,14 @@ class ApplicantTodosViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class AccountTodosViewSet(viewsets.ViewSet):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+
+    def list(self, request, account_pk=None):
+        queryset = self.queryset.filter(assignee__pk=account_pk)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)

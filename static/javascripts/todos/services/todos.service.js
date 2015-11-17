@@ -12,10 +12,15 @@
       all: all,
       create: create,
       get: get,
-      update: update
+      update: update,
+      allForAccount: allForAccount
     };
 
     return Todos;
+
+    function allForAccount(id) {
+      return $http.get('/api/v1/accounts/' + id + '/todos/');
+    }
 
     function all(id) {
       return $http.get('/api/v1/applicants/' + id + '/todos/');

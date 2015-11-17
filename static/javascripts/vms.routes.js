@@ -34,6 +34,10 @@
       controller: 'NewMessageTemplateController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/message_templates/new-template.html'
+    }).when('/calendar', {
+      controller: 'TodosListController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/todos/todos-list.html'
     }).when('/applications', {
       controller: 'ApplicationsDashboardController',
       controllerAs: 'vm',
