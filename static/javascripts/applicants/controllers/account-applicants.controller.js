@@ -17,8 +17,6 @@
     vm.assignee = Authentication.getAuthenticatedAccount();
 
     if (vm.assignee) {
-      console.log('Correct till here');
-
       Applicants.allForAccount(vm.assignee.id)
         .then(applicantListSuccessFn, applicantListErrorFn);
 

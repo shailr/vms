@@ -11,6 +11,8 @@
       allFromStage: allFromStage,
       allFromTag: allFromTag,
       allForAccount: allForAccount,
+      allStarred: allStarred,
+      allArchived: allArchived,
       create: create,
       get: get,
       update: update,
@@ -19,6 +21,14 @@
     };
 
     return Applicants;
+
+    function allArchived(id) {
+      return $http.get('/api/v1/applications/' + id + '/applicants/archived/');
+    }
+
+    function allStarred(id) {
+      return $http.get('/api/v1/applications/' + id + '/applicants/starred/');
+    }
 
     function all(id) {
       return $http.get('/api/v1/applications/' + id + '/applicants/');

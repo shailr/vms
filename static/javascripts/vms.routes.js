@@ -70,6 +70,14 @@
       controller: 'ApplicantDetailController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/detail.html'
+    }).when('/applications/:app_id/applicants/:id/starred', {
+      controller: 'StarredApplicantsController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applicants/starred-applicants.html'
+    }).when('/applications/:app_id/applicants/:id/archived', {
+      controller: 'ArchivedApplicantsController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applicants/archived-applicants.html'
     }).when('/applications/:id/applicants', {
       controller: 'ApplicantListController',
       controllerAs: 'vm',

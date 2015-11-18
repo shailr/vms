@@ -48,6 +48,22 @@ class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    @list_route
+    def starred(self, request):
+        applicants = Applicant.objects.filter(starred=True)
+
+        serializer = self.get_serializer(applicants, many=True)
+
+        return Response(serializer.data)
+
+    @list_route
+    def archived(self, request):
+        applicants = Applicant.objects.filter(archived=True)
+
+        serializer = self.get_serializer(applicants, many=True)
+
+        return Response(serializer.data)
+
 
 class StageApplicantsViewSet(viewsets.ViewSet):
     queryset = Applicant.objects.all()
