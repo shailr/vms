@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
@@ -32,14 +33,19 @@ class ApplicantViewSet(viewsets.ModelViewSet):
         return super(ApplicantViewSet, self).perform_create(serializer)
 
 
-class ApplicationApplicantsViewSet(viewsets.ViewSet):
+class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
     queryset = Applicant.objects.all()
     serializer_class = ApplicantSerializer
 
     def list(self, request, application_pk=None):
         queryset = self.queryset.filter(application__pk=application_pk)
-        serializer = self.serializer_class(queryset, many=True)
+        applicants = self.paginate_queryset(queryset)
 
+        if applicants is not None:
+            serializer = self.get_serializer(applicants, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
 
