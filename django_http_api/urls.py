@@ -7,7 +7,7 @@ from rest_framework_nested import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from organizations.views import OrganizationViewSet
 from applications.views import ApplicationViewSet
-from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, StageApplicantsViewSet, TagApplicantsViewSet
+from applicants.views import ApplicantViewSet, ApplicationApplicantsViewSet, StageApplicantsViewSet, TagApplicantsViewSet, AccountApplicantsViewSet
 from stages.views import ApplicationStagesViewSet, StageViewSet, AccountStagesViewSet
 from notes.views import NoteViewSet, ApplicantNotesViewSet
 from applicant_messages.views import MessagesViewSet, ApplicantMessagesViewSet
@@ -62,6 +62,7 @@ accounts_router = routers.NestedSimpleRouter(
 accounts_router.register(r'stages', AccountStagesViewSet)
 accounts_router.register(r'inboxmessages', AccountInboxMessageViewSet)
 accounts_router.register(r'todos', AccountTodosViewSet)
+accounts_router.register(r'applicants', AccountApplicantsViewSet)
 
 tags_router = routers.NestedSimpleRouter(
     router, r'tags', lookup='tag'

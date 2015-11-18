@@ -10,6 +10,7 @@
       all: all,
       allFromStage: allFromStage,
       allFromTag: allFromTag,
+      allForAccount: allForAccount,
       create: create,
       get: get,
       update: update,
@@ -29,6 +30,10 @@
 
     function allFromTag(id) {
       return $http.get('/api/v1/tags/' + id + '/applicants/');
+    }
+
+    function allForAccount(id) {
+      return $http.get('/api/v1/accounts/' + id + '/applicants/');
     }
 
     function create(application, data) {
