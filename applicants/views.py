@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
+from rest_framework.decorators import list_route
 
 from applicants.models import Applicant
 from applicants.serializers import ApplicantSerializer

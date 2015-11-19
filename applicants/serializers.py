@@ -8,25 +8,27 @@ from applications.serializers import ApplicationSerializer
 from applications.models import Application
 
 from stages.models import Stage
+from stages.serializers import StageSerializer
 
 class ApplicantSerializer(serializers.ModelSerializer):
     application = ApplicationSerializer(read_only=True, required=False)
     created_by = AccountSerializer(read_only=True, required=False)
+    stage = StageSerializer(required=True)
 
     class Meta:
         model = Applicant
 
         fields = ('id', 'data', 'mobile', 'created_by', 'application',
-                  'created_at', 'starred', 'archived')
+                  'created_at', 'starred', 'archived', 'stage')
 
         read_only_fields = ('id', 'created_at', 'updated_at',
-                            'created_by', 'application', 'created_at',)
+                            'created_by', 'application', 'created_at')
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(ApplicationSerializer,
                            self).get_validaion_exclusions()
 
-        return exclusions + ['application', 'created_by']
+        return exclusions + ['application', 'created_by', 'stage']
 
     def create(self, validated_data):
         id = validated_data['application']['id']
@@ -38,3 +40,10 @@ class ApplicantSerializer(serializers.ModelSerializer):
         validated_data['stage'] = stage
 
         return Applicant.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.stage = Stage.objects.get(name=validated_data['stage']['name'])
+
+        instance.save()
+
+        return instance

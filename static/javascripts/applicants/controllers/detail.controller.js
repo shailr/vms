@@ -5,33 +5,81 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages'];
 
-  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History, Tags) {
+  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages) {
     var vm = this;
 
     vm.applicant = undefined;
-
     vm.tags = [];
-
     vm.messages = [];
-
     vm.notes = [];
-
     vm.todos = [];
-
     vm.histories = [];
+    vm.stages = [];
+    vm.stage = undefined;
+
+    vm.changeStage = changeStage;
 
     activate();
 
+    function changeStage() {
+      Stages.get(vm.stage)
+        .then(stageGetSuccessFn, stageGetErrorFn);
+
+      function stageGetSuccessFn(data, status, heades, config) {
+        vm.stage = data.data;
+
+        vm.applicant.stage = vm.stage;
+
+        console.log('Success in getting the stage', data.data);
+
+        Applicants.update(vm.applicant)
+          .then(updateApplicantSuccessFn, updateApplicantErrorFn);
+
+        function updateApplicantSuccessFn(data, status, headers, config) {
+          vm.applicant = data.data;
+
+          vm.stage = vm.applicant.stage;
+
+          console.log('Applicant updated successfully', vm.applicant);
+        }
+
+        function updateApplicantErrorFn(data, status, headers, config) {
+          console.log('Error while changing stage in ApplicantDetailController');
+        }
+
+      }
+
+      function stageGetErrorFn(data, status, headers, config) {
+        console.log('Error in getting stage in changeState in ApplicantDetailController');
+      }
+
+    }
+
     function activate() {
-      var id = $routeParams.id;
+      var id = $routeParams.id,
+          app_id = $routeParams.app_id;
 
       Applicants.get(id)
         .then(applicantDetailSuccessFn, applicantDetailErrorFn);
 
       function applicantDetailSuccessFn(data, status, headers, config) {
+        Stages.all(app_id)
+          .then(stagesAllSuccessFn, stagesAllErrorFn);
+
+        function stagesAllSuccessFn(data, status, headers, config) {
+          console.log('Yay stages = ', data.data);
+          vm.stages = data.data;
+        }
+
+        function stagesAllErrorFn(data, status, headers, config) {
+          console.log('Error while fetching all stages in ApplicantDetailController');
+        }
+
         vm.applicant = data.data;
+
+        vm.stage = vm.applicant.stage;
 
         vm.applicant.data = JSON.parse(vm.applicant.data);
 

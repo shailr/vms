@@ -22,7 +22,7 @@
       .then(accountsGetSuccessFn, accountsGetErrorFn);
 
     function accountsGetSuccessFn(data, status, headers, config) {
-      vm.accounts = data.data;
+      vm.accounts = data.data.results;
       console.log("accounts = ", data.data);
     }
 
