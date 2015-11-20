@@ -12,15 +12,11 @@
 
     vm.user = undefined;
 
-    vm.stages = [];
-
-    vm.labels = [];
-
-    vm.data = [];
+    vm.stagedApplicants = {};
 
     vm.todos = [];
 
-    vm.applicants = 0;
+    vm.applicants = [];
 
     activate();
 
@@ -28,43 +24,25 @@
       vm.user = Authentication.getAuthenticatedAccount();
 
       if (vm.user) {
-        if(vm.user.stage_set) {
-          for (var i = 0; i < vm.user.stage_set.length; i++) {
-            Stages.get(vm.user.stage_set[i])
-              .then(StageGetSuccessFn, StageGetErrorFn);
+        Applicants.allForAccount(vm.user.id)
+          .then(applicantsGetSuccessFn, applicantsGetErrorFn);
 
-            function StageGetSuccessFn(data, status, headers, config) {
-              if (data.data.applicant_set.length) {
-                vm.stages.push(data.data);
-                vm.labels.push(data.data.name);
-                vm.data.push(data.data.applicant_set.length)
-                vm.applicants += data.data.applicant_set.length;
-              }
+        function applicantsGetSuccessFn(data, status, headers, config) {
+          vm.applicants = data.data;
+
+          for (var i = 0; i < vm.applicants.length; i++) {
+            if (!vm.stagedApplicants[vm.applicants[i].stage.name]) {
+              vm.stagedApplicants[vm.applicants[i].stage.name] = [];
             }
 
-            function StageGetErrorFn(data, status, headers, config) {
-              console.log('Error in Layout DashboardController');
-
-              $location.url('/');
-            }
+            vm.stagedApplicants[vm.applicants[i].stage.name].push(vm.applicants[i]);
           }
+
+          console.log(vm.stagedApplicants);
         }
 
-        if(vm.user.todos_assigned) {
-          for (var i = 0; i < vm.user.todos_assigned.length; i++) {
-            Todos.get(vm.user.todos_assigned[i])
-              .then(TodosGetSuccessFn, TodosGetErrorFn);
-
-            function TodosGetSuccessFn(data, status, headers, config) {
-              vm.todos.push(data.data);
-            }
-
-            function TodosGetErrorFn(data, status, headers, config) {
-              console.log('Error in layout DashboardController');
-
-              $location.url('/');
-            }
-          }
+        function applicantsGetErrorFn(data, status, headers, config) {
+          console.log('Error in applicants get function in DashboardController');
         }
       }
     }
