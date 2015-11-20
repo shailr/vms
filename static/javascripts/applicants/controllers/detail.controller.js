@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages', 'Authentication'];
 
-  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages) {
+  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages, Authentication) {
     var vm = this;
 
     vm.applicant = undefined;
@@ -18,8 +18,10 @@
     vm.histories = [];
     vm.stages = [];
     vm.stage = undefined;
+    vm.accounts = [];
 
     vm.changeStage = changeStage;
+    vm.changeAssignee = changeAssignee;
 
     activate();
 
@@ -57,6 +59,33 @@
 
     }
 
+    function changeAssignee() {
+      Authentication.get(vm.assignee)
+        .then(accountGetSuccessFn, accountGetErrorFn);
+
+      function accountGetSuccessFn(data, status, headers, config) {
+        vm.applicant.assignee = vm.assignee;
+        vm.assignee = data.data;
+
+        Applicants.update(vm.applicant)
+          .then(updateApplicantSuccessFn, updateApplicantErrorFn);
+
+        function updateApplicantSuccessFn(data, status, headers, config) {
+          vm.applicant = data.data;
+
+          console.log('Applicant Updated', data.data);
+        }
+
+        function updateApplicantErrorFn(data, status, headers, config) {
+          console.log('Error in updating applicant while changing assignee in ApplicantDetailController');
+        }
+      }
+
+      function accountGetErrorFn(data, status, headers, config) {
+        console.log('Error in getting assignee while changing assignee in ApplicantDetailController');
+      }
+    }
+
     function activate() {
       var id = $routeParams.id,
           app_id = $routeParams.app_id;
@@ -65,6 +94,10 @@
         .then(applicantDetailSuccessFn, applicantDetailErrorFn);
 
       function applicantDetailSuccessFn(data, status, headers, config) {
+        vm.applicant = data.data;
+        vm.stage = vm.applicant.stage;
+        vm.applicant.data = JSON.parse(vm.applicant.data);
+
         Stages.all(app_id)
           .then(stagesAllSuccessFn, stagesAllErrorFn);
 
@@ -77,11 +110,28 @@
           console.log('Error while fetching all stages in ApplicantDetailController');
         }
 
-        vm.applicant = data.data;
+        Authentication.all()
+          .then(accountsAllSuccessFn, accountsAllErrorFn);
 
-        vm.stage = vm.applicant.stage;
+        function accountsAllSuccessFn(data, status, headers, config) {
+          vm.accounts = data.data.results;
+        }
 
-        vm.applicant.data = JSON.parse(vm.applicant.data);
+        function accountsAllErrorFn(data, status, headers, config) {
+          console.log('Error in fetching accounts in ApplicantDetailController');
+        }
+
+        Authentication.get(vm.applicant.assignee)
+          .then(assigneeGetSuccessFn, assigneeGetErrorFn);
+
+        function assigneeGetSuccessFn(data, status, headers, config) {
+          vm.assignee = data.data;
+        }
+
+        function assigneeGetErrorFn(data, status, headers, config) {
+          console.log('Error while getting assignee in ApplicantDetailController');
+        }
+
 
         Tags.allFromApplicant(vm.applicant.id)
           .then(applicantTagsAllSuccessFn, applicantTagsAllErrorFn);

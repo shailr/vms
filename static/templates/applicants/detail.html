@@ -8,11 +8,16 @@
 
 <h2>Current Stage</h2>
 <h4>{{ vm.applicant.stage.name }}</h4>
-
 <select name="stages" ng-model="vm.stage" ng-change="vm.changeStage()">
   <option ng-repeat="stage in vm.stages" value="{{ stage.id }}">{{ stage.name }}</option>
 </select>
 
+<h2>Current Assignee</h2>
+<h4>{{ vm.assignee.first_name }} {{ vm.assignee.last_name }}</h4>
+{{vm.assignee}}
+<select name="accounts" ng-model="vm.assignee" ng-change="vm.changeAssignee()">
+  <option ng-repeat="account in vm.accounts" value="{{ account.id }}">{{ account.first_name }} {{ account.last_name }}</option>
+</select>
 
 <notes notes="vm.notes"></notes>
 <a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/notes/new">Create a new internal note</a>

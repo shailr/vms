@@ -46,7 +46,7 @@
         function createApplicantErrorFn(data, status, headers, config) {
           console.log('MASSIVE THROBBING ERROR IN NEW APPLICANT CONTROLLER');
 
-          $location.url('/applications/' + vm.id);
+          $location.url('/applications/' + vm.id + '/applicants/');
         }
       }
 
