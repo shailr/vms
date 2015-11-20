@@ -44,6 +44,10 @@ class ApplicantSerializer(serializers.ModelSerializer):
         return Applicant.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
+        instance.mobile = validated_data['mobile']
+        instance.data = validated_data['data']
+        instance.starred = validated_data['starred']
+        instance.archived = validated_data['archived']
         instance.stage = Stage.objects.get(name=validated_data['stage']['name'])
         instance.assignee = validated_data['assignee']
 
