@@ -32,6 +32,8 @@
     activate();
 
     function activate() {
+      var bar_data = [];
+
       vm.user = Authentication.getAuthenticatedAccount();
 
       if (vm.user) {
@@ -51,8 +53,10 @@
 
           for (var stage in vm.stagedApplicants) {
             $scope.labels.push(stage);
-            $scope.data.push(vm.stagedApplicants[stage].length);
+            bar_data.push(vm.stagedApplicants[stage].length);
           }
+
+          $scope.data.push(bar_data);
         }
 
         function applicantsGetErrorFn(data, status, headers, config) {
