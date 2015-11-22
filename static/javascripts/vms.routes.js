@@ -26,14 +26,14 @@
       controller: 'UpdateAccountController',
       controllerAs:'vm',
       templateUrl: '/static/templates/authentication/update-account.html'
+    }).when('/settings/templates', {
+      controller: 'MessageTemplatesListController',
+      controllerAs:'vm',
+      templateUrl: '/static/templates/message_templates/list.html'
     }).when('/inbox', {
       controller: 'InboxMessagesListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/inboxmessages/message-list.html'
-    }).when('/templates', {
-      controller: 'MessageTemplatesListController',
-      controllerAs: 'vm',
-      templateUrl: '/static/templates/message_templates/list.html'
     }).when('/templates/new', {
       controller: 'NewMessageTemplateController',
       controllerAs: 'vm',
