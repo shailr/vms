@@ -5,9 +5,9 @@
     .module('vms.layout.controllers')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$location', 'Authentication', 'Applicants', 'Stages', 'Todos'];
+  DashboardController.$inject = ['$scope', '$location', 'Authentication', 'Applicants', 'Stages', 'Todos'];
 
-  function DashboardController($location, Authentication, Applicants, Stages, Todos) {
+  function DashboardController($scope, $location, Authentication, Applicants, Stages, Todos) {
     var vm = this;
 
     vm.user = undefined;
@@ -17,6 +17,17 @@
     vm.todos = [];
 
     vm.applicants = [];
+
+    $scope.labels = [];
+
+    $scope.data = [];
+
+    $scope.series = ['stages'];
+
+    $scope.options = {
+      animation: false,
+      responsive: true
+    };
 
     activate();
 
@@ -38,7 +49,10 @@
             vm.stagedApplicants[vm.applicants[i].stage.name].push(vm.applicants[i]);
           }
 
-          console.log(vm.stagedApplicants);
+          for (var stage in vm.stagedApplicants) {
+            $scope.labels.push(stage);
+            $scope.data.push(vm.stagedApplicants[stage].length);
+          }
         }
 
         function applicantsGetErrorFn(data, status, headers, config) {

@@ -3,7 +3,8 @@
 
   angular
     .module('vms.layout', [
-      'vms.layout.controllers'
+      'vms.layout.controllers',
+      'chart.js'
     ]);
 
   angular

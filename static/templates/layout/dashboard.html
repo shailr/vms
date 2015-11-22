@@ -2,13 +2,13 @@
 
 <h3>Applicants assigned to you</h3>
 
-<div ng-repeat="(stage, applicants) in vm.stagedApplicants">
-  <h4>{{ stage }} {{ applicants.length }}</h4>
-</div>
+<canvas id="pie" class="chart chart-pie"
+        chart-data="data" chart-labels="labels"
+        chart-options="options">
+</canvas>
 
 <h3>Todos assigned to you</h3>
 
 <h4>{{ vm.todos.length }}</h4>
 
 <!-- TODO Fix the charts -->
-<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"></canvas>
