@@ -10,21 +10,20 @@
   function MessageTemplatesListController($location, MessageTemplates) {
     var vm = this;
 
-    vm.message_templates = [];
+    vm.templates = [];
 
     activate();
 
     function activate() {
       MessageTemplates.all()
-        .then(templateListSuccessFn, templateListErrorFn);
+        .then(messageTemplatesAllSuccessFn, messageTemplatesAllErrorFn);
 
-      function templateListSuccessFn(data, status, headers, config) {
-        vm.message_templates = data.data;
+      function messageTemplatesAllSuccessFn(data, status, headers, config) {
+        vm.templates = data.data.results;
       }
 
-      function templateListErrorFn(data, status, headers, config) {
-        console.log('Error in MessageTemplatesListController');
-        $location.url('/');
+      function messageTemplatesAllErrorFn(data, status, headers, config) {
+        console.log('Error in getting templates in MessageTemplatesListController');
       }
     }
   }

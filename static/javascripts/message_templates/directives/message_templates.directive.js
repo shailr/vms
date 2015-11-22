@@ -3,15 +3,15 @@
 
   angular
     .module('vms.message_templates.directives')
-    .directive('message_templates', message_templates);
+    .directive('templates', templates);
 
-  function message_templates() {
+  function templates() {
     var directive = {
       controller: 'MessageTemplatesController',
       controllerAs: 'vm',
       restrict: 'E',
       scope: {
-        message_templates: '='
+        templates: '='
       },
       templateUrl: '/static/templates/message_templates/message_templates.html'
     };

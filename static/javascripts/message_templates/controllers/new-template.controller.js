@@ -10,9 +10,7 @@
   function NewMessageTemplateController($location, MessageTemplates) {
     var vm = this;
 
-    vm.body = undefined;
-
-    vm.title = undefined;
+    vm.title = vm.body = undefined;
 
     vm.submit = submit;
 
@@ -21,13 +19,13 @@
         .then(createTemplateSuccessFn, createTemplateErrorFn);
 
       function createTemplateSuccessFn(data, status, headers, config) {
-        console.log('Yay! Template successfully created', data.data);
+        console.log('Yay! Template Created');
+
         $location.url('/templates');
       }
 
       function createTemplateErrorFn(data, status, headers, config) {
-        console.log('Error in Template creation in NewMessageTemplateController');
-        $location.url('/templates');
+        console.log('Error while creating message templates in NewMessageTemplateController');
       }
     }
   }

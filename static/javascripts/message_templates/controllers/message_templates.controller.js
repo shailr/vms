@@ -5,28 +5,26 @@
     .module('vms.message_templates.controllers')
     .controller('MessageTemplatesController', MessageTemplatesController);
 
-  MessageTemplatesController.$inject = ['$scope', 'MessageTemplates']
-
   function MessageTemplatesController($scope, MessageTemplates) {
     var vm = this;
 
-    vm.message_templates = [];
+    vm.templates = [];
 
     MessageTemplates.all()
-      .then(MessageTemplatesAllSuccessFn, MessageTemplatesAllErrorFn);
+      .then(messageTemplatesGetSuccessFn, messageTemplatesGetErrorFn);
 
-    function MessageTemplatesAllSuccessFn(data, status, headers, config) {
-      vm.message_templates = data.data;
+    function messageTemplatesGetSuccessFn(data, status, headers, config) {
+      vm.templates = data.data.results;
     }
 
-    function MessageTemplatesAllErrorFn(data, status, headers, config) {
-      console.log('Error in MessageTemplatesController while fetching message Templates');
+    function messageTemplatesGetErrorFn(data, status, headers, config) {
+      console.log('Error while get message templates in MessageTemplatesController');
     }
 
     activate();
 
-    function activate () {
-      $scope.$watchCollection(function () { return vm.message_templates; }, render);
+    function activate() {
+      $scope.$watchCollection(function () { return vm.templates }, render);
     }
 
     function render(current, original) {
