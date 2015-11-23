@@ -26,9 +26,6 @@
     }
 
     function create(application, name, assignee) {
-      console.log(assignee);
-      console.log(application);
-
       return $http.post('/api/v1/stages/', {
         application: application,
         name: name,

@@ -22,14 +22,44 @@
 
     $scope.data = [];
 
-    $scope.series = ['stages'];
-
     $scope.options = {
       animation: false,
-      responsive: true
+      responsive: true,
+      legend: true
     };
 
+    $scope.gotoStage = gotoStage;
+
     activate();
+
+    function gotoStage(points, evt) {
+      var stage_name = points[0]["label"],
+          stages = [];
+
+      // Possible bug here. Come back to fix this
+      Stages.allAcrossApplications()
+        .then(StagesGetSuccessFn, StagesGetErrorFn);
+
+      function StagesGetSuccessFn(data, status, headers, config) {
+        stages = data.data.results;
+
+        console.log(stages);
+
+        for (var i = 0; i < stages.length; i++) {
+          var stage = stages[i];
+
+          if (stage.name == stage_name) {
+            $location.url('/stages/' + stage.id + '/applicants');
+
+            break;
+          }
+        }
+      }
+
+      function StagesGetErrorFn(data, status, headers, config) {
+        console.log('Error while getting stages in DashboardController');
+      }
+    }
 
     function activate() {
       var bar_data = [];
