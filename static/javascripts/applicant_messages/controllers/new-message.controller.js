@@ -5,16 +5,48 @@
     .module('vms.applicant_messages.controllers')
     .controller('NewMessageController', NewMessageController);
 
-  NewMessageController.$inject = ['$routeParams', '$rootScope', 'Applicants', 'ApplicantMessages'];
+  NewMessageController.$inject = ['$location', '$routeParams', '$rootScope', 'Applicants', 'ApplicantMessages', 'MessageTemplates'];
 
-  function NewMessageController($routeParams, $rootScope, Applicants, ApplicantMessages) {
+  function NewMessageController($location, $routeParams, $rootScope, Applicants, ApplicantMessages, MessageTemplates) {
     var vm = this;
 
     vm.id = $routeParams.id;
 
+    vm.app_id = $routeParams.app_id;
+
     vm.data = {};
 
+    vm.templates = [];
+
+    vm.filled_template = undefined;
+
     vm.submit = submit;
+
+    vm.changeTemplate = changeTemplate;
+
+    MessageTemplates.all()
+      .then(templatesGetSuccessFn, templatesGetErrorFn);
+
+    function templatesGetSuccessFn(data, staus, headers, config) {
+      vm.templates = data.data.results;
+    }
+
+    function templatesGetErrorFn(data, status, headers, config) {
+      console.log('Error while getting templates in NewMessageController');
+    }
+
+    function changeTemplate() {
+      MessageTemplates.get(vm.template)
+        .then(templateGetSuccessFn, templateGetErrorFn);
+    }
+
+    function templateGetSuccessFn(data, status, headers, config) {
+      vm.filled_template = data.data;
+    }
+
+    function templateGetErrorFn(data, status, headers, config) {
+      console.log('Error while fetching the template');
+    }
 
     function submit() {
       Applicants.get(vm.id)
@@ -23,7 +55,7 @@
       function applicantGetSuccessFn(data, status, headers, config) {
         vm.applicant = data.data;
 
-        ApplicantMessages.create(vm.applicant, vm.data.message)
+        ApplicantMessages.create(vm.applicant, vm.filled_template.body)
           .then(createMessageSuccessFn, createMessageErrorFn);
 
         function createMessageSuccessFn(data, status, headers, config) {
@@ -32,7 +64,7 @@
             data: vm.data
           });
 
-          $scope.closeThisDialog();
+          $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id + '/');
         }
 
         function createMessageErrorFn(data, status, headers, config) {

@@ -14,11 +14,5 @@ class Message(TimeStampedModel):
 
     applicant = models.ForeignKey(Applicant)
 
-    TYPE_CHOICES = (
-        (u'1', u'sms'),
-        (u'2', u'email'),
-    )
-    type = models.CharField(max_length=1, choices=TYPE_CHOICES)
-
     def __unicode__(self):
         return self.message

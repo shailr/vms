@@ -10,10 +10,15 @@
   function MessageTemplates($http) {
     var MessageTemplates = {
       all: all,
-      create: create
+      create: create,
+      get: get
     };
 
     return MessageTemplates;
+
+    function get(id) {
+      return $http.get('/api/v1/message_templates/' + id + '/');
+    }
 
     function all() {
       return $http.get('/api/v1/message_templates/');

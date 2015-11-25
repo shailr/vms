@@ -97,7 +97,7 @@
     }).when('/applications/:app_id/applicants/:id/messages/new', {
       controller: 'NewMessageController',
       controllerAs: 'vm',
-      templateUrl: '/static/templates/messages/new-message.html'
+      templateUrl: '/static/templates/applicant_messages/new-message.html'
     }).when('/applications/:app_id/applicants/:id/todos/new', {
       controller: 'NewTodoController',
       controllerAs: 'vm',

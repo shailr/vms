@@ -17,7 +17,7 @@ class MessageSerializer(serializers.ModelSerializer):
         model = Message
 
         fields = ('id', 'message', 'sender', 'applicant',
-                  'created_at', 'updated_at', 'type')
+                  'created_at', 'updated_at')
 
         read_only_fields = ('id', 'created_at', 'updated_at',
                             'applicant', 'sender')

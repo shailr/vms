@@ -22,7 +22,7 @@ class MessagesViewSet(viewsets.ModelViewSet):
         instance = serializer.save(sender=self.request.user,
                                    applicant=self.request.data['applicant'])
 
-        return super(MessageViewSet, self).perform_create(serializer)
+        return super(MessagesViewSet, self).perform_create(serializer)
 
 
 class ApplicantMessagesViewSet(viewsets.ViewSet):
