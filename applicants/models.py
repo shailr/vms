@@ -14,6 +14,10 @@ class Applicant(TimeStampedModel):
 
     data = models.CharField(max_length=2000, default='')
 
+    query = models.CharField(max_length=1000, default='')
+
+    info = models.CharField(max_length=1000, default='')
+
     stage = models.ForeignKey(Stage, null=True)
 
     starred = models.BooleanField(default=False)

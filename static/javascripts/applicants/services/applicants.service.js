@@ -46,16 +46,22 @@
       return $http.get('/api/v1/accounts/' + id + '/applicants/');
     }
 
-    function create(application, data) {
+    function create(application, data, query, info) {
       return $http.post('/api/v1/applicants/', {
         application: application,
         mobile: data.mobile,
-        data: JSON.stringify(data)
+        data: JSON.stringify(data),
+        query: JSON.stringify(query),
+        info: JSON.stringify(info)
       });
     }
 
     function update(applicant) {
+      console.log('-------------', applicant)
+
       applicant.data = JSON.stringify(applicant.data);
+      applicant.query = JSON.stringify(applicant.query);
+      applicant.info = JSON.stringify(applicant.info);
 
       return $http.put('/api/v1/applicants/' + applicant.id + '/', applicant);
     }

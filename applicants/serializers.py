@@ -19,7 +19,7 @@ class ApplicantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Applicant
 
-        fields = ('id', 'data', 'mobile', 'created_by', 'application',
+        fields = ('id', 'data', 'mobile', 'created_by', 'application', 'query', 'info',
                   'created_at', 'starred', 'archived', 'stage', 'assignee')
 
         read_only_fields = ('id', 'created_at', 'updated_at',
@@ -46,6 +46,8 @@ class ApplicantSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.mobile = validated_data['mobile']
         instance.data = validated_data['data']
+        instance.query = validated_data['query']
+        instance.info = validated_data['info']
         instance.starred = validated_data['starred']
         instance.archived = validated_data['archived']
         instance.stage = Stage.objects.get(name=validated_data['stage']['name'])

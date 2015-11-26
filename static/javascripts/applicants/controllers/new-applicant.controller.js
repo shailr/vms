@@ -22,6 +22,9 @@
       knowledge: {}
     };
 
+    vm.query = {};
+    vm.info = {};
+
     vm.submit = submit;
 
     function submit() {
@@ -31,7 +34,7 @@
       function ApplicationGetSuccessFn(data, status, headers, config) {
         vm.application = data.data;
 
-        Applicants.create(vm.application, vm.data)
+        Applicants.create(vm.application, vm.data, vm.query, vm.info)
           .then(createApplicantSuccessFn, createApplicantErrorFn);
 
         function createApplicantSuccessFn(data, status, headers, config) {
@@ -47,6 +50,8 @@
 
         function createApplicantErrorFn(data, status, headers, config) {
           console.log('MASSIVE THROBBING ERROR IN NEW APPLICANT CONTROLLER');
+
+          console.log('asdasdasdasdadasd', data.data);
 
           $location.url('/applications/' + vm.id + '/applicants/');
         }

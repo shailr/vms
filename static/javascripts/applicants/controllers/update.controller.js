@@ -13,6 +13,8 @@
         app_id = $routeParams.app_id;
 
     vm.data = undefined;
+    vm.query = undefined;
+    vm.info = undefined;
 
     vm.update = update;
 
@@ -25,6 +27,8 @@
       function applicantGetSuccessFn(data, status, headers, config) {
         vm.data = data.data;
         vm.data.data = JSON.parse(vm.data.data);
+        vm.data.query = JSON.parse(vm.data.query);
+        vm.data.info = JSON.parse(vm.data.info);
       }
 
       function applicantGetErrorFn(data, status, headers, config) {
@@ -38,7 +42,7 @@
         .then(updateApplicantSuccessFn, updateApplicantErrorFn);
 
       function updateApplicantSuccessFn(data, status, headers, config) {
-        console.log('The Applicant has been updated');
+        console.log('The Applicant has been updated', data.data);
 
         $location.url('/applications/' + app_id + '/applicants/' + id);
       }
