@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('NewApplicantController', NewApplicantController);
 
-  NewApplicantController = ['$routeParams', '$rootScope', '$scope', 'Applicants', 'Applications'];
+  NewApplicantController = ['$routeParams', '$rootScope', '$scope', 'Applicants', 'Applications', 'atomicNotifyService'];
 
-  function NewApplicantController($location, $routeParams, $rootScope, $scope, Applicants, Applications) {
+  function NewApplicantController($location, $routeParams, $rootScope, $scope, Applicants, Applications, atomicNotifyService) {
     var vm = this;
 
     vm.id = $routeParams.id;
@@ -39,6 +39,8 @@
             applicant: data.data,
             data: vm.data
           });
+
+          atomicNotifyService.success('yay! awesome');
 
           $location.url('/applications/' + vm.id + '/applicants/');
         }

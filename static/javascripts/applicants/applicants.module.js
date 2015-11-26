@@ -9,7 +9,7 @@
     ]);
 
   angular
-    .module('vms.applicants.controllers', []);
+    .module('vms.applicants.controllers', ['atomic-notify']);
 
   angular
     .module('vms.applicants.directives', ['ngDialog']);
