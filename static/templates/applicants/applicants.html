@@ -1,12 +1,17 @@
-<div class="row" ng-cloak>
-  <div ng-repeat="applicant in vm.applicants">
-    <a href="javascript:void(0)" ng-click="vm.toggleStar(applicant)">Starred = {{applicant.starred}}</a>
-    <applicant applicant="applicant"></applicant>
-    <a href="javascript:void(0)" ng-click="vm.archive(applicant)">Archived = {{applicant.archived}}</a>
-  </div>
-  <div ng-hide="vm.applicants && vm.applicants.length">
-    <div class="col-sm-12 no-applciations-here">
-      <em>No applicants yet.</em>
-    </div>
+<table>
+  <tr ng-repeat="applicant in vm.applicants"
+      selection-model
+      selection-model-type="'checkbox'"
+      selection-model-mode="'multiple-additive'"
+      selection-model-selected-items="vm.selected_items">
+    <td><input type="checkbox"></td>
+    <td><a href="javascript:void(0)" ng-click="vm.toggleStar(applicant)">Starred = {{applicant.starred}}</a></td>
+    <td><applicant applicant="applicant"></applicant></td>
+    <td><a href="javascript:void(0)" ng-click="vm.archive(applicant)">Archived = {{applicant.archived}}</a></td>
+  </tr>
+</table>
+<div ng-hide="vm.applicants && vm.applicants.length">
+  <div class="col-sm-12 no-applciations-here">
+    <em>No applicants yet.</em>
   </div>
 </div>

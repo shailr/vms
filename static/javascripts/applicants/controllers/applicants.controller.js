@@ -12,6 +12,8 @@
 
     vm.applicants = [];
 
+    vm.selected_items = [];
+
     vm.toggleStar = toggleStar;
 
     vm.archive = archive;
