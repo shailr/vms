@@ -1,31 +1,68 @@
-<h2>{{ vm.applicant.mobile }}</h2>
-<tags tags="vm.tags"></tags>
-<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/tags/new">Add a tag</a>
-<hr />
-<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/update">Update</a>
-<h2>Created on </h2>
-{{ vm.applicant.created_at }} by {{ vm.applicant.created_by.first_name }} {{ vm.applicant.created_by.last_name }}
-
-<h2>Current Stage</h2>
-<h4>{{ vm.applicant.stage.name }}</h4>
-<select name="stages" ng-model="vm.stage" ng-change="vm.changeStage()">
-  <option ng-repeat="stage in vm.stages" value="{{ stage.id }}">{{ stage.name }}</option>
-</select>
-
-<h2>Current Assignee</h2>
-<h4>{{ vm.assignee.first_name }} {{ vm.assignee.last_name }}</h4>
-{{vm.assignee}}
-<select name="accounts" ng-model="vm.assignee" ng-change="vm.changeAssignee()">
-  <option ng-repeat="account in vm.accounts" value="{{ account.id }}">{{ account.first_name }} {{ account.last_name }}</option>
-</select>
-
-<notes notes="vm.notes"></notes>
-<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/notes/new">Create a new internal note</a>
-
-<messages messages="vm.messages"></messages>
-<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/messages/new">Write a new message</a>
-
-<todos todos="vm.todos"></todos>
-<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/todos/new">Create a new todo</a>
-
-<histories histories="vm.histories"></histories>
+<div class="container">
+	<div class="row vms-appl-details-heading"><span class="h1">Application Details</span></div>
+	<div class="row vms-application-details-update"><a class="col-md-12 btn btn-default btn-update" href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/update">Update Application</a></div>
+	<div class="row vms-application-details-table">
+		<div class="col-md-12">
+			<table class="table table-striped">
+			<tr>
+				<td><span class="h3">Mobile No.</span></td><td><span class="h3">{{ vm.applicant.mobile }}</span></td>
+			</tr>
+			<tr>
+				<td><span>Tags</span></td>
+				<td>
+					<tags tags="vm.tags"></tags>
+					<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/tags/new">Add a tag</a>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="">Created </span></td>
+				<td><span class="">{{ vm.applicant.created_at | date:'medium'}} by {{ vm.applicant.created_by.first_name }} {{ vm.applicant.created_by.last_name }}</span></td>
+			</tr>
+			<tr>
+				<td>
+					<span class="">Current Stage</span></td><td><span class="">{{ vm.applicant.stage.name }}</span>
+					<select name="stages" ng-model="vm.stage" ng-change="vm.changeStage()" ng-options="stage.id as stage.name for stage in vm.stages">
+						<option value="" disabled selected>Select stage</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="">Current Assignee</span></td><td><span class="">{{ vm.assignee.first_name }} {{ vm.assignee.last_name }}</span><br>
+					<span>{{vm.assignee.mobile}}</span><br>
+					<span>{{vm.assignee.email}}</span><br>
+					<select name="accounts" ng-model="vm.assignee" ng-change="vm.changeAssignee()" ng-options="account.id as account.first_name + ' ' + account.last_name for account in vm.accounts">
+						<option value="" disabled selected>Select Assignee</option>
+						<!--<option value="" disabled selected>Select stage</option>-->
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><span>Notes</span></td>
+				<td>
+					<notes notes="vm.notes"></notes>
+					<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/notes/new">Create a new internal note</a>
+				</td>
+			</tr>
+			<tr>
+				<td><span>Messages</span></td>
+				<td>
+					<messages messages="vm.messages"></messages>
+					<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/messages/new">Write a new message</a>
+				</td>
+			</tr>
+			<tr>
+				<td><span>Todos</span></td>
+				<td>
+					<todos todos="vm.todos"></todos>
+					<a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/todos/new">Create a new todo</a>
+				</td>
+			</tr>
+			<tr>
+				<td><span>History</span></td>
+				<td><histories histories="vm.histories"></histories></td>
+			</tr>
+			</table>
+		</div>
+	</div>
+</div>

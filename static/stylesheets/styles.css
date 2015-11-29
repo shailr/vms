@@ -9,3 +9,47 @@
     bottom: 20px;
     right: 20px;
 }
+
+.vms-appl-details-heading {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+.vms-applicants {
+    margin-top: 50px;
+}
+.vms-applicants .table td {
+    border-color: #009688;
+}
+.vms-applicants-stages-bar {
+    border-top: 1px solid #009688;
+    border-bottom: 1px solid #009688;
+}
+
+.btn.btn-default.btn-stage {
+    line-height: 3;
+    border-style: solid;
+    border-right-width: 1px;
+    border-color: #009688;
+    margin: 0px;
+    float: left;
+    color: #009688;
+    font-size: 14px;
+}
+.vms-application-details-update {
+    margin-bottom: 20px;
+}
+.btn.btn-default.btn-stage:hover{
+    background-color: #009688;
+    box-shadow: none;
+    color: #fff;
+}
+.btn.btn-default.btn-update {
+    color: #009688;
+    border: 1px solid #009688;
+}
+.btn.btn-default.btn-update:hover{
+    background-color: #009688;
+    box-shadow: none;
+    color: #fff;
+}
