@@ -15,7 +15,7 @@
     vm.applicants = [];
 
     if (vm.assignee) {
-      Applicants.allStarred(vm.assignee.id)
+      Applicants.allStarredAcrossApplications()
         .then(applicantListSuccessFn, applicantListErrorFn);
 
       function applicantListSuccessFn(data, status, headers, config) {

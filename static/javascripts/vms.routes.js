@@ -42,6 +42,10 @@
       controller: 'TodosListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/todos/todos-list.html'
+    }).when('/todos/created', {
+      controller: 'CreatedTodosController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/todos/todos-list.html'
     }).when('/applications', {
       controller: 'ApplicationsDashboardController',
       controllerAs: 'vm',
@@ -70,7 +74,7 @@
       controller: 'ApplicantDetailController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/detail.html'
-    }).when('/applications/:app_id/applicants/:id/starred', {
+    }).when('/starred', {
       controller: 'StarredApplicantsController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/starred-applicants.html'

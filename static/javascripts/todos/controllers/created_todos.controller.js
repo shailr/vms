@@ -3,11 +3,11 @@
 
   angular
     .module('vms.todos.controllers')
-    .controller('TodosListController', TodosListController);
+    .controller('CreatedTodosController', CreatedTodosController);
 
-  TodosListController.$inject = ['Todos', 'Authentication'];
+  CreatedTodosController.$inject = ['Todos', 'Authentication'];
 
-  function TodosListController(Todos, Authentication) {
+  function CreatedTodosController(Todos, Authentication) {
     var vm = this;
 
     vm.todos = [];
@@ -19,17 +19,17 @@
     function activate() {
       vm.assignee = Authentication.getAuthenticatedAccount();
 
-      Todos.allForAccount(vm.assignee.id)
+      Todos.allCreatedByAccount(vm.assignee.id)
         .then(todosGetSuccessFn, todosGetErrorFn);
 
       function todosGetSuccessFn(data, status, headers, config) {
         vm.todos = data.data;
 
-        console.log(vm.todos);
+        console.log('todos = ', data.data);
       }
 
       function todosGetErrorFn(data, status, headers, config) {
-        console.log('Error in TodosListController while fetching todos for an account');
+        console.log('Error while getting todos in CreatedTodosController');
       }
     }
   }

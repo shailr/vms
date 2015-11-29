@@ -33,7 +33,7 @@ class ApplicantViewSet(viewsets.ModelViewSet):
 
         return super(ApplicantViewSet, self).perform_create(serializer)
 
-    @list_route
+    @list_route()
     def starred(self, request):
         applicants = Applicant.objects.filter(starred=True)
 
@@ -57,7 +57,7 @@ class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
-    @list_route
+    @list_route()
     def starred(self, request):
         applicants = Applicant.objects.filter(starred=True)
 
@@ -65,7 +65,7 @@ class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
-    @list_route
+    @list_route()
     def archived(self, request):
         applicants = Applicant.objects.filter(archived=True)
 

@@ -11,10 +11,10 @@
 <h4>{{ vm.user.inboxmessage_set.length }} Unread Applicants in your box</h4>
 
 <h3>Todos created by you</h3>
-<h4>{{ vm.user.todos_created.length }} Todos you created for others</h4>
+<a href="/todos/created"><h4>{{ vm.user.todos_created.length }} Todos you created for others</h4></a>
 
 <h3>Todos assigned to you</h3>
-<h4>{{ vm.user.todos_assigned.length }} Todos you are assigned to</h4>
+<a href="/calendar"><h4>{{ vm.user.todos_assigned.length }} Todos you are assigned to</h4></a>
 
 <h3>Starred Applicants</h3>
-<h4>{{ vm.starred_applicants.length }} Starred applicants</h4>
+<a href="/starred"><h4>{{ vm.starred_applicants.length }} Starred applicants</h4></a>

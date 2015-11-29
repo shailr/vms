@@ -62,8 +62,6 @@
     }
 
     function update(applicant) {
-      console.log('-------------', applicant)
-
       applicant.data = JSON.stringify(applicant.data);
       applicant.query = JSON.stringify(applicant.query);
       applicant.info = JSON.stringify(applicant.info);

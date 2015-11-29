@@ -1,5 +1,6 @@
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
+from rest_framework.decorators import list_route
 
 from todos.models import Todo
 from todos.serializers import TodoSerializer
@@ -44,6 +45,13 @@ class AccountTodosViewSet(viewsets.ViewSet):
 
     def list(self, request, account_pk=None):
         queryset = self.queryset.filter(assignee__pk=account_pk)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)
+
+    @list_route()
+    def created(self, request, account_pk=None):
+        queryset = self.queryset.filter(created_by__pk=account_pk)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)

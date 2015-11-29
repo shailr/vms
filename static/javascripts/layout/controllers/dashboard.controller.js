@@ -99,7 +99,7 @@
           .then(allStarredGetSuccessFn, allStarredGetErrorFn);
 
         function allStarredGetSuccessFn(data, status, headers, config) {
-          vm.starred_applicants = data.data.results;
+          vm.starred_applicants = data.data;
         }
 
         function allStarredGetErrorFn(data, status, headers, config) {

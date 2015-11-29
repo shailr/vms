@@ -13,13 +13,18 @@
       create: create,
       get: get,
       update: update,
-      allForAccount: allForAccount
+      allForAccount: allForAccount,
+      allCreatedByAccount: allCreatedByAccount
     };
 
     return Todos;
 
     function allForAccount(id) {
       return $http.get('/api/v1/accounts/' + id + '/todos/');
+    }
+
+    function allCreatedByAccount(id) {
+      return $http.get('/api/v1/accounts/' + id + '/todos/created/');
     }
 
     function all(id) {
