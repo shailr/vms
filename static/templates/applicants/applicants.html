@@ -1,6 +1,5 @@
 <div class="container vms-applicants">
-	<div class="row">
-		<div class="table-responsive">
+		<div class="row table-responsive">
 			<table class="table table-hover table-bordered table-condensed">
 				<tbody>
 				<tr ng-repeat="applicant in vm.applicants"
@@ -27,10 +26,9 @@
 				</tbody>
 			</table>
 		</div>
-		<div ng-hide="vm.applicants && vm.applicants.length">
-			<div class="no-applciations-here">
+		<div class="row" ng-hide="vm.applicants && vm.applicants.length">
+			<div class="col-md-12 no-applciations-here">
 				<em>No applicants yet.</em>
 			</div>
 		</div>
-	</div>
 </div>

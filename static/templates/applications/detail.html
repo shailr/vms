@@ -1,17 +1,43 @@
-<h1>{{ vm.application.title }}</h1>
-<hr />
-<a href='/applications/{{ vm.application.id }}/applicants'>
-  <h2>{{ vm.application.applicant_set.length }} Applicants</h2>
-</a>
-<hr />
-<h3>Status: {{ vm.application.archived === false ? "Active" : "Archived"}}</h3>
-<!-- TODO: Add a controller for implementing Archiving -->
-<a href="javascript:void(0)" ng-click="vm.archive(vm.application)">{{ vm.application.archived === false ? "Archive" : "Unarchive"}}</a>
-<hr />
-<h2>Created on </h2>
-{{ vm.application.created_at|date }} by {{ vm.application.creator.first_name }} {{ vm.application.creator.last_name }}
-<!-- TODO: COME BACK HERE TO CHANGE THE CREATOR to the first_name of the creator -->
-<!-- Will have to modify the signup form -->
-<h2>Stages</h2>
-<a href="/applications/{{ vm.application.id }}/stages">Edit</a>
-<div ng-repeat="stage in vm.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}, <a href="/stages/{{ stage.id }}/applicants">{{ stage.applicant_set.length }} Applicants</a></div>
+<div class="container vms-applications-detail">
+	<div class="row heading"><span class="col-md-12 h1">{{ vm.application.title }}</span></div>
+
+	<div class="row line-1">
+		<div class="col-md-1 status">
+			<span class="h2">Status:</span>
+		</div>
+		<div class="col-md-4">
+			<!-- TODO: Add a controller for implementing Archiving -->
+			<span class="h2">{{ vm.application.archived === false ? "Active" : "Archived"}}</span>
+			<a class="btn btn-arch" href="javascript:void(0)" ng-click="vm.archive(vm.application)">{{ vm.application.archived === false ? "Archive" : "Unarchive"}}</a>
+		</div>
+		<div class="col-md-7 applicant-count">
+			<a href='/applications/{{ vm.application.id }}/applicants'><span class="h2 pull-right">{{ vm.application.applicant_set.length }} Applicants</span></a>
+		</div>
+	</div>
+	<div class="row line-2">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th class="col-md-2"></th>
+					<th class="col-md-8"></th>
+					<th class="col-md-2"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span class="h4">Created on </span></td>
+					<td colspan="2"><span class="h4">{{ vm.application.created_at|date }} by {{ vm.application.creator.first_name }} {{ vm.application.creator.last_name }}</span></td>
+				</tr>
+				<tr>
+					<!-- TODO: COME BACK HERE TO CHANGE THE CREATOR to the first_name of the creator -->
+					<!-- Will have to modify the signup form -->
+					<td><h4>Stages</h4></td>
+					<td>
+						<div ng-repeat="stage in vm.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}, <a href="/stages/{{ stage.id }}/applicants">{{ stage.applicant_set.length }} Applicants</a></div>
+					</td>
+					<td><a class="btn btn-edit" href="/applications/{{ vm.application.id }}/stages">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
