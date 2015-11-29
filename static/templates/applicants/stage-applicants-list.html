@@ -1,1 +1,22 @@
-<applicants applicants="vm.applicants"></applicants>
+<!--<applicants applicants="vm.applicants"></applicants>-->
+<div class="">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8"><a type="button" class="btn btn-primary" href="/applications/{{vm.applicants[0].application.id}}/applicants/new">Create new Applicant</a></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 vms-applicants-stages-bar">
+			<a class="btn btn-default btn-stage btn-lg" href="/applications/{{vm.applicants[0].application.id}}/applicants">All</a>
+			<a class="btn btn-default btn-stage btn-lg" href="/stages/1/applicants">Stage 1</a>
+			<a class="btn btn-default btn-stage btn-lg" href="/stages/2/applicants">Stage 2</a>
+		</div>
+	</div>
+	<div class="row">
+		<applicants applicants="vm.applicants"></applicants>
+	</div>
+
+	<!-- <a href="{{ vm.applicants.previous }}">Previous</a> -->
+	<!-- <a href="{{ vm.applicants.next }}">Next</a> -->
+	
+</div>
