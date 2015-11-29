@@ -18,6 +18,8 @@
 
     vm.applicants = [];
 
+    vm.starred_applicants = [];
+
     $scope.labels = [];
 
     $scope.data = [];
@@ -91,6 +93,17 @@
 
         function applicantsGetErrorFn(data, status, headers, config) {
           console.log('Error in applicants get function in DashboardController');
+        }
+
+        Applicants.allStarredAcrossApplications()
+          .then(allStarredGetSuccessFn, allStarredGetErrorFn);
+
+        function allStarredGetSuccessFn(data, status, headers, config) {
+          vm.starred_applicants = data.data.results;
+        }
+
+        function allStarredGetErrorFn(data, status, headers, config) {
+          console.log('Error while getting Starred Applicants in DashboardController');
         }
       }
     }

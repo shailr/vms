@@ -12,7 +12,8 @@
       all: all,
       create: create,
       get: get,
-      overview: overview
+      overview: overview,
+      archive: archive
     };
 
     return Applications;
@@ -34,6 +35,10 @@
 
     function get(id) {
       return $http.get('/api/v1/applications/' + id + '/');
+    }
+
+    function archive(application) {
+      return $http.put('/api/v1/applications/' + application.id + '/', application);
     }
   }
 })();

@@ -24,8 +24,7 @@
       .then(accountsGetSuccessFn, accountsGetErrorFn);
 
     function accountsGetSuccessFn(data, status, headers, config) {
-      vm.accounts = data.data;
-      console.log("accounts = ", data.data);
+      vm.accounts = data.data.results;
     }
 
     function accountsGetErrorFn(data, status, headers, config) {

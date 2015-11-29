@@ -6,10 +6,10 @@
 <hr />
 <h3>Status: {{ vm.application.archived === false ? "Active" : "Archived"}}</h3>
 <!-- TODO: Add a controller for implementing Archiving -->
-<a href="/applications/{{ vm.application.id }}">Archive</a>
+<a href="javascript:void(0)" ng-click="vm.archive(vm.application)">{{ vm.application.archived === false ? "Archive" : "Unarchive"}}</a>
 <hr />
 <h2>Created on </h2>
-{{ vm.application.created_at }} by {{ vm.application.creator }}
+{{ vm.application.created_at|date }} by {{ vm.application.creator.first_name }} {{ vm.application.creator.last_name }}
 <!-- TODO: COME BACK HERE TO CHANGE THE CREATOR to the first_name of the creator -->
 <!-- Will have to modify the signup form -->
 <h2>Stages</h2>

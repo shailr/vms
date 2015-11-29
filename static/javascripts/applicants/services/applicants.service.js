@@ -17,7 +17,8 @@
       get: get,
       update: update,
       toggleStar: toggleStar,
-      archive: archive
+      archive: archive,
+      allStarredAcrossApplications: allStarredAcrossApplications
     };
 
     return Applicants;
@@ -28,6 +29,10 @@
 
     function allStarred(id) {
       return $http.get('/api/v1/applications/' + id + '/applicants/starred/');
+    }
+
+    function allStarredAcrossApplications() {
+      return $http.get('/api/v1/applicants/starred/');
     }
 
     function all(id) {

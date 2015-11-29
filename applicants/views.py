@@ -33,6 +33,14 @@ class ApplicantViewSet(viewsets.ModelViewSet):
 
         return super(ApplicantViewSet, self).perform_create(serializer)
 
+    @list_route
+    def starred(self, request):
+        applicants = Applicant.objects.filter(starred=True)
+
+        serializer = self.get_serializer(applicants, many=True)
+
+        return Response(serializer.data)
+
 
 class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
     queryset = Applicant.objects.all()

@@ -12,6 +12,8 @@
 
     vm.application = undefined;
 
+    vm.archive = archive;
+
     activate();
 
     function activate() {
@@ -42,6 +44,14 @@
         $location.url('/applications/');
         console.log('MASSIVE THROBBING ERROR IN DETAILS CONTROLLER');o
       }
+    }
+
+    function archive(application) {
+      var application_id = application.id
+
+      application.archived = !application.archived;
+
+      Applications.archive(application);
     }
   }
 })();

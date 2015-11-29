@@ -16,9 +16,9 @@ class AccountSerializer(serializers.ModelSerializer):
         model = Account
         fields = ('id', 'email', 'created_at', 'updated_at',
                   'first_name', 'last_name', 'mobile', 'organization',
-                  'password', 'confirm_password', 'stage_set', 'todos_assigned',
-                  'applicants_created', 'applicants_assigned')
-        read_only_fields = ('created_at', 'updated_at', 'organization', 'stage_set', 'todos_assigned')
+                  'password', 'confirm_password', 'stage_set', 'todos_assigned', 'todos_created',
+                  'applicants_created', 'applicants_assigned', 'inboxmessage_set')
+        read_only_fields = ('created_at', 'updated_at', 'organization', 'stage_set', 'todos_assigned', 'todos_created')
 
     def get_validation_exclsions(self, *args, **kwargs):
         exclusions = super(AccountSerializer,
