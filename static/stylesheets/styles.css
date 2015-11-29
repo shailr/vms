@@ -1,55 +1,91 @@
 .btn-add-new-organization{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
 }
 
 .btn-add-new-application{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
 }
 
 .vms-appl-details-heading {
-    padding: 10px 0px 10px 0px;
-    border-bottom: 1px solid black;
-    margin-bottom: 20px;
+	padding: 10px 0px 10px 0px;
+	border-bottom: 1px solid black;
+	margin-bottom: 20px;
 }
 .vms-applicants {
-    margin-top: 50px;
+	margin-top: 50px;
 }
 .vms-applicants .table td {
-    border-color: #009688;
+	border-color: #009688;
 }
 .vms-applicants-stages-bar {
-    border-top: 1px solid #009688;
-    border-bottom: 1px solid #009688;
+	border-top: 1px solid #009688;
+	border-bottom: 1px solid #009688;
 }
 
 .btn.btn-default.btn-stage {
-    line-height: 3;
-    border-style: solid;
-    border-right-width: 1px;
-    border-color: #009688;
-    margin: 0px;
-    float: left;
-    color: #009688;
-    font-size: 14px;
+	line-height: 3;
+	border-style: solid;
+	border-right-width: 1px;
+	border-color: #009688;
+	margin: 0px;
+	float: left;
+	color: #009688;
+	font-size: 14px;
 }
 .vms-application-details-update {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .btn.btn-default.btn-stage:hover{
-    background-color: #009688;
-    box-shadow: none;
-    color: #fff;
+	background-color: #009688;
+	box-shadow: none;
+	color: #fff;
 }
 .btn.btn-default.btn-update {
-    color: #009688;
-    border: 1px solid #009688;
+	color: #009688;
+	border: 1px solid #009688;
 }
 .btn.btn-default.btn-update:hover{
-    background-color: #009688;
-    box-shadow: none;
-    color: #fff;
+	background-color: #009688;
+	box-shadow: none;
+	color: #fff;
+}
+.vms-applications-detail .heading {
+	margin-bottom: 20px;
+	border-bottom: 1px solid black;
+}
+.vms-applications-detail .applicant-count .h2 {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.vms-applications-detail .btn.btn-arch {
+	color: #009688;
+	margin: -5px 8px 0px 5px;
+	border: 1px solid #009688;
+	padding: 4px 15px;
+	font-size: 12px;
+}
+.vms-applications-detail .btn.btn-arch:hover {
+	background-color: #009688;
+	box-shadow: none;
+	color: #fff;
+}
+.vms-applications-detail .btn.btn-edit {
+	color: #009688;
+	margin: 0px;
+	border: 1px solid #009688;
+}
+.vms-applications-detail .btn.btn-edit:hover {
+	background-color: #009688;
+	box-shadow: none;
+	color: #fff;
+}
+.vms-applications-detail .line-1 {
+	padding-bottom: 20px;
+}
+.vms-applications-detail .line-2 .table th {
+	background-color: #009688;
 }
