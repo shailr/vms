@@ -1,21 +1,22 @@
 <!--<a href="/applications/{{ vm.id }}/applicants/new">Create a new applicant</a>-->
 <div class="">
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8"><a type="button" class="btn btn-primary" href="/applications/{{ vm.id }}/applicants/new">Create new Applicant</a></div>
-	</div>
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 vms-applicants-stages-bar">
-			<a class="btn btn-default btn-stage btn-lg" href="/applications/{{ vm.id }}/applicants">All</a>
-			<a class="btn btn-default btn-stage btn-lg" href="/stages/1/applicants">Stage 1</a>
-			<a class="btn btn-default btn-stage btn-lg" href="/stages/2/applicants">Stage 2</a>
-		</div>
-	</div>
-	<div class="row">
-		<applicants applicants="vm.applicants.results"></applicants>
-	</div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"><a type="button" class="btn btn-primary" href="/applications/{{ vm.id }}/applicants/new">Create new Applicant</a></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 vms-applicants-stages-bar">
+      <a class="btn btn-default btn-stage btn-lg" href="/applications/{{ vm.id }}/applicants">All</a>
+      <div ng-repeat="stage in vm.stages">
+	<a class="btn btn-default btn-stage btn-lg" href="/stages/{{ stage.id }}/applicants">{{ stage.name }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <applicants applicants="vm.applicants.results"></applicants>
+  </div>
 
-	<!-- <a href="{{ vm.applicants.previous }}">Previous</a> -->
-	<!-- <a href="{{ vm.applicants.next }}">Next</a> -->
+  <!-- <a href="{{ vm.applicants.previous }}">Previous</a> -->
+  <!-- <a href="{{ vm.applicants.next }}">Next</a> -->
 </div>
