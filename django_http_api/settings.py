@@ -14,9 +14,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://jojjen:Mehran460@localhost:5432/vms'
-    )
+    'default': dj_database_url.config()
 }
 
 # COMMENTED OUT FOR DEVELOPMENT
