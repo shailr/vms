@@ -12,14 +12,14 @@
 
     vm.todos = [];
 
-    vm.assignee = undefined;
+    vm.creator = undefined;
 
     activate();
 
     function activate() {
       vm.assignee = Authentication.getAuthenticatedAccount();
 
-      Todos.allCreatedByAccount(vm.assignee.id)
+      Todos.allCreatedByAccount(vm.creator.id)
         .then(todosGetSuccessFn, todosGetErrorFn);
 
       function todosGetSuccessFn(data, status, headers, config) {

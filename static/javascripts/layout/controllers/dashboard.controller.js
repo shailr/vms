@@ -68,6 +68,17 @@
 
       vm.user = Authentication.getAuthenticatedAccount();
 
+      Authentication.get(vm.user.id)
+        .then(accountGetSuccessFn, accountGetErrorFn);
+
+      function accountGetSuccessFn(data, status, headers, config) {
+        vm.user = data.data;
+      }
+
+      function accountGetErrorFn(data, status, headers, config) {
+        console.log('Error while getting user in DashboardController');
+      }
+
       if (vm.user) {
         Applicants.allForAccount(vm.user.id)
           .then(applicantsGetSuccessFn, applicantsGetErrorFn);

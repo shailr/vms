@@ -106,7 +106,7 @@
       controller: 'NewTodoController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/todos/new-todo.html'
-    }).when('/stages/:stage_id/applicants', {
+    }).when('/applications/:id/stages/:stage_id/applicants', {
       controller: 'StageApplicantsListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/stage-applicants-list.html'
