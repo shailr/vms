@@ -5,7 +5,9 @@
     .module('vms.applicants.services')
     .factory('Applicants', Applicants);
 
-  function Applicants($http, Applications) {
+  Applicants.$inject = ['$http', 'Applications', 'ApplicantMessages'];
+
+  function Applicants($http, Applications, ApplicantMessages) {
     var Applicants = {
       all: all,
       allFromStage: allFromStage,
@@ -18,10 +20,17 @@
       update: update,
       toggleStar: toggleStar,
       archive: archive,
-      allStarredAcrossApplications: allStarredAcrossApplications
+      allStarredAcrossApplications: allStarredAcrossApplications,
+      sendMessageToMultipleApplicants: sendMessageToMultipleApplicants
     };
 
     return Applicants;
+
+    function sendMessageToMultipleApplicants(applicants, message) {
+      for (var applicant in applicants) {
+        ApplicantMessages.create(applicants[applicant], message);
+      }
+    }
 
     function allArchived(id) {
       return $http.get('/api/v1/applications/' + id + '/applicants/archived/');

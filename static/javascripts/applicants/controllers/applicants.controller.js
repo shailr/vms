@@ -5,14 +5,14 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantsController', ApplicantsController);
 
-  ApplicantsController.$inject = ['$scope', 'Applicants'];
+  ApplicantsController.$inject = ['$rootScope', '$scope', 'Applicants'];
 
-  function ApplicantsController($scope, Applicants) {
+  function ApplicantsController($rootScope, $scope, Applicants) {
     var vm = this;
 
     vm.applicants = [];
 
-    vm.selected_items = [];
+    $rootScope.selected_items = [];
 
     vm.toggleStar = toggleStar;
 

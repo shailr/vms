@@ -1,34 +1,34 @@
 <div class="container vms-applicants">
-		<div class="row table-responsive">
-			<table class="table table-hover table-bordered table-condensed">
-				<tbody>
-				<tr ng-repeat="applicant in vm.applicants"
-						selection-model
-						selection-model-type="'checkbox'"
-						selection-model-mode="'multiple-additive'"
-						selection-model-selected-items="vm.selected_items">
-					<td class="col-md-1"><input type="checkbox"></td>
-					<td class="col-md-1">
-						<a href="javascript:void(0)" ng-click="vm.toggleStar(applicant)">
-							<span ng-show="!applicant.starred"><img src="/static/images/star.png"></span>
-							<span ng-show="applicant.starred"><img src="/static/images/star_glow.png"></span>
-						</a>
-					</td>
-					<td class="col-md-8"><applicant applicant="applicant"></applicant></td>
-					<td class="col-md-2">
-						<a href="javascript:void(0)" ng-click="vm.archive(applicant)">
-							<span ng-show="!applicant.archived"><img src="/static/images/archive.png"></span>
-							<span ng-show="applicant.archived"><img src="/static/images/archive_glow.png"></span>
-							<span ng-show="!applicant.archived">Not </span><span>Archived</span>
-						</a>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="row" ng-hide="vm.applicants && vm.applicants.length">
-			<div class="col-md-12 no-applciations-here">
-				<em>No applicants yet.</em>
-			</div>
-		</div>
+  <div class="row table-responsive">
+    <table class="table table-hover table-bordered table-condensed">
+      <tbody>
+	<tr ng-repeat="applicant in vm.applicants"
+	    selection-model
+	    selection-model-type="'checkbox'"
+	    selection-model-mode="'multiple-additive'"
+	    selection-model-selected-items="$root.selected_items">
+	  <td class="col-md-1"><input type="checkbox"></td>
+	  <td class="col-md-1">
+	    <a href="javascript:void(0)" ng-click="vm.toggleStar(applicant)">
+	      <span ng-show="!applicant.starred"><img src="/static/images/star.png"></span>
+	      <span ng-show="applicant.starred"><img src="/static/images/star_glow.png"></span>
+	    </a>
+	  </td>
+	  <td class="col-md-8"><applicant applicant="applicant"></applicant></td>
+	  <td class="col-md-2">
+	    <a href="javascript:void(0)" ng-click="vm.archive(applicant)">
+	      <span ng-show="!applicant.archived"><img src="/static/images/archive.png"></span>
+	      <span ng-show="applicant.archived"><img src="/static/images/archive_glow.png"></span>
+	      <span ng-show="!applicant.archived">Not </span><span>Archived</span>
+	    </a>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row" ng-hide="vm.applicants && vm.applicants.length">
+    <div class="col-md-12 no-applciations-here">
+      <em>No applicants yet.</em>
+    </div>
+  </div>
 </div>
