@@ -106,6 +106,10 @@
       controller: 'MultipleMessagesController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicant_messages/new-message.html'
+    }).when('/multipleassignment', {
+      controller: 'MultipleAssignmentController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applicants/multiple_assignment.html'
     }).when('/applications/:app_id/applicants/:id/todos/new', {
       controller: 'NewTodoController',
       controllerAs: 'vm',

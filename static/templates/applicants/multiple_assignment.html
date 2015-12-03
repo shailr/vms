@@ -1,0 +1,12 @@
+<form role="form" ng-submit="vm.changeAssignee()">
+  <select name="accounts" ng-model="vm.assignee" ng-options="account.id as account.first_name + ' ' + account.last_name for account in vm.accounts">
+    <option value="" disabled selected>Select Assignee</option>
+    <!--<option value="" disabled selected>Select stage</option>-->
+  </select>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Change Assignee
+    </button>
+  </div>
+</form>

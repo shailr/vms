@@ -17,15 +17,19 @@
     vm.changeTemplate = changeTemplate;
     vm.applicants = $rootScope.selected_items;
 
-    MessageTemplates.all()
-      .then(templatesGetSuccessFn, templatesGetErrorFn);
+    activate();
 
-    function templatesGetSuccessFn(data, status, headers, config) {
-      vm.templates = data.data.results;
-    }
+    function activate() {
+      MessageTemplates.all()
+        .then(templatesGetSuccessFn, templatesGetErrorFn);
 
-    function templatesGetErrorFn(data, status, headers, config) {
-      console.log('Error while getting templates in MultipleMessagesController');
+      function templatesGetSuccessFn(data, status, headers, config) {
+        vm.templates = data.data.results;
+      }
+
+      function templatesGetErrorFn(data, status, headers, config) {
+        console.log('Error while getting templates in MultipleMessagesController');
+      }
     }
 
     function changeTemplate() {
@@ -40,6 +44,7 @@
         console.log('Error while fetching template im MultipleMessagesController');
       }
     }
+
 
     function submit() {
       var count = 0;
