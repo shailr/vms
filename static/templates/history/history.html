@@ -3,7 +3,7 @@
     <div class="">
       <div class="stage">
         <div class="note_note">
-          {{ history.message }}
+          {{ history.message }} at {{ history.created_at|date }} by {{ history.user.first_name }} {{ history.user.last_name}}
         </div>
       </div>
     </div>

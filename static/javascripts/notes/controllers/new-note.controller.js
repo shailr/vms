@@ -36,7 +36,7 @@
 
           console.log("note = ", data.data);
 
-          History.create(vm.applicant, "An internal note was created at " + data.data.created_at)
+          History.create(vm.applicant, "An internal note was created")
             .then(historyCreateSuccessFn, historyCreateErrorFn);
 
           function historyCreateSuccessFn(data, status, headers, config) {

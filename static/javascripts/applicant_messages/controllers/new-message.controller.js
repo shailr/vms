@@ -64,6 +64,17 @@
             data: vm.data
           });
 
+          History.create(vm.applicant, "A message was sent")
+            .then(historyCreateSuccessFn, historyCreateErrorFn);
+
+          function historyCreateSuccessFn(data, status, headers, config) {
+            console.log('history = ', data.data);
+          }
+
+          function historyCreateErrorFn(data, status, headers, config) {
+            console.log('History creation failed');
+          }
+
           $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id + '/');
         }
 

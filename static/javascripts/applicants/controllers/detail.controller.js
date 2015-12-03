@@ -44,6 +44,17 @@
 
           vm.stage = vm.applicant.stage;
 
+          History.create(vm.applicant, "Stage was changed to " + vm.stage.name + "")
+            .then(historyCreateSuccessFn, historyCreateErrorFn);
+
+          function historyCreateSuccessFn(data, status, headers, config) {
+            console.log('history = ', data.data);
+          }
+
+          function historyCreateErrorFn(data, status, headers, config) {
+            console.log('History creation failed');
+          }
+
           console.log('Applicant updated successfully', vm.applicant);
         }
 
