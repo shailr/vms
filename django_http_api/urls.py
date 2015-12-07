@@ -16,6 +16,7 @@ from history.views import HistoryViewSet, ApplicantHistoryViewSet
 from tags.views import TagViewSet, ApplicantTagsViewSet
 from inboxmessages.views import InboxMessageViewSet, AccountInboxMessageViewSet
 from message_templates.views import MessageTemplateViewSet
+from missedcalls.views import MissedCall
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -77,6 +78,8 @@ urlpatterns = patterns(
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
 
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
+
+    url(r'api/v1/missed_calls/$', MissedCall.as_view(), name='missed_call'),
 
     url(r'^api/v1/', include(applications_router.urls)),
 
