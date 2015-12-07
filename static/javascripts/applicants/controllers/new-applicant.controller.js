@@ -19,13 +19,35 @@
       category: {},
       disability: {},
       orphan: {},
-      knowledge: {}
+      knowledge: {},
+	  num_children: 0,
+	  children: []
     };
 
     vm.query = {};
     vm.info = {};
 
     vm.submit = submit;
+	vm.initChildrenData = initChildrenData;
+	  
+	function initChildrenData() {
+		var prev_length = 0;
+		if(vm.data.children) {
+			prev_length = vm.data.children.length;
+		}
+		else {
+			vm.data.children = [];
+		}
+		var prev_length = vm.data.children.length;
+		if(vm.data.num_children > prev_length) {
+			for(var i = 0; i < (vm.data.num_children - prev_length); i++) {
+				vm.data.children.push({});
+			}
+		}
+		else if(vm.data.num_children < prev_length) {
+			vm.data.children = vm.data.children.slice(0, vm.data.num_children);
+		}
+	}
 
     function submit() {
       Applications.get(vm.id)
