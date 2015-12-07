@@ -17,8 +17,27 @@
     vm.info = undefined;
 
     vm.update = update;
+	vm.initChildrenData = initChildrenData;
 
     activate();
+	  
+	function initChildrenData() {
+		var prev_length = 0;
+		if(vm.data.data.children) {
+			prev_length = vm.data.data.children.length;
+		}
+		else {
+			vm.data.data.children = [];
+		}
+		if(vm.data.data.num_children > prev_length) {
+			for(var i = 0; i < (vm.data.data.num_children - prev_length); i++) {
+				vm.data.data.children.push({});
+			}
+		}
+		else if(vm.data.data.num_children < prev_length) {
+			vm.data.data.children = vm.data.data.children.slice(0, vm.data.data.num_children);
+		}
+	}
 
     function activate() {
       Applicants.get(id)

@@ -44,7 +44,7 @@
 
   <div class="form-group">
     <label for="no_of_children">*No. of eligible children:</label>
-    <input id="no_of_children" name="no_of_children" type="number" min="0" class="form-control" placeholder="No. of eligible children" >
+    <input id="no_of_children" name="no_of_children" type="number" min="0" class="form-control" placeholder="No. of eligible children" ng-model="vm.data.data.num_children" ng-blur="vm.initChildrenData()">
   </div>
   <div class="form-group" id="children_details_cont">
     <!-- Details of each child -->
@@ -55,6 +55,31 @@
         <th>*Age</th>
         <th>*Gender</th>
         <th>*Any Disability</th>
+      </tr>
+	  <tr ng-repeat="child in vm.data.data.children track by $index">
+        <td><input ng-attr-id="{{'child_name_'+$index}}" ng-attr-name="{{'child_name_'+$index}}" type='text' class='form-control' placeholder='Name of Child' ng-model="child.name"></td>
+        <td><input ng-attr-id="{{'child_age_'+$index}}" ng-attr-name="{{'child_age_'+$index}}" type='number' class='form-control' placeholder='Age of Child'  ng-model="child.age"></td>
+        <td>
+			<select ng-attr-id="{{'child_gender_'+$index}}" ng-attr-name="{{'child_gender_'+$index}}" class='form-control'  ng-model="child.gender">
+				<option value='male'>Male</option>
+				<option value='female'>Female</option>
+			</select>
+		</td>
+        <td>
+			<select ng-attr-id="{{'child_disability_'+$index}}" ng-attr-name="{{'child_disability_'+$index}}" class='form-control'  ng-model="child.disability">
+				 <option value='none'>None</option>
+				 <option value='blind'>Blind</option>
+				 <option value='lowvision'>Low Vision</option>
+				 <option value='leprosycured'>Leprosy Cured</option>
+				 <option value='hearingimpariement'>Hearing Impairment</option>
+				 <option value='locomotordisability'>Loco Motor Disability</option>
+				 <option value='mentalretardation'>Mental Retardation</option>
+				 <option value='mentalillness'>Mental Illness</option>
+				 <option value='cerebralpalsy'>Cerebral Palsy</option>
+				 <option value='autism'>Autism</option>
+				 <option value='multiple/other'>Multiple/Other</option>
+			</select>
+		</td>
       </tr>
     </table>
   </div>
