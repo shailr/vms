@@ -12,14 +12,13 @@ from applications.serializers import ApplicationSerializer
 
 
 class StageSerializer(serializers.ModelSerializer):
-    assignee = AccountSerializer(read_only=True, required=False)
     application = ApplicationSerializer(read_only=True, required=False)
 
     class Meta:
         model = Stage
         fields = ('id', 'name', 'assignee', 'created_at', 'updated_at',
                   'application', 'applicant_set', 'default_stage', 'order')
-        read_only_fields = ('created_at', 'updated_at', 'assignee',
+        read_only_fields = ('created_at', 'updated_at',
                             'application', 'applicant_set',)
 
     def get_validation_exclusions(self, *args, **kwargs):
@@ -38,3 +37,11 @@ class StageSerializer(serializers.ModelSerializer):
         validated_data['assignee'] = assignee
 
         return Stage.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data['name']
+        instance.assignee = validated_data['assignee']
+
+        instance.save()
+
+        return instance

@@ -12,7 +12,7 @@
   <div class="form-group">
     <label for="stage__assignee">Assign to</label>
     <select name="accounts" ng-model="vm.assignee">
-      <option ng-repeat="account in vm.accounts" value="{{ account.id }}">{{ account.email }}</option>
+      <option ng-repeat="account in vm.accounts" value="{{ account.id }}">{{ account.first_name }} {{ account.last_name }}</option>
     </select>
   </div>
 

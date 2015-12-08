@@ -5,9 +5,9 @@
     .module('vms.applications.controllers')
     .controller('ApplicationDetailController', ApplicationDetailController);
 
-  ApplicationDetailController.$inject = ['$location', '$routeParams', '$scope', 'Applications', 'Stages'];
+  ApplicationDetailController.$inject = ['$location', '$routeParams', '$scope', 'Applications', 'Stages', 'Authentication'];
 
-  function ApplicationDetailController($location, $routeParams, $scope, Applications, Stages) {
+  function ApplicationDetailController($location, $routeParams, $scope, Applications, Stages, Authentication) {
     var vm = this;
 
     vm.application = undefined;
@@ -34,10 +34,22 @@
         }
 
         function StageGetSuccessFn(data, status, headers, config) {
-          vm.stages.push(data.data);
+          var stage = data.data;
 
-          if (data.data.default_stage) {
-            vm.default_stage = data.data;
+          Authentication.get(stage.assignee)
+            .then(accountGetSuccessFn, accountGetErrorFn);
+
+          function accountGetSuccessFn(data, status, headers, config) {
+            stage.assignee = data.data;
+            vm.stages.push(stage);
+
+            if (data.data.default_stage) {
+              vm.default_stage = data.data;
+            }
+          }
+
+          function accountGetErrorFn(data, status, headers, config) {
+            console.log('Error while getting account in ApplicationDetailsController');
           }
         }
 

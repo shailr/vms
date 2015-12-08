@@ -53,7 +53,7 @@
           .then(accountGetSuccessFn, accountGetErrorFn);
 
         function accountGetSuccessFn(data, status, headers, config) {
-          vm.stage.assignee = data.data;
+          vm.stage.assignee = vm.assignee;
 
           Stages.update(vm.stage)
             .then(stageUpdateSuccessFn, stageUpdateErrorFn);
