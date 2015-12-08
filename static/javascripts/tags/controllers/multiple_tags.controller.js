@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  anuglar
+  angular
     .module('vms.tags.controllers')
     .controller('MultipleTagsController', MultipleTagsController);
 
