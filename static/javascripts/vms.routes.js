@@ -58,6 +58,10 @@
       controller: 'StageListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/stages/stage-list.html'
+    }).when('/applications/:app_id/stages/:id/update', {
+      controller: 'UpdateStageController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/stages/update-stage.html'
     }).when('/applications/:id/stages/new', {
       controller: 'NewStageController',
       controllerAs: 'vm',

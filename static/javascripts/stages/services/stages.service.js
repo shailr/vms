@@ -12,7 +12,8 @@
       all: all,
       create: create,
       get: get,
-      allAcrossApplications: allAcrossApplications
+      allAcrossApplications: allAcrossApplications,
+      update: update
     };
 
     return Stages;
@@ -31,6 +32,10 @@
         name: name,
         assignee: assignee
       });
+    }
+
+    function update(stage) {
+      return $http.put('/api/v1/stages/' + stage.id + '/', stage);
     }
 
     function get(id) {

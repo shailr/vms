@@ -1,0 +1,24 @@
+<form role="form" ng-submit="vm.update()">
+  <div class="form-group">
+    <label for="stage__name">Stage Name</label>
+    <input class="form-control"
+           id="stage__name"
+           rows="3"
+           placeholder="e.g. Screening"
+           ng-model="vm.stage.name">
+    </input>
+  </div>
+
+  <div class="form-group">
+    <label for="stage__assignee">Assign to</label>
+    <select name="accounts" ng-model="vm.assignee">
+      <option ng-repeat="account in vm.accounts" value="{{ account.id }}">{{ account.email }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+</form>
