@@ -16,5 +16,7 @@ class Stage(TimeStampedModel):
 
     default_stage = models.BooleanField(default=False)
 
+    order = models.IntegerField(default=0)
+
     def __unicode__(self):
         return self.name

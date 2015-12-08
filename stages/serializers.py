@@ -18,7 +18,7 @@ class StageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stage
         fields = ('id', 'name', 'assignee', 'created_at', 'updated_at',
-                  'application', 'applicant_set', 'default_stage')
+                  'application', 'applicant_set', 'default_stage', 'order')
         read_only_fields = ('created_at', 'updated_at', 'assignee',
                             'application', 'applicant_set',)
 
