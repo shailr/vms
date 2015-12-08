@@ -20,7 +20,7 @@ class ApplicantSerializer(serializers.ModelSerializer):
         model = Applicant
 
         fields = ('id', 'data', 'mobile', 'created_by', 'application', 'query', 'info',
-                  'created_at', 'starred', 'archived', 'stage', 'assignee')
+                  'created_at', 'starred', 'archived', 'stage', 'assignee', 'number_of_missed_calls')
 
         read_only_fields = ('id', 'created_at', 'updated_at',
                             'created_by', 'application', 'created_at')
