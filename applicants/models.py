@@ -12,6 +12,8 @@ from stages.models import Stage
 class Applicant(TimeStampedModel):
     mobile = models.CharField(max_length=20)
 
+    number_of_missed_calls = models.IntegerField(default=0)
+
     data = models.CharField(max_length=2000, default='')
 
     query = models.CharField(max_length=1000, default='')

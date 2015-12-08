@@ -24,6 +24,11 @@ class MissedCall(views.APIView):
                 app.application = application
                 app.stage = stage
                 app.assignee = stage.assignee
+                app.number_of_missed_calls = 1
+
+                app.save()
+            else:
+                app.number_of_missed_calls += 1
 
                 app.save()
 
