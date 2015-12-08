@@ -14,6 +14,8 @@
 
     vm.archive = archive;
 
+    vm.default_stage = undefined;
+
     activate();
 
     function activate() {
@@ -33,6 +35,10 @@
 
         function StageGetSuccessFn(data, status, headers, config) {
           vm.stages.push(data.data);
+
+          if (data.data.default_stage) {
+            vm.default_stage = data.data;
+          }
         }
 
         function StageGetErrorFn(data, status, headers, config) {
