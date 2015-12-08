@@ -84,6 +84,8 @@
         function updateApplicantSuccessFn(data, status, headers, config) {
           vm.applicant = data.data;
 
+          History.create(vm.applicant, 'Assignee changed to ' + vm.assignee.first_name);
+
           console.log('Applicant Updated', data.data);
         }
 
@@ -204,10 +206,6 @@
           console.log('Error while fetching history');
         }
 
-        // TODO: Add the following things:
-
-        // vm.grievances = [];
-        // vm.history = [];
       }
 
       function applicantDetailErrorFn(data, status, headers, config) {

@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('MultipleAssignmentController', MultipleAssignmentController);
 
-  MultipleAssignmentController.$inject = ['$location', '$rootScope', 'Authentication', 'Applicants'];
+  MultipleAssignmentController.$inject = ['History', '$location', '$rootScope', 'Authentication', 'Applicants'];
 
-  function MultipleAssignmentController($location, $rootScope, Authentication, Applicants) {
+  function MultipleAssignmentController(Histpry, $location, $rootScope, Authentication, Applicants) {
     var vm = this;
 
     vm.assignee = undefined;
@@ -44,6 +44,8 @@
             .then(updateApplicantSuccessFn, updateApplicantErrorFn);
 
           function updateApplicantSuccessFn(data, status, headers, config) {
+            History.create(current, 'Applicant was reassigned to ' + vm.assignee.first_name);
+
             if (++count == vm.selected_applicants_for_multiple_assignment.length) {
               $location.url('/applications/1/applicants/');
             }
