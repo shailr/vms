@@ -8,7 +8,7 @@ from authentication.models import Account
 
 
 class Stage(TimeStampedModel):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
 
     application = models.ForeignKey(Application, null=True)
 

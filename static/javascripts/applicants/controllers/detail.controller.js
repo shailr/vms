@@ -107,7 +107,12 @@
       function applicantDetailSuccessFn(data, status, headers, config) {
         vm.applicant = data.data;
         vm.stage = vm.applicant.stage;
-        vm.applicant.data = JSON.parse(vm.applicant.data);
+
+	if (vm.applicant.data) {
+            vm.applicant.data = JSON.parse(vm.applicant.data);
+	} else {
+	    vm.applicant.data = {};
+	}
 
         Stages.all(app_id)
           .then(stagesAllSuccessFn, stagesAllErrorFn);

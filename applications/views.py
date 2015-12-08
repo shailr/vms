@@ -52,7 +52,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
 
     def perform_create(self, serializer):
-        stage = Stage.objects.create(name='Stage 1',
+        stage = Stage.objects.create(name='Incoming',
                                      default_stage=True,
                                      assignee=self.request.user)
 
