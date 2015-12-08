@@ -110,6 +110,10 @@
       controller: 'MultipleAssignmentController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/multiple_assignment.html'
+    }).when('/multipletags', {
+      controller: 'MultipleTagsController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/tags/new_tag.html'
     }).when('/applications/:app_id/applicants/:id/todos/new', {
       controller: 'NewTodoController',
       controllerAs: 'vm',

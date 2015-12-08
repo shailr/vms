@@ -5,9 +5,9 @@
     .module('vms.applicant_messages.controllers')
     .controller('MultipleMessagesController', MultipleMessagesController);
 
-  MultipleMessagesController.$inject = ['$location', '$rootScope', 'MessageTemplates', 'ApplicantMessages'];
+  MultipleMessagesController.$inject = ['$location', '$rootScope', 'MessageTemplates', 'ApplicantMessages', 'History'];
 
-  function MultipleMessagesController($location, $rootScope, MessageTemplates, ApplicantMessages) {
+  function MultipleMessagesController($location, $rootScope, MessageTemplates, ApplicantMessages, History) {
     var vm = this;
 
     vm.data = {};
@@ -54,6 +54,8 @@
           .then(createMessageSuccessFn, createMessageErrorFn);
 
         function createMessageSuccessFn(data, status, headers, config) {
+          History.create(vm.applicants[applicant], 'A message was created');
+
           if (++count == vm.applicants.length) {
             $location.url('/applications/1/applicants/');
           }
