@@ -19,7 +19,7 @@ class MissedCall(views.APIView):
 
             if created:
                 application = Application.objects.get(pk=1)
-                stage = Stage.objects.latest('created_at')
+                stage = Stage.objects.get(default_stage=True)
 
                 app.application = application
                 app.stage = stage
