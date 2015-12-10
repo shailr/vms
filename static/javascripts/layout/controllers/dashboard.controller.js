@@ -51,7 +51,7 @@
           var stage = stages[i];
 
           if (stage.name == stage_name) {
-            $location.url('/stages/' + stage.id + '/applicants');
+            $location.url('/applications/1/stages/' + stage.id + '/applicants');
 
             break;
           }

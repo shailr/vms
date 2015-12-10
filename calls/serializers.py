@@ -14,9 +14,9 @@ class CallSerializer(serializers.ModelSerializer):
     applicant = ApplicantSerializer(read_only=True, required=False)
 
     class Meta:
-        model = Note
+        model = Call
 
-        fields = ('id', 'end', 'user', 'applicant', 'created_at', 'updated_at')
+        fields = ('id', 'start_time', 'end_time', 'user', 'applicant', 'created_at', 'updated_at', 'rating', 'end')
 
         read_only_fields = ('id', 'created_at', 'updated_at', 'applicant', 'user')
 
@@ -34,7 +34,8 @@ class CallSerializer(serializers.ModelSerializer):
         return Call.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.end = validated_data['end']
+        if 'end' in validated_data.keys():
+            instance.end = validated_data['end']
 
         instance.save()
 

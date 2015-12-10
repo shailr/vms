@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('UpdateApplicantController', UpdateApplicantController);
 
-  UpdateApplicantController.$inject = ['$routeParams', '$location', 'Applicants', 'History'];
+  UpdateApplicantController.$inject = ['$routeParams', '$rootScope', '$location', 'Applicants', 'History', 'Calls'];
 
-  function UpdateApplicantController($routeParams, $location, Applicants, History) {
+  function UpdateApplicantController($routeParams, $rootScope, $location, Applicants, History, Calls) {
     var vm = this,
         id = $routeParams.id,
         app_id = $routeParams.app_id;
@@ -17,6 +17,7 @@
     vm.info = undefined;
 
     vm.update = update;
+    vm.endCall = endCall;
     vm.initChildrenData = initChildrenData;
 
     activate();
@@ -55,6 +56,24 @@
         console.log('Error while retrieving applicant in UpdateApplicantController');
       }
     }
+
+    function endCall() {
+      if($rootScope.current_call) {
+        $rootScope.current_call.end = true;
+      }
+
+      Calls.update($rootScope.current_call)
+        .then(callUpdateSuccessFn, callUpdateErrorFn);
+
+      function callUpdateSuccessFn(data, status, headers, config) {
+        console.log('call update', data.data);
+      }
+
+      function callUpdateErrorFn(data, status, headers, config) {
+        console.log('Error while updating call in ApplicantDetailController');
+      }
+    }
+
 
     function update() {
       Applicants.update(vm.data)

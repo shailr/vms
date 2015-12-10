@@ -1,4 +1,10 @@
 <form role="form" ng-submit="vm.update()">
+  <div class="row vms-application-details-update">
+    <a class="col-md-12 btn btn-default btn-update" href="javascript:void(0)" ng-click="vm.endCall()" ng-show="$root.current_call">
+      <span>End Call</span>
+    </a>
+  </div>
+
   <div class="form-group">
     <table class="table table-responsive table-bordered">
       <tr>
@@ -716,8 +722,15 @@
 
   <br>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary">
-      Update
-    </button>
+    <div ng-show="$root.current_call">
+      <button type="submit" class="btn btn-primary" ng-click="vm.endCall()">
+        End Call
+      </button>
+    </div>
+    <div ng-show="!$root.current_call">
+      <button type="submit" class="btn btn-primary">
+        Update
+      </button>
+    </div>
   </div>
 </form>

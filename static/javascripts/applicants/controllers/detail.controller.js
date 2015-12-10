@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages', 'Authentication'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', '$rootScope', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages', 'Authentication', 'Calls'];
 
-  function ApplicantDetailController($location, $routeParams, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages, Authentication) {
+  function ApplicantDetailController($location, $routeParams, $rootScope, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages, Authentication, Calls) {
     var vm = this;
 
     vm.applicant = undefined;
@@ -18,12 +18,39 @@
     vm.histories = [];
     vm.stages = [];
     vm.stage = undefined;
+    vm.call_started = false;
     vm.accounts = [];
+    vm.start_time = undefined;
+    vm.end_time = undefined;
+    vm.rating = 0;
 
     vm.changeStage = changeStage;
     vm.changeAssignee = changeAssignee;
+    vm.startCall = startCall;
+
+    $rootScope.current_call = undefined;
 
     activate();
+
+    function startCall() {
+      vm.start_time = vm.end_time = Date.now();
+
+      Calls.create(vm.applicant, vm.rating)
+        .then(callCreateSuccessFn, callCreateErrorFn);
+
+      function callCreateSuccessFn(data, status, headers, config) {
+        $rootScope.current_call = data.data;
+
+        $location.url('/applications/' + vm.applicant.application.id + '/applicants/' + vm.applicant.id + '/update');
+      }
+
+      function callCreateErrorFn(data, status, headers, config) {
+        console.log('Error while creating call in ApplicantDetailController');
+
+        $location.url('/applications/' + vm.applicant.application.id + '/applicants/' + vm.applicant.id + '/update');
+      }
+    }
+
 
     function changeStage() {
       Stages.get(vm.stage)

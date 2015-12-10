@@ -17,6 +17,7 @@ from tags.views import TagViewSet, ApplicantTagsViewSet
 from inboxmessages.views import InboxMessageViewSet, AccountInboxMessageViewSet
 from message_templates.views import MessageTemplateViewSet
 from missedcalls.views import MissedCall
+from calls.views import CallViewSet, ApplicantCallsViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -36,6 +37,7 @@ router.register(r'history', HistoryViewSet)
 router.register(r'tags', TagViewSet)
 router.register(r'inboxmessages', InboxMessageViewSet)
 router.register(r'message_templates', MessageTemplateViewSet)
+router.register(r'calls', CallViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
@@ -51,6 +53,7 @@ applicants_router.register(r'applicant_messages', ApplicantMessagesViewSet)
 applicants_router.register(r'todos', ApplicantTodosViewSet)
 applicants_router.register(r'history', ApplicantHistoryViewSet)
 applicants_router.register(r'tags', ApplicantTagsViewSet)
+applicants_router.register(r'calls', ApplicantCallsViewSet)
 
 stages_router = routers.NestedSimpleRouter(
     router, r'stages', lookup='stage'

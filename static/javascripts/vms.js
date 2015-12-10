@@ -14,7 +14,8 @@ angular
     'vms.history',
     'vms.tags',
     'vms.inboxmessages',
-    'vms.message_templates'
+    'vms.message_templates',
+    'vms.calls'
   ]);
 
 angular
