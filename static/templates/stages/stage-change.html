@@ -1,0 +1,13 @@
+<form role="form" ng-submit="vm.changeStage()">
+  <div class="form-group">
+    <select name="stages" ng-model="vm.stage" ng-options="stage.id as stage.name for stage in vm.stages">
+      <option value="" disabled selected>Select stage</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Change Stage
+    </button>
+  </div>
+</form>

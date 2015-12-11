@@ -118,6 +118,10 @@
       controller: 'MultipleTagsController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/tags/new-tag.html'
+    }).when('/multiplestagechange', {
+      controller: 'MultipleStageChangeController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/stages/stage-change.html'
     }).when('/applications/:app_id/applicants/:id/todos/new', {
       controller: 'NewTodoController',
       controllerAs: 'vm',
