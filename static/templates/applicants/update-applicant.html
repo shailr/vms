@@ -162,7 +162,7 @@
         <td>Category Certificate</td>
         <td>
           <label for="CasteCertificate">Delhi Caste Certificate</label>
-          <input class="doc_chkbox" id="CasteCertificate" name="doc_list[]" value="CasteCertificate" type="checkbox" ng-model="vm.data.data.category.caste">&nbsp;&nbsp;
+          <input class="doc_chkbox" id="CasteCertificate" name="doc_list[]" value="CasteCertificate" type="checkbox" ng-model="vm.data.data.cat.caste">&nbsp;&nbsp;
         </td>
       </tr>
       <tr>
@@ -207,20 +207,6 @@
     </table>
   </div>
 
-
-  <div class="form-group">
-    <label for="RTE1">Did you know anything about RTE Section 12?</label>
-    <input class="rte_chkbox" id="RTE1" name="knew_rte[]" value="RTE1" type="checkbox" ng-model="vm.data.data.knowledge.rte">
-    <br>
-    <label for="RTE2">Did you know about Documents Required and the documentation procedure?</label>
-    <input class="rte_chkbox" id="RTE2" name="knew_rte[]" value="RTE2" type="checkbox" ng-model="vm.data.data.knowledge.docs">
-    <br>
-    <label for="RTE3">Did you know that the school cannot charge anything for Admission, Tuition, uniform and
-      books?</label>
-    <input class="rte_chkbox" id="RTE3" name="knew_rte[]" value="RTE3" type="checkbox" ng-model="vm.data.data.knowledge.school">
-    <br>
-    <br>
-  </div>
   <h4>Query Type:</h4>
   <ul id="queryTab" class="nav nav-tabs">
     <li class="active"><a href="#info1" data-toggle="tab">Info 1</a></li>
@@ -564,14 +550,14 @@
 
   <div class="form-group">
     <label for="RTE1">Did you know anything about RTE Section 12?</label>
-    <input class="rte_chkbox" id="RTE1" name="knew_rte[]" value="RTE1" type="checkbox" ng-model="vm.data.knowledge.rte">
+    <input class="rte_chkbox" id="RTE1" name="knew_rte[]" value="RTE1" type="checkbox" ng-model="vm.data.data.knowledge.rte">
     <br>
     <label for="RTE2">Did you know about Documents Required and the documentation procedure?</label>
-    <input class="rte_chkbox" id="RTE2" name="knew_rte[]" value="RTE2" type="checkbox" ng-model="vm.data.knowledge.docs">
+    <input class="rte_chkbox" id="RTE2" name="knew_rte[]" value="RTE2" type="checkbox" ng-model="vm.data.data.knowledge.docs">
     <br>
     <label for="RTE3">Did you know that the school cannot charge anything for Admission, Tuition, uniform and
       books?</label>
-    <input class="rte_chkbox" id="RTE3" name="knew_rte[]" value="RTE3" type="checkbox" ng-model="vm.data.knowledge.school">
+    <input class="rte_chkbox" id="RTE3" name="knew_rte[]" value="RTE3" type="checkbox" ng-model="vm.data.data.knowledge.school">
     <br>
     <br>
   </div>

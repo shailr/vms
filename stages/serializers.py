@@ -29,7 +29,7 @@ class StageSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         id = validated_data['application']['id']
-        assignee_id = validated_data['assignee']['id']
+        assignee_id = validated_data['assignee']
         application = Application.objects.get(pk=id)
         assignee = Account.objects.get(pk=assignee_id)
 

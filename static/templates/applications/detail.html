@@ -31,7 +31,7 @@
 	<tr>
 	  <td><h4>Stages</h4></td>
 	  <td>
-	    <div ng-repeat="stage in vm.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}, <a href="/stages/{{ stage.id }}/applicants">{{ stage.applicant_set.length }} Applicants</a></div>
+	    <div ng-repeat="stage in vm.stages">{{ stage.name }}, assigned to: {{ stage.assignee.first_name }}, <a href="/applications/{{ vm.application.id }}/stages/{{ stage.id }}/applicants">{{ stage.applicant_set.length }} Applicants</a></div>
 	  </td>
 	  <td><a class="btn btn-edit" href="/applications/{{ vm.application.id }}/stages">Edit</a></td>
 	</tr>

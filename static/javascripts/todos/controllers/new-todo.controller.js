@@ -5,9 +5,9 @@
     .module('vms.todos.controllers')
     .controller('NewTodoController', NewTodoController);
 
-  NewTodoController.$inject = ['Authentication', 'Applicants', '$location', '$routeParams', 'Todos']
+  NewTodoController.$inject = ['Authentication', 'Applicants', '$location', '$routeParams', 'Todos', 'History']
 
-  function NewTodoController(Authentication, Applicants, $location, $routeParams, Todos) {
+  function NewTodoController(Authentication, Applicants, $location, $routeParams, Todos, History) {
     var vm = this;
 
     vm.id = $routeParams.id;
@@ -50,7 +50,7 @@
           function createTodoSuccessFn(data, status, headers, config) {
             console.log('Todo created successfully');
 
-            History.create(vm.applicant, "A todo was created")
+            History.create(vm.applicant, "A todo was assigned to " + data.data.assignee.first_name)
               .then(historyCreateSuccessFn, historyCreateErrorFn);
 
             function historyCreateSuccessFn(data, status, headers, config) {

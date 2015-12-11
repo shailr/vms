@@ -48,7 +48,7 @@
         function accountGetSuccessFn(data, status, headers, config) {
           vm.assignee = data.data;
 
-          Stages.create(vm.application, vm.name, vm.assignee)
+          Stages.create(vm.application, vm.name, vm.assignee.id)
             .then(createStageSuccessFn, createStageErrorFn);
 
           function createStageSuccessFn(data, status, headers, config) {

@@ -67,6 +67,7 @@
 
       function callUpdateSuccessFn(data, status, headers, config) {
         console.log('call update', data.data);
+        History.create(vm.data, 'A new call was made');
       }
 
       function callUpdateErrorFn(data, status, headers, config) {

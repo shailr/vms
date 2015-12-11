@@ -19,9 +19,8 @@
       category: {},
       disability: {},
       orphan: {},
-      knowledge: {},
-	  num_children: 0,
-	  children: []
+      num_children: 0,
+      children: []
     };
 
     vm.query = {};
