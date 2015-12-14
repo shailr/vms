@@ -41,6 +41,20 @@
 
         for (var applicant in vm.applicants) {
           vm.applicants[applicant].stage = vm.stage;
+          vm.applicants[applicant].assginee = vm.stage.assignee;
+
+          if (typeof vm.applicants[applicant].data === "string") {
+            vm.applicants[applicant].data = JSON.parse(vm.applicants[applicant].data);
+	  }
+
+          if (typeof vm.applicants[applicant].query === "string") {
+            vm.applicants[applicant].query = JSON.parse(vm.applicants[applicant].query);
+	  }
+
+          if (typeof vm.applicants[applicant].info === "string") {
+            vm.applicants[applicant].info = JSON.parse(vm.applicants[applicant].info);
+	  }
+
 
           Applicants.update(vm.applicants[applicant])
             .then(applicantUpdateSuccessFn, applicantUpdateErrorFn);

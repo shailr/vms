@@ -59,7 +59,20 @@
       function stageGetSuccessFn(data, status, heades, config) {
         vm.stage = data.data;
 
+        if (typeof vm.applicant.data === "string") {
+          vm.applicant.data = JSON.parse(vm.applicant.data);
+	}
+
+        if (typeof vm.applicant.query === "string") {
+          vm.applicant.query = JSON.parse(vm.applicant.query);
+	}
+
+        if (typeof vm.applicant.info === "string") {
+          vm.applicant.info = JSON.parse(vm.applicant.info);
+	}
+
         vm.applicant.stage = vm.stage;
+        vm.applicant.assignee = vm.stage.assignee;
 
         console.log('Success in getting the stage', data.data);
 
@@ -68,6 +81,17 @@
 
         function updateApplicantSuccessFn(data, status, headers, config) {
           vm.applicant = data.data;
+
+          Authentication.get(vm.applicant.assignee)
+            .then(assigneeGetSuccessFn, assigneeGetErrorFn);
+
+          function assigneeGetSuccessFn(data, status, headers, config) {
+            vm.assignee = data.data;
+          }
+
+          function assigneeGetErrorFn(data, status, headers, config) {
+            console.log('Error while getting assignee in ApplicantDetailController');
+          }
 
           vm.stage = vm.applicant.stage;
 
@@ -105,6 +129,18 @@
         vm.applicant.assignee = vm.assignee;
         vm.assignee = data.data;
 
+        if (typeof vm.applicant.data === "string") {
+          vm.applicant.data = JSON.parse(vm.applicant.data);
+	}
+
+        if (typeof vm.applicant.query === "string") {
+          vm.applicant.query = JSON.parse(vm.applicant.query);
+	}
+
+        if (typeof vm.applicant.info === "string") {
+          vm.applicant.info = JSON.parse(vm.applicant.info);
+	}
+
         Applicants.update(vm.applicant)
           .then(updateApplicantSuccessFn, updateApplicantErrorFn);
 
@@ -138,10 +174,23 @@
         vm.stage = vm.applicant.stage;
 
 	if (vm.applicant.data) {
-            vm.applicant.data = JSON.parse(vm.applicant.data);
+          vm.applicant.data = JSON.parse(vm.applicant.data);
 	} else {
 	    vm.applicant.data = {};
 	}
+
+        if (vm.applicant.query) {
+          vm.applicant.query = JSON.parse(vm.applicant.query);
+	} else {
+	  vm.applicant.query = {};
+	}
+
+        if (vm.applicant.info) {
+          vm.applicant.info = JSON.parse(vm.applicant.info);
+	} else {
+	  vm.applicant.info = {};
+	}
+
 
         Stages.all(app_id)
           .then(stagesAllSuccessFn, stagesAllErrorFn);

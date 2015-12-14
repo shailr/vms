@@ -7,7 +7,7 @@
 
   MultipleAssignmentController.$inject = ['History', '$location', '$rootScope', 'Authentication', 'Applicants'];
 
-  function MultipleAssignmentController(Histpry, $location, $rootScope, Authentication, Applicants) {
+  function MultipleAssignmentController(History, $location, $rootScope, Authentication, Applicants) {
     var vm = this;
 
     vm.assignee = undefined;
@@ -39,6 +39,19 @@
           var current = vm.selected_applicants_for_multiple_assignment[applicant];
 
           current.assignee =  vm.assignee;
+
+          if (typeof current.data === "string") {
+            current.data = JSON.parse(current.data);
+	  }
+
+          if (typeof current.query === "string") {
+            current.query = JSON.parse(current.query);
+	  }
+
+          if (typeof current.info === "string") {
+            current.info = JSON.parse(current.info);
+	  }
+
 
           Applicants.update(current)
             .then(updateApplicantSuccessFn, updateApplicantErrorFn);
