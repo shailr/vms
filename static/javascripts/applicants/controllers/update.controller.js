@@ -67,7 +67,10 @@
 
       function callUpdateSuccessFn(data, status, headers, config) {
         console.log('call update', data.data);
-        History.create(vm.data, 'A new call was made');
+        var start = new Date(data.data.start_time),
+            end = new Date(data.data.end_time);
+
+        History.create(vm.data, 'A new call of duration ' + (end - start) / 1000 + ' seconds was made');
       }
 
       function callUpdateErrorFn(data, status, headers, config) {
