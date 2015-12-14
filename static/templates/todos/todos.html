@@ -1,7 +1,7 @@
 <div class="row" ng-cloak>
   <div ng-repeat="todo in vm.todos">
     <a href="javascript:void(0)" ng-click="vm.toggleDone(todo)">Done = {{ todo.done }}</a>
-    <todo todo="todo"></todo>
+    <a href="/applications/1/applicants/{{ todo.applicant.id }}"><todo todo="todo"></todo></a>
   </div>
   <div ng-hide="vm.todos && vm.todos.length">
     <div class="col-sm-12 no-todos-here">
