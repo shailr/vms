@@ -11,13 +11,24 @@
   </div>
 
   <div class="form-group">
-    <label for="applicant__mobile">Mobile</label>
-    <input class="form-control"
-           id="applicant__mobile"
-           rows="3"
-           placeholder="e.g. 8095964981"
-           ng-model="vm.data.mobile">
-    </input>
+    <table class="table table-bordered">
+      <tr>
+        <td>
+          <label for="applicant__mobile">Mobile</label>
+          <input class="form-control"
+                 id="applicant__mobile"
+                 rows="3"
+                 placeholder="e.g. 8095964981"
+                 ng-model="vm.data.mobile"></input>
+        </td>
+        <td>
+          <label for="applicant__rel_mobile">Relation</label>
+          <select name="relation" ng-model="vm.data.rel_mobile" ng-options="relation for relation in vm.relations">
+            <option value="" disabled selected>Select relation</option>
+          </select>
+        </td>
+      </tr>
+    </table>
   </div>
 
   <div id="categories" class="form-group">
@@ -177,8 +188,24 @@
   </div>
 
   <div class="form-group">
-    <label for="alt_phone">Alternate Phone No. (10 digits):</label>
-    <input id="alt_phone" name="alt_phone" type="text" class="form-control" placeholder="Phone No." ng-model="vm.data.alternate_number">
+    <table class="table table-bordered">
+      <tr>
+        <td>
+          <label for="applicant__alt_phone">Mobile</label>
+          <input class="form-control"
+                 id="applicant__alt_phone"
+                 rows="3"
+                 placeholder="e.g. 8095964981"
+                 ng-model="vm.data.alternate_number"></input>
+        </td>
+        <td>
+          <label for="applicant__rel_alt">Mobile</label>
+          <select name="relation" ng-model="vm.data.rel_alt" ng-options="relation for relation in vm.relations">
+            <option value="" disabled selected>Select relation</option>
+          </select>
+        </td>
+      </tr>
+    </table>
   </div>
 
   <div class="form-group">

@@ -23,6 +23,8 @@
       children: []
     };
 
+    vm.relations = ['Mother', 'Father', 'Family (Male)', 'Family (Female)', 'Neighbour/Friend (Male)', 'Neighbour/Friend (Female)'];
+
     vm.query = {};
     vm.info = {};
 

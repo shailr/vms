@@ -20,6 +20,8 @@
     vm.endCall = endCall;
     vm.initChildrenData = initChildrenData;
 
+    vm.relations = ['Mother', 'Father', 'Family (Male)', 'Family (Female)', 'Neighbour/Friend (Male)', 'Neighbour/Friend (Female)'];
+
     activate();
 
     function initChildrenData() {
