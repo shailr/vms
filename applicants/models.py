@@ -14,11 +14,11 @@ class Applicant(TimeStampedModel):
 
     number_of_missed_calls = models.IntegerField(default=0)
 
-    data = models.CharField(max_length=2000, default='')
+    data = models.CharField(max_length=2000, default='{"address": {}, "birth": {}, "income": {}, "category": {}, "disability": {}, "orphan": {}, "number_children": 0, "children": []}')
 
-    query = models.CharField(max_length=1000, default='')
+    query = models.CharField(max_length=1000, default='{}')
 
-    info = models.CharField(max_length=1000, default='')
+    info = models.CharField(max_length=1000, default='{}')
 
     stage = models.ForeignKey(Stage, null=True)
 
