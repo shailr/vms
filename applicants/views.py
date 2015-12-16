@@ -101,7 +101,7 @@ class AccountApplicantsViewSet(viewsets.ViewSet):
     serializer_class = ApplicantSerializer
 
     def list(self, request, account_pk=None):
-        queryset = self.queryset.filter(Q(stage__assignee__pk=account_pk) | Q(assignee__pk=account_pk))
+        queryset = self.queryset.filter(assignee__pk=account_pk)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
