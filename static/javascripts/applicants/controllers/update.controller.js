@@ -71,12 +71,18 @@
           .then(callUpdateSuccessFn, callUpdateErrorFn);
       }
 
+      function millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      }
+
       function callUpdateSuccessFn(data, status, headers, config) {
         console.log('call update', data.data);
         var start = new Date(data.data.start_time),
             end = new Date(data.data.end_time);
 
-        History.create(vm.data, 'A new call of duration ' + (end - start) / 1000 + ' seconds was made');
+        History.create(vm.data, 'A new call of duration ' + millisToMinutesAndSeconds(end - start) + ' was made');
       }
 
       function callUpdateErrorFn(data, status, headers, config) {
