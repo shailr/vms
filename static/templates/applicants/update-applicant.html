@@ -1,4 +1,4 @@
-<form role="form" ng-submit="vm.update()">
+<form role="form">
   <div class="form-group">
     <table class="table table-bordered">
       <tr>
@@ -757,12 +757,12 @@
         <option value="" disabled selected>Rating</option>
       </select>
 
-      <button type="submit" class="btn btn-primary" ng-disabled="vm.is_disabled" ng-click="vm.endCall()">
+      <button type="button" class="btn btn-primary" ng-disabled="vm.is_disabled" ng-click="vm.endCall(); vm.update();">
         End Call
       </button>
     </div>
     <div ng-show="!$root.current_call">
-      <button type="submit" ng-disabled="vm.is_disabled" class="btn btn-primary">
+      <button type="button" ng-disabled="vm.is_disabled" class="btn btn-primary" ng-click="vm.update()">
         Update
       </button>
     </div>
