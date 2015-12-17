@@ -9,7 +9,7 @@
     ]);
 
   angular
-    .module('vms.applicants.controllers', ['atomic-notify', 'selectionModel']);
+    .module('vms.applicants.controllers', ['atomic-notify', 'selectionModel', 'autocomplete']);
 
   angular
     .module('vms.applicants.directives', ['ngDialog']);
