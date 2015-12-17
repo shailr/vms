@@ -5,36 +5,58 @@
     .module('vms.layout.controllers')
     .controller('IndexController', IndexController);
 
-  IndexController.$inject = ['$scope', 'Organizations'];
+  IndexController.$inject = ['$scope', 'Authentication', 'Applicants'];
 
-  function IndexController($scope, Organizations) {
+  function IndexController($scope, Authentication, Applicants) {
     var vm = this;
-
-    vm.organizations = [];
 
     activate();
 
+    $scope.labels = [];
+
+    $scope.data = [];
+
+    vm.account_data = [];
+
+    vm.number_of_accounts = 0;
+
+    vm.current_count = 0;
+
     function activate() {
-      Organizations.all().then(organizationsSuccessFn, organizationsErrorFn);
+      var bar_data = [];
 
-      $scope.$on('organization.created', function (event, org) {
-        //TODO: Fix unshift
-        //vm.organizations.unshift(org);
+      vm.accounts = [];
 
-        console.log('Supposed to unshift');
-      });
+      Authentication.all()
+        .then(accountsGetSuccessFn, accountsGetErrorFn);
 
-      $scope.$on('organization.created.err', function () {
-        vm.organizations.shift();
-      });
+      function accountsGetSuccessFn(data, status, headers, config) {
+        vm.accounts = data.data.results;
+        vm.number_of_accounts = vm.accounts.length;
 
-      function organizationsSuccessFn(data, status, headers, config) {
-        console.log('here in orgsuccess', data);
-        vm.organizations = data.data;
+        for (var account in vm.accounts) {
+          Applicants.allForAccount(vm.accounts[account].id)
+            .then(applicantsGetSuccessFn, applicantsGetErrorFn);
+        }
       }
 
-      function organizationsErrorFn(data, status, headers, config) {
-        console.log('ERROR in INDEX CONTROLLER');
+      function applicantsGetSuccessFn(data, status, headers, config) {
+        var applicants = data.data;
+
+        $scope.labels.push(applicants[0].assignee);
+        vm.account_data.push(applicants.length);
+
+        if (++vm.current_count == vm.number_of_accounts) {
+          $scope.data.push(vm.account_data);
+        }
+      }
+
+      function applicantsGetErrorFn(data, status, headers, config) {
+        console.log('Error while getting applicants in IndexController');
+      }
+
+      function accountsGetErrorFn(data, status, headers, config) {
+        console.log('Error while getting accounts in IndexController');
       }
     }
   }

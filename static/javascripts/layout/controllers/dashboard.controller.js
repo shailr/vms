@@ -99,7 +99,12 @@
             bar_data.push(vm.stagedApplicants[stage].length);
           }
 
+          console.log(bar_data);
+
           $scope.data.push(bar_data);
+
+          console.log($scope.data);
+          console.log($scope.labels);
         }
 
         function applicantsGetErrorFn(data, status, headers, config) {
