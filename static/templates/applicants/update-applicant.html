@@ -20,6 +20,49 @@
       <table>
   </div>
 
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td> <label for="father_name">Father's Name:</label>
+          <input id="father_name" name="father_name" type="text" class="form-control" placeholder="Name of Father" ng-model="vm.data.data.father_name"></td>
+        <td><label for="father_occupation">Father's Occupation:</label>
+          <input id="father_occupation" name="father_occupation" type="text" class="form-control" placeholder="Occupation of Father" ng-model="vm.data.data.father_occupation"></td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td><label for="mother_name">Mother's Name:</label>
+          <input id="mother_name" name="mother_name" type="text" class="form-control" placeholder="Name of Mother" ng-model="vm.data.data.mother_name"></td>
+        <td><label for="mother_occupation">Mother's Occupation:</label>
+          <input id="mother_occupation" name="mother_occupation" type="text" class="form-control" placeholder="Occupation of Mother" ng-model="vm.data.data.mother_occupation"></td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="form-group">
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <td rowspan="5"><label>Address: </label></td>
+      </tr>
+      <tr>
+        <td><input id="line_1" name="line_1" type="text" class="form-control" placeholder="House No." ng-model="vm.data.data.address.house_no"></td>
+      </tr>
+      <tr>
+        <td><input id="line_2" name="line_2" type="text" class="form-control" placeholder="Area" ng-model="vm.data.data.address.area"></td>
+      </tr>
+      <tr>
+        <td><input id="line_3" name="line_3" type="text" class="form-control" placeholder="Locality" ng-model="vm.data.data.address.locality"></td>
+      </tr>
+      <tr>
+        <td><input id="addr_pincode" name="addr_pincode" type="number" class="form-control" min="0" placeholder="Pin Code" ng-model="vm.data.data.address.pin"></td>
+      </tr>
+    </table>
+  </div>
+
 
   <div id="categories" class="form-group">
     <table class="table table-bordered">
@@ -85,28 +128,6 @@
     </table>
   </div>
 
-  <div class="form-group">
-    <table class="table table-responsive table-bordered">
-      <tr>
-        <td> <label for="father_name">Father's Name:</label>
-          <input id="father_name" name="father_name" type="text" class="form-control" placeholder="Name of Father" ng-model="vm.data.data.father_name"></td>
-        <td><label for="father_occupation">Father's Occupation:</label>
-          <input id="father_occupation" name="father_occupation" type="text" class="form-control" placeholder="Occupation of Father" ng-model="vm.data.data.father_occupation"></td>
-      </tr>
-    </table>
-
-  </div>
-  <div class="form-group">
-    <table class="table table-responsive table-bordered">
-      <tr>
-        <td><label for="mother_name">Mother's Name:</label>
-          <input id="mother_name" name="mother_name" type="text" class="form-control" placeholder="Name of Mother" ng-model="vm.data.data.mother_name"></td>
-        <td><label for="mother_occupation">Mother's Occupation:</label>
-          <input id="mother_occupation" name="mother_occupation" type="text" class="form-control" placeholder="Occupation of Mother" ng-model="vm.data.data.mother_occupation"></td>
-      </tr>
-    </table>
-
-  </div>
   <div id="documents">
     <label for="documents">Documents</label>
     <table class="table table-striped">
@@ -204,25 +225,6 @@
   </div>
 
 
-  <div class="form-group">
-    <table class="table table-responsive table-bordered">
-      <tr>
-        <td rowspan="5"><label>Address: </label></td>
-      </tr>
-      <tr>
-        <td><input id="line_1" name="line_1" type="text" class="form-control" placeholder="House No." ng-model="vm.data.data.address.house_no"></td>
-      </tr>
-      <tr>
-        <td><input id="line_2" name="line_2" type="text" class="form-control" placeholder="Area" ng-model="vm.data.data.address.area"></td>
-      </tr>
-      <tr>
-        <td><input id="line_3" name="line_3" type="text" class="form-control" placeholder="Locality" ng-model="vm.data.data.address.locality"></td>
-      </tr>
-      <tr>
-        <td><input id="addr_pincode" name="addr_pincode" type="number" class="form-control" min="0" placeholder="Pin Code" ng-model="vm.data.data.address.pin"></td>
-      </tr>
-    </table>
-  </div>
 
   <h4>Query Type:</h4>
   <ul id="queryTab" class="nav nav-tabs">
