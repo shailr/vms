@@ -12,6 +12,8 @@
 
     vm.id = $routeParams.id;
 
+    vm.is_disabled = false;
+
     vm.data = {
       address: {},
       birth: {},
@@ -51,6 +53,8 @@
     }
 
     function submit() {
+      vm.is_disabled = true;
+
       Applications.get(vm.id)
         .then(ApplicationGetSuccessFn, ApplicationGetErrorFn);
 

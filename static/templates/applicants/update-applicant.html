@@ -1,10 +1,4 @@
 <form role="form" ng-submit="vm.update()">
-  <div class="row vms-application-details-update">
-    <a class="col-md-12 btn btn-default btn-update" href="javascript:void(0)" ng-click="vm.endCall()" ng-show="$root.current_call">
-      <span>End Call</span>
-    </a>
-  </div>
-
   <div class="form-group">
     <table class="table table-bordered">
       <tr>
@@ -761,12 +755,12 @@
         <option value="" disabled selected>Rating</option>
       </select>
 
-      <button type="submit" class="btn btn-primary" ng-click="vm.endCall()">
+      <button type="submit" class="btn btn-primary" ng-disabled="vm.is_disabled" ng-click="vm.endCall()">
         End Call
       </button>
     </div>
     <div ng-show="!$root.current_call">
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" ng-disabled="vm.is_disabled" class="btn btn-primary">
         Update
       </button>
     </div>

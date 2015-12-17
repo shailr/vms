@@ -17,6 +17,7 @@
     vm.info = undefined;
     vm.ratings = [1, 2, 3, 4, 5];
     vm.rating = 0;
+    vm.is_disabled = false;
 
     vm.update = update;
     vm.endCall = endCall;
@@ -65,10 +66,10 @@
       if($rootScope.current_call) {
         $rootScope.current_call.end = true;
         $rootScope.current_call.rating = vm.rating;
-      }
 
-      Calls.update($rootScope.current_call)
-        .then(callUpdateSuccessFn, callUpdateErrorFn);
+        Calls.update($rootScope.current_call)
+          .then(callUpdateSuccessFn, callUpdateErrorFn);
+      }
 
       function callUpdateSuccessFn(data, status, headers, config) {
         console.log('call update', data.data);
@@ -85,6 +86,8 @@
 
 
     function update() {
+      vm.is_disabled = true;
+
       Applicants.update(vm.data)
         .then(updateApplicantSuccessFn, updateApplicantErrorFn);
 
