@@ -43,12 +43,16 @@
       function applicantsGetSuccessFn(data, status, headers, config) {
         var applicants = data.data;
 
-        $scope.labels.push(applicants[0].assignee);
-        vm.account_data.push(applicants.length);
+	if (applicants.length > 0) {
+          $scope.labels.push(applicants[0].assignee);
+          vm.account_data.push(applicants.length);
 
-        if (++vm.current_count == vm.number_of_accounts) {
-          $scope.data.push(vm.account_data);
-        }
+          if (++vm.current_count == vm.number_of_accounts) {
+            $scope.data.push(vm.account_data);
+          }
+	} else {
+	  vm.current_count++;
+	}
       }
 
       function applicantsGetErrorFn(data, status, headers, config) {
