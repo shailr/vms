@@ -1,14 +1,4 @@
 <form role="form" ng-submit="vm.submit()">
-  <div class="form-group">
-    <table class="table table-responsive table-bordered">
-      <tr>
-        <td> <label for="name">Your Name : </label>
-          <input id="name" name="name" type="text" class="form-control" placeholder="Name" ng-model="vm.data.volunteer_name"></td>
-        <td><label for="organization">Organization : </label>
-          <input id="organization" name="organization" type="text" class="form-control" placeholder="Name of Organization/GRC No" ng-model="vm.data.organization"></td>
-      </tr>
-    </table>
-  </div>
 
   <div class="form-group">
     <table class="table table-bordered">
@@ -191,7 +181,7 @@
     <table class="table table-bordered">
       <tr>
         <td>
-          <label for="applicant__alt_phone">Mobile</label>
+          <label for="applicant__alt_phone">Alternate No</label>
           <input class="form-control"
                  id="applicant__alt_phone"
                  rows="3"
@@ -199,7 +189,7 @@
                  ng-model="vm.data.alternate_number"></input>
         </td>
         <td>
-          <label for="applicant__rel_alt">Mobile</label>
+          <label for="applicant__rel_alt">Relation</label>
           <select name="relation" ng-model="vm.data.rel_alt" ng-options="relation for relation in vm.relations">
             <option value="" disabled selected>Select relation</option>
           </select>
@@ -230,17 +220,17 @@
 
   <h4>Query Type:</h4>
   <ul id="queryTab" class="nav nav-tabs">
-    <li class="active"><a href="#info1" data-toggle="tab">Info 1</a></li>
-    <li><a href="#info2" data-toggle="tab">Info 2</a></li>
-    <li><a href="#doc1" data-toggle="tab">Doc 1</a></li>
-    <li><a href="#doc2" data-toggle="tab">Doc 2</a></li>
-    <li><a href="#doc3" data-toggle="tab">Doc 3</a></li>
-    <li><a href="#app1" data-toggle="tab">App 1</a></li>
-    <li><a href="#app2" data-toggle="tab">App 2</a></li>
-    <li><a href="#app3" data-toggle="tab">App 3</a></li>
-    <li><a href="#lot1" data-toggle="tab">Lot 1</a></li>
-    <li><a href="#lot2" data-toggle="tab">Lot 2</a></li>
-    <li><a href="#lot3" data-toggle="tab">Lot 3</a></li>
+    <li class="active"><a href="#info1" data-toggle="tab" target="_self">Info 1</a></li>
+    <li><a href="#info2" data-toggle="tab" target="_self">Info 2</a></li>
+    <li><a href="#doc1" data-toggle="tab" target="_self">Doc 1</a></li>
+    <li><a href="#doc2" data-toggle="tab" target="_self">Doc 2</a></li>
+    <li><a href="#doc3" data-toggle="tab" target="_self">Doc 3</a></li>
+    <li><a href="#app1" data-toggle="tab" target="_self">App 1</a></li>
+    <li><a href="#app2" data-toggle="tab" target="_self">App 2</a></li>
+    <li><a href="#app3" data-toggle="tab" target="_self">App 3</a></li>
+    <li><a href="#lot1" data-toggle="tab" target="_self">Lot 1</a></li>
+    <li><a href="#lot2" data-toggle="tab" target="_self">Lot 2</a></li>
+    <li><a href="#lot3" data-toggle="tab" target="_self">Lot 3</a></li>
   </ul>
   <div id="queryTabContent" class="tab-content form-group">
     <div class="tab-pane fade in active" id="info1">
@@ -585,11 +575,9 @@
 
   <h4>Information Sources:</h4>
   <ul id="infoSourceTab" class="nav nav-tabs">
-    <li class="active"><a href="#massmedia" data-toggle="tab">Mass Media</a></li>
-    <li><a href="#print" data-toggle="tab">Print Media</a></li>
-    <li><a href="#wom" data-toggle="tab">Word of Mouth</a></li>
-    <li><a href="#volunteers" data-toggle="tab">Volunteers</a></li>
-    <li><a href="#location" data-toggle="tab">Location</a></li>
+    <li class="active"><a href="#massmedia" data-toggle="tab" target="_self">Medium</a></li>
+    <li><a href="#wom" data-toggle="tab" target="_self">Word of Mouth</a></li>
+    <li><a href="#volunteers" data-toggle="tab" target="_self">Channel</a></li>
   </ul>
   <div id="infoSourceTabContent" class="tab-content form-group">
     <div class="tab-pane fade in active" id="massmedia">
@@ -599,48 +587,20 @@
           <td><input class="info_source_chkbox" id="TV" name="info_source_list[]" value="TV" ng-model="vm.info.tv"  type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="Apna_Radio">Apna Radio - 96.9</label></td>
-          <td><input class="info_source_chkbox" id="Apna_Radio" name="info_source_list[]" value="Apna_Radio" ng-model="vm.info.apna_radio" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="DU_Radio">DU Radio</label></td>
-          <td><input class="info_source_chkbox" id="DU_Radio" name="info_source_list[]" value="DU_Radio" ng-model="vm.info.du_radio" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="JIMS_Rohini">JIMS Rohini</label></td>
-          <td><input class="info_source_chkbox" id="JIMS_Rohini" name="info_source_list[]" value="JIMS_Rohini" ng-model="vm.info.jims_rohini" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="JIMS_VasantKunj">JIMS VasantKunj - 90.4</label></td>
-          <td><input class="info_source_chkbox" id="JIMS_VasantKunj" name="info_source_list[]" value="JIMS_VasantKunj" ng-model="vm.info.jims_vasantkunj" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="Jamia_Radio">Jamia Radio</label></td>
-          <td><input class="info_source_chkbox" id="Jamia_Radio" name="info_source_list[]" value="Jamia_Radio" ng-model="vm.info.jamia_radio" type="checkbox"></td>
-        </tr>
-      </table>
-    </div>
-    <div class="tab-pane fade" id="print">
-      <table class="table table-striped table-bordered">
-        <tr>
-          <td><label for="poster">Poster</label></td>
-          <td><input class="info_source_chkbox" id="poster" name="info_source_list[]" value="poster" ng-model="vm.info.poster" type="checkbox"></td>
-        </tr>
-        <tr>
           <td><label for="pamphlet">Pamphlet</label></td>
           <td><input class="info_source_chkbox" id="pamphlet" name="info_source_list[]" value="pamphlet" ng-model="vm.info.pamphlet" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="banner">Banner</label></td>
-          <td><input class="info_source_chkbox" id="banner" name="info_source_list[]" value="banner" ng-model="vm.info.banner" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="sticker">Sticker</label></td>
-          <td><input class="info_source_chkbox" id="sticker" name="info_source_list[]" value="sticker" ng-model="vm.info.banner" type="checkbox"></td>
+          <td><label for="sticker">Sticker/Poster</label></td>
+          <td><input class="info_source_chkbox" id="sticker" name="info_source_list[]" value="sticker" ng-model="vm.info.sticker" type="checkbox"></td>
         </tr>
         <tr>
           <td><label for="newspaper">Newspaper</label></td>
           <td><input class="info_source_chkbox" id="newspaper" name="info_source_list[]" value="newspaper" ng-model="vm.info.newspaper" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="Radio">Radio</label></td>
+          <td><input class="info_source_chkbox" id="radio" name="info_source_list[]" value="radio" ng-model="vm.info.radio" type="checkbox"></td>
         </tr>
       </table>
     </div>
@@ -651,16 +611,20 @@
           <td><input class="info_source_chkbox" id="husband_wife" name="info_source_list[]" value="husband_wife" ng-model="vm.info.husband_wife" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="neighbours">Neighbours</label></td>
-          <td><input class="info_source_chkbox" id="neighbours" name="info_source_list[]" value="neighbours" ng-model="vm.info.neighbours" type="checkbox"></td>
+          <td><label for="neighbours">Neighbour/Friend (Male)</label></td>
+          <td><input class="info_source_chkbox" id="neighbour_male" name="info_source_list[]" value="neighbour_male" ng-model="vm.info.neighbour_male" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="relative">Relative</label></td>
-          <td><input class="info_source_chkbox" id="relative" name="info_source_list[]" value="relative" ng-model="vm.info.relative" type="checkbox"></td>
+          <td><label for="neighbours">Neighbour/Friend (Female)</label></td>
+          <td><input class="info_source_chkbox" id="neighbour_female" name="info_source_list[]" value="neighbour_female" ng-model="vm.info.neighbour_female" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="friend">Friend</label></td>
-          <td><input class="info_source_chkbox" id="friend" name="info_source_list[]" value="friend" ng-model="vm.info.friend" type="checkbox"></td>
+          <td><label for="relative_male">Relative (Male)</label></td>
+          <td><input class="info_source_chkbox" id="relative_male" name="info_source_list[]" value="relative_male" ng-model="vm.info.relative_male" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="relative_female">Relative (Female)</label></td>
+          <td><input class="info_source_chkbox" id="relative_female" name="info_source_list[]" value="relative_female" ng-model="vm.info.relative_female" type="checkbox"></td>
         </tr>
         <tr>
           <td><label for="street_play">Street Play</label></td>
@@ -672,47 +636,32 @@
         </tr>
       </table>
     </div>
+
     <div class="tab-pane fade" id="volunteers">
       <table class="table table-striped table-bordered">
         <tr>
-          <td><label for="katha">Katha</label></td>
-          <td><input class="info_source_chkbox" id="katha" name="info_source_list[]" value="katha" ng-model="vm.info.katha" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="sewa">Sewa</label></td>
-          <td><input class="info_source_chkbox" id="sewa" name="info_source_list[]" value="sewa" ng-model="vm.info.sewa" type="checkbox"></td>
+          <td><label for="Anganwadi">Anganwadi</label></td>
+          <td><input class="info_source_chkbox" id="Anganwadi" name="info_source_list[]" value="Anganwadi" ng-model="vm.info.anganwadi" type="checkbox"></td>
         </tr>
         <tr>
           <td><label for="pratham">Pratham</label></td>
           <td><input class="info_source_chkbox" id="pratham" name="info_source_list[]" value="pratham" ng-model="vm.info.pratham" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="NIIT">NIIT</label></td>
-          <td><input class="info_source_chkbox" id="NIIT" name="info_source_list[]" value="NIIT" ng-model="vm.info.niit" type="checkbox"></td>
+          <td><label for="ngo">NGO</label></td>
+          <td><input class="info_source_chkbox" id="ngo" name="info_source_list[]" value="ngo" ng-model="vm.info.ngo" type="checkbox"></td>
         </tr>
-        <tr>
-          <td><label for="Community_Champion">Community Champion</label></td>
-          <td><input class="info_source_chkbox" id="Community_Champion" name="info_source_list[]" ng-model="vm.info.community_champion" value="Community_Champion" type="checkbox"></td>
-        </tr>
-      </table>
-    </div>
-    <div class="tab-pane fade" id="location">
-      <table class="table table-striped table-bordered">
         <tr>
           <td><label for="GRC">GRC</label></td>
           <td><input class="info_source_chkbox" id="GRC" name="info_source_list[]" value="GRC" ng-model="vm.info.grc" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="Anganwadi">Anganwadi</label></td>
-          <td><input class="info_source_chkbox" id="Anganwadi" name="info_source_list[]" value="Anganwadi" ng-model="vm.info.anganwadi" type="checkbox"></td>
+          <td><label for="Community_Champion">Community Champion</label></td>
+          <td><input class="info_source_chkbox" id="Community_Champion" name="info_source_list[]" ng-model="vm.info.community_champion" value="Community_Champion" type="checkbox"></td>
         </tr>
         <tr>
-          <td><label for="BSES">BSES</label></td>
-          <td><input class="info_source_chkbox" id="BSES" name="info_source_list[]" value="BSES" ng-model="vm.info.bses" type="checkbox"></td>
-        </tr>
-        <tr>
-          <td><label for="LPG">LPG</label></td>
-          <td><input class="info_source_chkbox" id="LPG" name="info_source_list[]" value="LPG" ng-model="vm.info.lpg" type="checkbox"></td>
+          <td><label for="volunteer">Volunteer</label></td>
+          <td><input class="info_source_chkbox" id="volunteer" name="info_source_list[]" value="volunteer" ng-model="vm.info.volunteer" type="checkbox"></td>
         </tr>
         <tr>
           <td><label for="Other">Other</label></td>
@@ -721,6 +670,72 @@
       </table>
     </div>
   </div>
+
+  <h4>Motivation</h4>
+  <ul id="motivationTab" class="nav nav-tabs">
+    <li class="active"><a href="#mot1" data-toggle="tab" target="_self">Motivated</a></li>
+    <li><a href="#mot2" data-toggle="tab" target="_self">Not Motivated</a></li>
+  </ul>
+  <div id="motivationTabContent" class="tab-content form-group">
+    <div class="tab-pane fade in active" id="mot1">
+      <table class="table table-striped table-bordered">
+        <tr>
+          <td><label for="mot1a">Family ne bahut sare kaam ke sawaal puche</label></td>
+          <td><input class="info_source_chkbox" id="mot1a" name="info_source_list[]" value="mot1a" ng-model="vm.info.mot1a"  type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot1b">Family ne last year apply kiya tha. Admission nahi hua.</label></td>
+          <td><input class="info_source_chkbox" id="mot1b" name="info_source_list[]" value="mot1b" ng-model="vm.info.mot1b" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot1c">Family sare problems face karne ke liye ready hai</label></td>
+          <td><input class="info_source_chkbox" id="mot1c" name="info_source_list[]" value="mot1c" ng-model="vm.info.mot1c" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot1d">Family apne bachche ke bavishya ke bare mein bahut aashawad hai</label></td>
+          <td><input class="info_source_chkbox" id="mot1d" name="info_source_list[]" value="mot1d" ng-model="vm.info.mot1d" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot1e">Family aage 10 logo ko jarur bataegi</label></td>
+          <td><input class="info_source_chkbox" id="mot1e" name="info_source_list[]" value="mot1e" ng-model="vm.info.mot1e" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot1f">Family baar baar call kar rahi hai</label></td>
+          <td><input class="info_source_chkbox" id="mot1f" name="info_source_list[]" value="mot1f" ng-model="vm.info.mot1f" type="checkbox"></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="mot2">
+      <table class="table table-striped table-bordered">
+        <tr>
+          <td><label for="mot2a">Family jankaari se utsahit nahi thi</label></td>
+          <td><input class="info_source_chkbox" id="mot2a" name="info_source_list[]" value="mot2a" ng-model="vm.info.mot2a"  type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot2b">Family ne bahut kam kaam ke sawaal puche</label></td>
+          <td><input class="info_source_chkbox" id="mot2b" name="info_source_list[]" value="mot2b" ng-model="vm.info.mot2b" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot2c">Family ka last year admission nahi hua. Aur is saal bhi aashawadi nahi hai.</label></td>
+          <td><input class="info_source_chkbox" id="mot2c" name="info_source_list[]" value="mot2c" ng-model="vm.info.mot2c" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot2d">Family chahti hai ki hum sara kaam kar ke de</label></td>
+          <td><input class="info_source_chkbox" id="mot2d" name="info_source_list[]" value="mot2d" ng-model="vm.info.mot2d" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot2e">Family sarkar ki shcemo ke bare mein aashawadi nahi hai</label></td>
+          <td><input class="info_source_chkbox" id="mot2e" name="info_source_list[]" value="mot2e" ng-model="vm.info.mot2e" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label for="mot2f">Family ne achche se baat nahi ki</label></td>
+          <td><input class="info_source_chkbox" id="mot2f" name="info_source_list[]" value="mot2f" ng-model="vm.info.mot2f" type="checkbox"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
 
   <div class="form-group">
     <label for="other_info_source">Other Information Sources/ Anything else : </label>
