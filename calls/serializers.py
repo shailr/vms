@@ -37,6 +37,9 @@ class CallSerializer(serializers.ModelSerializer):
         if 'end' in validated_data.keys():
             instance.end = validated_data['end']
 
+        if 'rating' in validated_data.keys():
+            instance.rating = validated_data['rating']
+
         instance.save()
 
         return instance

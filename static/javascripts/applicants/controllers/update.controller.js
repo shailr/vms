@@ -15,6 +15,8 @@
     vm.data = undefined;
     vm.query = undefined;
     vm.info = undefined;
+    vm.ratings = [1, 2, 3, 4, 5];
+    vm.rating = 0;
 
     vm.update = update;
     vm.endCall = endCall;
@@ -62,6 +64,7 @@
     function endCall() {
       if($rootScope.current_call) {
         $rootScope.current_call.end = true;
+        $rootScope.current_call.rating = vm.rating;
       }
 
       Calls.update($rootScope.current_call)
