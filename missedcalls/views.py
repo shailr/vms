@@ -6,6 +6,8 @@ import requests
 from applications.models import Application
 from applicants.models import Applicant
 from stages.models import Stage
+from inboxmessages.models import InboxMessage
+from authentication.models import Account
 
 
 class MissedCall(views.APIView):
@@ -26,9 +28,22 @@ class MissedCall(views.APIView):
                 app.assignee = stage.assignee
                 app.number_of_missed_calls = 1
 
+                InboxMessage.objects.create(message="Gave a missed call",
+                                            applicant=app,
+                                            user=app.assignee)
+
                 app.save()
             else:
                 app.number_of_missed_calls += 1
+
+                InboxMessage.objects.create(message="Gave a missed call",
+                                            applicant=app,
+                                            user=app.assignee)
+
+                if app.assignee != app.stage.assignee:
+                    InboxMessage.objects.create(message="Gave a missed call",
+                                                applicant=app,
+                                                user=app.stage.assignee)
 
                 app.save()
 
