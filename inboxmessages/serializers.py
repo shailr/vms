@@ -28,7 +28,7 @@ class InboxMessageSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         id = validated_data['applicant']['id']
-        user_id = validated_data['user']['id']
+        user_id = validated_data['user']
 
         applicant = Applicant.objects.get(pk=id)
         user = Account.objects.get(pk=user_id)

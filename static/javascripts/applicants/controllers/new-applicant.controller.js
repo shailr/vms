@@ -74,7 +74,7 @@
 
           atomicNotifyService.success('yay! awesome');
 
-          $location.url('/applications/' + vm.id + '/applicants/');
+          $location.url('/applications/' + vm.id + '/applicants/' + data.data.id);
         }
 
         function createApplicantErrorFn(data, status, headers, config) {
@@ -82,7 +82,7 @@
 
           console.log('asdasdasdasdadasd', data.data);
 
-          $location.url('/applications/' + vm.id + '/applicants/');
+          $location.url('/applications/' + vm.id + '/applicants/' + data.data.id);
         }
       }
 

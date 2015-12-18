@@ -49,10 +49,14 @@ class ApplicantSerializer(serializers.ModelSerializer):
         instance.data = validated_data['data']
         instance.query = validated_data['query']
         instance.info = validated_data['info']
-        instance.starred = validated_data['starred']
-        instance.archived = validated_data['archived']
-        instance.stage = Stage.objects.get(name=validated_data['stage']['name'])
-        instance.assignee = validated_data['assignee']
+        if 'starred' in validated_data.keys():
+            instance.starred = validated_data['starred']
+        if 'archived' in validated_data.keys():
+            instance.archived = validated_data['archived']
+        if 'stage' in validated_data.keys():
+            instance.stage = Stage.objects.get(name=validated_data['stage']['name'])
+        if 'assignee' in validated_data.keys():
+            instance.assignee = validated_data['assignee']
 
         instance.save()
 

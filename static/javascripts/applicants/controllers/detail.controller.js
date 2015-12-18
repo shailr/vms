@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('ApplicantDetailController', ApplicantDetailController);
 
-  ApplicantDetailController.$inject = ['$location', '$routeParams', '$rootScope', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages', 'Authentication', 'Calls'];
+  ApplicantDetailController.$inject = ['$location', '$routeParams', '$rootScope', 'Applicants', 'Notes', 'ApplicantMessages', 'Todos', 'History', 'Tags', 'Stages', 'Authentication', 'Calls', 'InboxMessages'];
 
-  function ApplicantDetailController($location, $routeParams, $rootScope, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages, Authentication, Calls) {
+  function ApplicantDetailController($location, $routeParams, $rootScope, Applicants, Notes, ApplicantMessages, Todos, History, Tags, Stages, Authentication, Calls, InboxMessages) {
     var vm = this;
 
     vm.applicant = undefined;
@@ -97,6 +97,17 @@
 
           History.create(vm.applicant, "Stage was changed to " + vm.stage.name + "")
             .then(historyCreateSuccessFn, historyCreateErrorFn);
+
+          InboxMessages.create(vm.applicant, 'was moved to stage ' + vm.stage.name, vm.stage.assignee)
+            .then(inboxMessageCreateSuccessFn, inboxMessageCreateErrorFn);
+
+          function inboxMessageCreateSuccessFn(data, status, headers, config) {
+            console.log('inbox message = ', data.data);
+          }
+
+          function inboxMessageCreateErrorFn(data, status, headers, config) {
+            console.log('Error while creating inbox message in ApplicantDetailController');
+          }
 
           function historyCreateSuccessFn(data, status, headers, config) {
             console.log('history = ', data.data);
