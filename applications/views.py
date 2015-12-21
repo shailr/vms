@@ -25,8 +25,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
     @list_route(permission_classes=[IsAccountOwner])
     def overview(self, request):
-        applications = Application.objects.filter(organization=request.user.organization,
-                                                  archived=False)
+        applications = Application.objects.filter(archived=False)
 
         serializer = self.get_serializer(applications, many=True)
 
