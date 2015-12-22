@@ -36,6 +36,8 @@ class MissedCall(views.APIView):
             else:
                 app.number_of_missed_calls += 1
 
+                app.stage = Stage.objects.get(default_stage=True)
+
                 InboxMessage.objects.create(message="Gave a missed call",
                                             applicant=app,
                                             user=app.assignee)
