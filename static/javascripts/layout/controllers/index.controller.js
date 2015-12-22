@@ -22,6 +22,15 @@
 
     vm.current_count = 0;
 
+    // temp fix for user names instead of id
+    vm.users = {
+      "1": "Ashwin Dubey",
+      "2": "Muniraj Sisodia",
+      "3": "Mahender Singh",
+      "4": "Sandeep Sisodia",
+      "4": "Shailesh Yadav"
+    }
+
     function activate() {
       var bar_data = [];
 
@@ -43,8 +52,16 @@
       function applicantsGetSuccessFn(data, status, headers, config) {
         var applicants = data.data;
 
+        for (var applicant in applicants) {
+          if (applicants[applicant].stage.name !== "Calling") {
+            applicants.splice(applicant, 1);
+          }
+        }
+
 	if (applicants.length > 0) {
-          $scope.labels.push(applicants[0].assignee);
+          var id = applicants[0].assignee;
+
+          $scope.labels.push(vm.users[id]);
           vm.account_data.push(applicants.length);
 
           if (++vm.current_count == vm.number_of_accounts) {
