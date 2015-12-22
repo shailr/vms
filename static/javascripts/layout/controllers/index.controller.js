@@ -50,25 +50,27 @@
       }
 
       function applicantsGetSuccessFn(data, status, headers, config) {
-        var applicants = data.data;
+        var applicants = data.data, 
+	  applicants_in_calling = [];
 
         for (var applicant in applicants) {
-          if (applicants[applicant].stage.name !== "Calling") {
-            applicants.splice(applicant, 1);
+          if (applicants[applicant].stage.name === "Calling") {
+	      applicants_in_calling.push(applicants[applicant]);
           }
         }
 
-	if (applicants.length > 0) {
+	if (applicants_in_calling.length > 0) {
           var id = applicants[0].assignee;
-
           $scope.labels.push(vm.users[id]);
-          vm.account_data.push(applicants.length);
+          vm.account_data.push(applicants_in_calling.length);
 
           if (++vm.current_count == vm.number_of_accounts) {
             $scope.data.push(vm.account_data);
           }
 	} else {
-	  vm.current_count++;
+	  if (++vm.current_count == vm.number_of_accounts) {
+            $scope.data.push(vm.account_data);
+          }
 	}
       }
 
