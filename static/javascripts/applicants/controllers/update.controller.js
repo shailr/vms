@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('UpdateApplicantController', UpdateApplicantController);
 
-  UpdateApplicantController.$inject = ['$routeParams', '$rootScope', '$location', 'Applicants', 'History', 'Calls'];
+  UpdateApplicantController.$inject = ['$routeParams', '$rootScope', '$scope', '$location', 'Applicants', 'History', 'Calls', 'Locations'];
 
-  function UpdateApplicantController($routeParams, $rootScope, $location, Applicants, History, Calls) {
+  function UpdateApplicantController($routeParams, $rootScope, $scope, $location, Applicants, History, Calls, Locations) {
     var vm = this,
         id = $routeParams.id,
         app_id = $routeParams.app_id;
@@ -18,6 +18,23 @@
     vm.ratings = [1, 2, 3, 4, 5];
     vm.rating = 0;
     vm.is_disabled = false;
+
+    $scope.areas = [];
+
+    $scope.updateLocations = function (typed) {
+      if (typed.length >= 3) {
+        Locations.like(typed)
+          .then(locationsGetSuccessFn, locationsGetErrorFn);
+      }
+    }
+
+    $scope.locationSelected = function (location) {
+      var addresses = location.split('><');
+
+      vm.data.data.address.area = addresses[0];
+      vm.data.data.address.locality = addresses[1];
+      vm.data.data.address.constituency = addresses[2];
+    }
 
     vm.update = update;
     vm.endCall = endCall;
@@ -43,6 +60,20 @@
       else if(vm.data.data.num_children < prev_length) {
 	vm.data.data.children = vm.data.data.children.slice(0, vm.data.data.num_children);
       }
+    }
+
+    function locationsGetSuccessFn(data, status, headers, config) {
+      var areas = data.data;
+
+      $scope.areas = [];
+
+      for (var area in areas) {
+        $scope.areas.push(areas[area].address);
+      }
+    }
+
+    function locationsGetErrorFn(data, status, headers, config) {
+      console.log('Error in getting locations in ApplicantUpdateController');
     }
 
     function activate() {

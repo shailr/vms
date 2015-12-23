@@ -46,7 +46,10 @@
   <div class="form-group">
     <table class="table table-responsive table-bordered">
       <tr>
-        <td rowspan="5"><label>Address: </label></td>
+        <td rowspan="7"><label>Address: </label></td>
+      </tr>
+      <tr>
+        <autocomplete ng-model="vm.location" data="areas" on-type="updateLocations" attr-placeholder="Type the location here..." on-select="locationSelected"></autocomplete>
       </tr>
       <tr>
         <td><input id="line_1" name="line_1" type="text" class="form-control" placeholder="House No." ng-model="vm.data.data.address.house_no"></td>
@@ -56,6 +59,9 @@
       </tr>
       <tr>
         <td><input id="line_3" name="line_3" type="text" class="form-control" placeholder="Locality" ng-model="vm.data.data.address.locality"></td>
+      </tr>
+      <tr>
+        <td><input id="line_4" name="line_4" type="text" class="form-control" placeholder="Constituency" ng-model="vm.data.data.address.constituency"></td>
       </tr>
       <tr>
         <td><input id="addr_pincode" name="addr_pincode" type="number" class="form-control" min="0" placeholder="Pin Code" ng-model="vm.data.data.address.pin"></td>

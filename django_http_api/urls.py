@@ -18,6 +18,7 @@ from inboxmessages.views import InboxMessageViewSet, AccountInboxMessageViewSet
 from message_templates.views import MessageTemplateViewSet
 from missedcalls.views import MissedCall
 from calls.views import CallViewSet, ApplicantCallsViewSet
+from locations.views import LocationViewSet
 
 from views import DefaultTemplateView
 # Uncomment the next two lines to enable the admin:
@@ -38,6 +39,7 @@ router.register(r'tags', TagViewSet)
 router.register(r'inboxmessages', InboxMessageViewSet)
 router.register(r'message_templates', MessageTemplateViewSet)
 router.register(r'calls', CallViewSet)
+router.register(r'locations', LocationViewSet)
 
 applications_router = routers.NestedSimpleRouter(
     router, r'applications', lookup='application'
