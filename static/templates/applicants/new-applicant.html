@@ -46,7 +46,10 @@
   <div class="form-group">
     <table class="table table-responsive table-bordered">
       <tr>
-        <td rowspan="5"><label>Address: </label></td>
+        <td rowspan="7"><label>Address: </label></td>
+      </tr>
+      <tr>
+        <autocomplete ng-model="vm.location" data="areas" on-type="updateLocations" attr-placeholder="Type the location here..." on-select="locationSelected"></autocomplete>
       </tr>
       <tr>
         <td><input id="line_1" name="line_1" type="text" class="form-control" placeholder="House No." ng-model="vm.data.address.house_no"></td>
@@ -56,6 +59,9 @@
       </tr>
       <tr>
         <td><input id="line_3" name="line_3" type="text" class="form-control" placeholder="Locality" ng-model="vm.data.address.locality"></td>
+      </tr>
+      <tr>
+        <td><input id="line_4" name="line_4" type="text" class="form-control" placeholder="Constituency" ng-model="vm.data.address.constituency"></td>
       </tr>
       <tr>
         <td><input id="addr_pincode" name="addr_pincode" type="number" class="form-control" min="0" placeholder="Pin Code" ng-model="vm.data.address.pin"></td>
@@ -238,18 +244,22 @@
     <div class="tab-pane fade in active" id="info1">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="info1a">RTE Section 12 ke baare me jankaari</label></td>
           <td><input class="query_chkbox" id="info1a" name="query_list[]" value="info1a" ng-model="vm.query.info1a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="info1b">Category ke baare me poocha/bataya</label></td>
           <td><input class="query_chkbox" id="info1b" name="query_list[]" value="info1b" ng-model="vm.query.info1b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="info1c">Documents ke baare me bataya</label></td>
           <td><input class="query_chkbox" id="info1c" name="query_list[]" value="info1c" ng-model="vm.query.info1c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="info1d">Bache ki umar ke baare me bataya</label></td>
           <td><input class="query_chkbox" id="info1d" name="query_list[]" value="info1d" ng-model="vm.query.info1d" type="checkbox"></td>
         </tr>
@@ -258,29 +268,36 @@
     <div class="tab-pane fade" id="info2">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="info2a">Indus Action Kya karta hai</label></td>
           <td><input class="query_chkbox" id="info2a" name="query_list[]" value="info2a"  ng-model="vm.query.info2a" type="checkbox"></td>
         <tr>
+          <td><label>2</label></td>
           <td><label for="info2b">Padosi ke ya rishtedaar ke bache ke baare me pucha</label></td>
           <td><input class="query_chkbox" id="info2b" name="query_list[]" value="info2b"  ng-model="vm.query.info2b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="info2c">Volunteer/Community Champion ne call kiya</label></td>
           <td><input class="query_chkbox" id="info2c" name="query_list[]" value="info2c" ng-model="vm.query.info2c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="info2d">Mazaak me phone kiya</label></td>
           <td><input class="query_chkbox" id="info2d" name="query_list[]" value="info2d" ng-model="vm.query.info2d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="info2e">Non Delhi Caller</label></td>
           <td><input class="query_chkbox" id="info2e" name="query_list[]" value="info2e" ng-model="vm.query.info2e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="info2f">Bache ki umar 3-6 me nahi aati</label></td>
           <td><input class="query_chkbox" id="info2f" name="query_list[]" value="info2f" ng-model="vm.query.info2f" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="info2g">Last year caller, school paise maang raha hai</label></td>
           <td><input class="query_chkbox" id="info2g" name="query_list[]" value="info2g" ng-model="vm.query.info2g" type="checkbox"></td>
         </tr>
@@ -289,10 +306,12 @@
     <div class="tab-pane fade" id="doc2">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="doc2a">Sarkari officer meri baat nahi sun raha</label></td>
           <td><input class="query_chkbox" id="doc2a" name="query_list[]" value="doc2a" ng-model="vm.query.doc2a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="doc2b">Sarkari officer income certificate ke paise maangta hai</label></td>
           <td><input class="query_chkbox" id="doc2b" name="query_list[]" value="doc2b" ng-model="vm.query.doc2b" type="checkbox"></td>
         </tr>
@@ -301,42 +320,52 @@
     <div class="tab-pane fade" id="doc1">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="doc1a">Mere pass koi bhi document nahi hai</label></td>
           <td><input class="query_chkbox" id="doc1a" name="query_list[]" value="doc1a" ng-model="vm.query.doc1a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="doc1b">Affidavit kya hota hai, kahan se milege?</label></td>
           <td><input class="query_chkbox" id="doc1b" name="query_list[]" value="doc1b" ng-model="vm.query.doc1b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="doc1c">Document attest kis se karvane hai?</label></td>
           <td><input class="query_chkbox" id="doc1c" name="query_list[]" value="doc1c" ng-model="vm.query.doc1c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="doc1d">Mujhe SDM office ka address bataiye</label></td>
           <td><input class="query_chkbox" id="doc1d" name="query_list[]" value="doc1d" ng-model="vm.query.doc1d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="doc1e">Procedure for income certificate</label></td>
           <td><input class="query_chkbox" id="doc1e" name="query_list[]" value="doc1e" ng-model="vm.query.doc1e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="doc1f">Procedure for caste certificate</label></td>
           <td><input class="query_chkbox" id="doc1f" name="query_list[]" value="doc1f" ng-model="vm.query.doc1f" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="doc1g">Procedure for birth certificate</label></td>
           <td><input class="query_chkbox" id="doc1g" name="query_list[]" value="doc1g" ng-model="vm.query.doc1g" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>8</label></td>
           <td><label for="doc1h">Procedure for disability certificate</label></td>
           <td><input class="query_chkbox" id="doc1h" name="query_list[]" value="doc1h" ng-model="vm.query.doc1h" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>9</label></td>
           <td><label for="doc1i">Procedure for orphan certificate</label></td>
           <td><input class="query_chkbox" id="doc1i" name="query_list[]" value="doc1i" ng-model="vm.query.doc1i" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>10</label></td>
           <td><label for="doc1j">Procedure for new address proof</label></td>
           <td><input class="query_chkbox" id="doc1j" name="query_list[]" value="doc1j" ng-model="vm.query.doc1j" type="checkbox"></td>
         </tr>
@@ -345,26 +374,32 @@
     <div class="tab-pane fade" id="doc3">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="doc3a">Mere pitaji ke cast certificate chalega?</label></td>
           <td><input class="query_chkbox" id="doc3a" name="query_list[]" value="doc3a" ng-model="vm.query.doc3a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="doc3b">Income certificate ke liye 3 saal ka proof maang rahe hain</label></td>
           <td><input class="query_chkbox" id="doc3b" name="query_list[]" value="doc3b" ng-model="vm.query.doc3b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="doc3c">Husband wife alag alag jaati ke hain, kiska certificate chalega?</label></td>
           <td><input class="query_chkbox" id="doc3c" name="query_list[]" value="doc3c" ng-model="vm.query.doc3c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="doc3d">Husband wife alag alag rehte hain</label></td>
           <td><input class="query_chkbox" id="doc3d" name="query_list[]" value="doc3d" ng-model="vm.query.doc3d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="doc3e">Income certificate aane me bahut time lagta hai</label></td>
           <td><input class="query_chkbox" id="doc3e" name="query_list[]" value="doc3e" ng-model="vm.query.doc3e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="doc3f">Income certificate ki raseed chalegi?</label></td>
           <td><input class="query_chkbox" id="doc3f" name="query_list[]" value="doc3f" ng-model="vm.query.doc3f" type="checkbox"></td>
         </tr>
@@ -373,30 +408,37 @@
     <div class="tab-pane fade" id="app1">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="app1a">Application form kahan milega?</label></td>
           <td><input class="query_chkbox" id="app1a" name="query_list[]" value="app1a" ng-model="vm.query.app1a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="app1b">Mai kitne schoolo me apply kar sakta hun?</label></td>
           <td><input class="query_chkbox" id="app1b" name="query_list[]" value="app1b" ng-model="vm.query.app1b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="app1c">Mere area ke school ke baare me bataiye</label></td>
           <td><input class="query_chkbox" id="app1c" name="query_list[]" value="app1c" ng-model="vm.query.app1c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="app1d">Mere ghar ke 1-3 ke daayre me koi school nahi hai</label></td>
           <td><input class="query_chkbox" id="app1d" name="query_list[]" value="app1d" ng-model="vm.query.app1d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="app1e">Application form bharne ki dates kya hai</label></td>
           <td><input class="query_chkbox" id="app1e" name="query_list[]" value="app1e" ng-model="vm.query.app1e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="app1f">Mai online form bhar sakta hun?</label></td>
           <td><input class="query_chkbox" id="app1f" name="query_list[]" value="app1f" ng-model="vm.query.app1f" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="app1g">Mai nervous hun kuch samajh nahi aa raha</label></td>
           <td><input class="query_chkbox" id="app1g" name="query_list[]" value="app1g" ng-model="vm.query.app1g" type="checkbox"></td>
         </tr>
@@ -405,50 +447,62 @@
     <div class="tab-pane fade" id="app2">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="app2a">School EWS seats ke baare me bata nahi raha</label></td>
           <td><input class="query_chkbox" id="app2a" name="query_list[]" value="app2a" ng-model="vm.query.app2a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="app2b">School ke guard ache se baat nahi karte, andar bhi nahi jaane dete</label></td>
           <td><input class="query_chkbox" id="app2b" name="query_list[]" value="app2b" ng-model="vm.query.app2b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="app2c">School form nahi de raha, baat bhi ache se nahi karta</label></td>
           <td><input class="query_chkbox" id="app2c" name="query_list[]" value="app2c" ng-model="vm.query.app2c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="app2d">School keh raha ki sab seats bhar gayi</label></td>
           <td><input class="query_chkbox" id="app2d" name="query_list[]" value="app2d" ng-model="vm.query.app2d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="app2e">School mere form nahi le raha</label></td>
           <td><input class="query_chkbox" id="app2e" name="query_list[]" value="app2e" ng-model="vm.query.app2e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="app2f">School form nahi de raha kyuki mera ghar 1 km me nahi aata</label></td>
           <td><input class="query_chkbox" id="app2f" name="query_list[]" value="app2f" ng-model="vm.query.app2f" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="app2g">School income certificate ki raseed nahi le raha</label></td>
           <td><input class="query_chkbox" id="app2g" name="query_list[]" value="app2g" ng-model="vm.query.app2g" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>8</label></td>
           <td><label for="app2h">Schools section 12 me nahi aata - (minority school)</label></td>
           <td><input class="query_chkbox" id="app2h" name="query_list[]" value="app2h" ng-model="vm.query.app2h" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>9</label></td>
           <td><label for="app2i">Schools books aur uniform ke paise maang raha hai</label></td>
           <td><input class="query_chkbox" id="app2i" name="query_list[]" value="app2i" ng-model="vm.query.app2i" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>10</label></td>
           <td><label for="app2j">School ne application form ki raseed nahi di</label></td>
           <td><input class="query_chkbox" id="app2j" name="query_list[]" value="app2j" ng-model="vm.query.app2j" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>11</label></td>
           <td><label for="app2k">School keh raha hai ki abhi tak dates nahi aayi</label></td>
           <td><input class="query_chkbox" id="app2k" name="query_list[]" value="app2k" ng-model="vm.query.app2k" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>12</label></td>
           <td><label for="app2l">School ki dates over</label></td>
           <td><input class="query_chkbox" id="app2l" name="query_list[]" value="app2l" ng-model="vm.query.app2l" type="checkbox"></td>
         </tr>
@@ -457,22 +511,27 @@
     <div class="tab-pane fade" id="app3">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="app3a">Form bharne me madad kari</label></td>
           <td><input class="query_chkbox" id="app3a" name="query_list[]" value="app3a" ng-model="vm.query.app3a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="app3b">Mai khud se form print karu/xerox karu to wo chalega?</label></td>
           <td><input class="query_chkbox" id="app3b" name="query_list[]" value="app3b" ng-model="vm.query.app3b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="app3c">Form attest kahan se karvana hai?</label></td>
           <td><input class="query_chkbox" id="app3c" name="query_list[]" value="app3c" ng-model="vm.query.app3c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="app3d">Gazzeted officer kahan milega?</label></td>
           <td><input class="query_chkbox" id="app3d" name="query_list[]" value="app3d" ng-model="vm.query.app3d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="app3e">online form ka link diya (bit.do/ewsform)</label></td>
           <td><input class="query_chkbox" id="app3e" name="query_list[]" value="app3e" ng-model="vm.query.app3e" type="checkbox"></td>
         </tr>
@@ -481,22 +540,27 @@
     <div class="tab-pane fade" id="lot1">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="lot1a">Lottery dates kab hai?</label></td>
           <td><input class="query_chkbox" id="lot1a" name="query_list[]" value="lot1a" ng-model="vm.query.lot1a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="lot1b">Lottery kaise hogi?</label></td>
           <td><input class="query_chkbox" id="lot1b" name="query_list[]" value="lot1b" ng-model="vm.query.lot1b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="lot1c">Lottery me mujhe jaana jaroori hai?</label></td>
           <td><input class="query_chkbox" id="lot1c" name="query_list[]" value="lot1c" ng-model="vm.query.lot1c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="lot1d">School mujhe lottery ki dates ke baare me batayega?</label></td>
           <td><input class="query_chkbox" id="lot1d" name="query_list[]" value="lot1d" ng-model="vm.query.lot1d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="lot1e">School ka 1-3 km ka daayara sahi nahi hai</label></td>
           <td><input class="query_chkbox" id="lot1e" name="query_list[]" value="lot1e" ng-model="vm.query.lot1e" type="checkbox"></td>
         </tr>
@@ -505,22 +569,27 @@
     <div class="tab-pane fade" id="lot2">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="lot2a">School lottery ke dates nahi bata raha</label></td>
           <td><input class="query_chkbox" id="lot2a" name="query_list[]" value="lot2a" ng-model="vm.query.lot2a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="lot2b">School ne bina bataye lottery karva di</label></td>
           <td><input class="query_chkbox" id="lot2b" name="query_list[]" value="lot2b" ng-model="vm.query.lot2b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="lot2c">Lottery cancel ho gayi</label></td>
           <td><input class="query_chkbox" id="lot2c" name="query_list[]" value="lot2c" ng-model="vm.query.lot2c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="lot2d">Lottery me koi bhi sarkari official ya principal nahi the</label></td>
           <td><input class="query_chkbox" id="lot2d" name="query_list[]" value="lot2d" ng-model="vm.query.lot2d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="lot2e">Lottery ka video nahi liya</label></td>
           <td><input class="query_chkbox" id="lot2e" name="query_list[]" value="lot2e" ng-model="vm.query.lot2e" type="checkbox"></td>
         </tr>
@@ -529,30 +598,37 @@
     <div class="tab-pane fade" id="lot3">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="lot3a">Lottery me mera naam nahi aaya, kya karu?</label></td>
           <td><input class="query_chkbox" id="lot3a" name="query_list[]" value="lot3a" ng-model="vm.query.lot3a" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="lot3b">Mere bache ka naam aa gaya, ab test/interview hoga kya?</label></td>
           <td><input class="query_chkbox" id="lot3b" name="query_list[]" value="lot3b" ng-model="vm.query.lot3b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="lot3c">School interview/test ke liye bol raha hai</label></td>
           <td><input class="query_chkbox" id="lot3c" name="query_list[]" value="lot3c" ng-model="vm.query.lot3c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="lot3d">waiting list me naam aaya, ab kya karu?</label></td>
           <td><input class="query_chkbox" id="lot3d" name="query_list[]" value="lot3d" ng-model="vm.query.lot3d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="lot3e">Lottery me naam aaya lekin mere paas original documents nahi hain</label></td>
           <td><input class="query_chkbox" id="lot3e" name="query_list[]" value="lot3e" ng-model="vm.query.lot3e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="lot3f">Application date extend ho gayi hai?</label></td>
           <td><input class="query_chkbox" id="lot3f" name="query_list[]" value="lot3f" ng-model="vm.query.lot3f" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="lot3g">Lottery me naam aa gaya lekin school paise maang raha hai</label></td>
           <td><input class="query_chkbox" id="lot3f" name="query_list[]" value="lot3f" ng-model="vm.query.lot3f" type="checkbox"></td>
         </tr>
@@ -585,56 +661,78 @@
     <div class="tab-pane fade in active" id="massmedia">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="TV">TV</label></td>
           <td><input class="info_source_chkbox" id="TV" name="info_source_list[]" value="TV" ng-model="vm.info.tv"  type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="pamphlet">Pamphlet</label></td>
           <td><input class="info_source_chkbox" id="pamphlet" name="info_source_list[]" value="pamphlet" ng-model="vm.info.pamphlet" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="sticker">Sticker/Poster</label></td>
           <td><input class="info_source_chkbox" id="sticker" name="info_source_list[]" value="sticker" ng-model="vm.info.sticker" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="newspaper">Newspaper</label></td>
           <td><input class="info_source_chkbox" id="newspaper" name="info_source_list[]" value="newspaper" ng-model="vm.info.newspaper" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="Radio">Radio</label></td>
           <td><input class="info_source_chkbox" id="radio" name="info_source_list[]" value="radio" ng-model="vm.info.radio" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label>6</label></td>
+          <td><label for="Facebook">Facebook</label></td>
+          <td><input class="info_source_chkbox" id="facebook" name="info_source_list[]" value="facebook" ng-model="vm.info.facebook" type="checkbox"></td>
         </tr>
       </table>
     </div>
     <div class="tab-pane fade" id="wom">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="husband_wife">Husband/Wife</label></td>
           <td><input class="info_source_chkbox" id="husband_wife" name="info_source_list[]" value="husband_wife" ng-model="vm.info.husband_wife" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="neighbours">Neighbour/Friend (Male)</label></td>
           <td><input class="info_source_chkbox" id="neighbour_male" name="info_source_list[]" value="neighbour_male" ng-model="vm.info.neighbour_male" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="neighbours">Neighbour/Friend (Female)</label></td>
           <td><input class="info_source_chkbox" id="neighbour_female" name="info_source_list[]" value="neighbour_female" ng-model="vm.info.neighbour_female" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="relative_male">Relative (Male)</label></td>
           <td><input class="info_source_chkbox" id="relative_male" name="info_source_list[]" value="relative_male" ng-model="vm.info.relative_male" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="relative_female">Relative (Female)</label></td>
           <td><input class="info_source_chkbox" id="relative_female" name="info_source_list[]" value="relative_female" ng-model="vm.info.relative_female" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="street_play">Street Play</label></td>
           <td><input class="info_source_chkbox" id="street_play" name="info_source_list[]" value="street_play" ng-model="vm.info.street_play" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="database">Last year's database</label></td>
           <td><input class="info_source_chkbox" id="database" name="info_source_list[]" value="database" ng-model="vm.info.database" type="checkbox"></td>
+        </tr>
+        <tr>
+          <td><label>8</label></td>
+          <td><label for="whatsapp">Whatsapp</label></td>
+          <td><input class="info_source_chkbox" id="whatsapp" name="info_source_list[]" value="whatsapp" ng-model="vm.info.whatsapp" type="checkbox"></td>
         </tr>
       </table>
     </div>
@@ -642,35 +740,47 @@
     <div class="tab-pane fade" id="volunteers">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="Anganwadi">Anganwadi</label></td>
           <td><input class="info_source_chkbox" id="Anganwadi" name="info_source_list[]" value="Anganwadi" ng-model="vm.info.anganwadi" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="pratham">Pratham</label></td>
           <td><input class="info_source_chkbox" id="pratham" name="info_source_list[]" value="pratham" ng-model="vm.info.pratham" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="ngo">NGO</label></td>
           <td><input class="info_source_chkbox" id="ngo" name="info_source_list[]" value="ngo" ng-model="vm.info.ngo" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="GRC">GRC</label></td>
           <td><input class="info_source_chkbox" id="GRC" name="info_source_list[]" value="GRC" ng-model="vm.info.grc" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="Community_Champion">Community Champion</label></td>
           <td><input class="info_source_chkbox" id="Community_Champion" name="info_source_list[]" ng-model="vm.info.community_champion" value="Community_Champion" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="volunteer">Volunteer</label></td>
           <td><input class="info_source_chkbox" id="volunteer" name="info_source_list[]" value="volunteer" ng-model="vm.info.volunteer" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>7</label></td>
           <td><label for="Other">Other</label></td>
           <td><input class="info_source_chkbox" id="Other" name="info_source_list[]" value="Other" ng-model="vm.info.other" type="checkbox"></td>
         </tr>
       </table>
     </div>
+  </div>
+
+  <div class="form-group">
+    <label for="other_info_source">Other Information Sources/ Anything else : </label>
+    <input id="other_info_source" name="other_info_source" type="text" class="form-control" ng-model="vm.info.other_source" placeholder="Other Sources">
   </div>
 
   <h4>Motivation</h4>
@@ -682,26 +792,32 @@
     <div class="tab-pane fade in active" id="mot1">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="mot1a">Family ne bahut sare kaam ke sawaal puche</label></td>
           <td><input class="info_source_chkbox" id="mot1a" name="info_source_list[]" value="mot1a" ng-model="vm.info.mot1a"  type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="mot1b">Family ne last year apply kiya tha. Admission nahi hua.</label></td>
           <td><input class="info_source_chkbox" id="mot1b" name="info_source_list[]" value="mot1b" ng-model="vm.info.mot1b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="mot1c">Family sare problems face karne ke liye ready hai</label></td>
           <td><input class="info_source_chkbox" id="mot1c" name="info_source_list[]" value="mot1c" ng-model="vm.info.mot1c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="mot1d">Family apne bachche ke bavishya ke bare mein bahut aashawad hai</label></td>
           <td><input class="info_source_chkbox" id="mot1d" name="info_source_list[]" value="mot1d" ng-model="vm.info.mot1d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="mot1e">Family aage 10 logo ko jarur bataegi</label></td>
           <td><input class="info_source_chkbox" id="mot1e" name="info_source_list[]" value="mot1e" ng-model="vm.info.mot1e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="mot1f">Family baar baar call kar rahi hai</label></td>
           <td><input class="info_source_chkbox" id="mot1f" name="info_source_list[]" value="mot1f" ng-model="vm.info.mot1f" type="checkbox"></td>
         </tr>
@@ -711,26 +827,32 @@
     <div class="tab-pane fade" id="mot2">
       <table class="table table-striped table-bordered">
         <tr>
+          <td><label>1</label></td>
           <td><label for="mot2a">Family jankaari se utsahit nahi thi</label></td>
           <td><input class="info_source_chkbox" id="mot2a" name="info_source_list[]" value="mot2a" ng-model="vm.info.mot2a"  type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>2</label></td>
           <td><label for="mot2b">Family ne bahut kam kaam ke sawaal puche</label></td>
           <td><input class="info_source_chkbox" id="mot2b" name="info_source_list[]" value="mot2b" ng-model="vm.info.mot2b" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>3</label></td>
           <td><label for="mot2c">Family ka last year admission nahi hua. Aur is saal bhi aashawadi nahi hai.</label></td>
           <td><input class="info_source_chkbox" id="mot2c" name="info_source_list[]" value="mot2c" ng-model="vm.info.mot2c" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>4</label></td>
           <td><label for="mot2d">Family chahti hai ki hum sara kaam kar ke de</label></td>
           <td><input class="info_source_chkbox" id="mot2d" name="info_source_list[]" value="mot2d" ng-model="vm.info.mot2d" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>5</label></td>
           <td><label for="mot2e">Family sarkar ki shcemo ke bare mein aashawadi nahi hai</label></td>
           <td><input class="info_source_chkbox" id="mot2e" name="info_source_list[]" value="mot2e" ng-model="vm.info.mot2e" type="checkbox"></td>
         </tr>
         <tr>
+          <td><label>6</label></td>
           <td><label for="mot2f">Family ne achche se baat nahi ki</label></td>
           <td><input class="info_source_chkbox" id="mot2f" name="info_source_list[]" value="mot2f" ng-model="vm.info.mot2f" type="checkbox"></td>
         </tr>
@@ -738,11 +860,6 @@
     </div>
   </div>
 
-
-  <div class="form-group">
-    <label for="other_info_source">Other Information Sources/ Anything else : </label>
-    <input id="other_info_source" name="other_info_source" type="text" class="form-control" ng-model="vm.info.other_source" placeholder="Other Sources">
-  </div>
 </div>
 
 <br>
