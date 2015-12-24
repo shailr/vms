@@ -44,8 +44,8 @@
       return $http.get('/api/v1/applicants/starred/');
     }
 
-    function all(id) {
-      return $http.get('/api/v1/applications/' + id + '/applicants/');
+    function all(id, page) {
+      return $http.get('/api/v1/applications/' + id + '/applicants/?page=' + page);
     }
 
     function allFromStage(id) {
