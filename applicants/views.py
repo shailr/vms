@@ -41,6 +41,15 @@ class ApplicantViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
+    @list_route()
+    def search(self, request):
+        search_text = request.GET.get('search')
+
+        applicants_new = Applicant.objects.filter(Q(mobile__contains=search_text) | Q(data__contains=search_text))
+        serializer = self.get_serializer(applicants_new, many=True)
+
+        return Response(serializer.data)
+
 
 class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
     queryset = Applicant.objects.all()

@@ -17,6 +17,7 @@
       allArchived: allArchived,
       create: create,
       get: get,
+      like: like,
       update: update,
       toggleStar: toggleStar,
       archive: archive,
@@ -68,6 +69,10 @@
         query: JSON.stringify(query),
         info: JSON.stringify(info)
       });
+    }
+
+    function like(search_text) {
+      return $http.get('/api/v1/applicants/search/?search=' + search_text);
     }
 
     function update(applicant) {

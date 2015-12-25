@@ -36,6 +36,46 @@
       vm.data.data.address.constituency = addresses[2];
     }
 
+    $scope.numbers = [];
+
+    $scope.updateNumbers = function (typed) {
+      if (typed.length >= 5) {
+        Applicants.like(typed)
+          .then(applicantsGetSuccessFn, applicantsGetErrorFn);
+      }
+    }
+
+    $scope.numberSelected = function (number) {
+      Applicants.like(number)
+        .then(searchedApplicantGetSuccessFn, searchedApplicantGetErrorFn);
+    }
+
+    function searchedApplicantGetSuccessFn(data, status, headers, config) {
+      var applicant = data.data;
+
+      applicant = applicant[0]
+
+      $location.url('/applications/' + applicant.application.id + '/applicants/' + applicant.id);
+    }
+
+    function searchedApplicantGetErrorFn(data, status, headers, config) {
+      console.log('Applicant with given mobile number not found');
+    }
+
+    function applicantsGetSuccessFn(data, status, headers, config) {
+      var numbers =  data.data;
+
+      $scope.numbers = [];
+
+      for (var number in numbers) {
+        $scope.numbers.push(numbers[number].mobile);
+      }
+    }
+
+    function applicantsGetErrorFn(data, status, headers, config) {
+      console.log('Error while getting applicants in NavbarController autocomplete');
+    }
+
     vm.update = update;
     vm.endCall = endCall;
     vm.initChildrenData = initChildrenData;
