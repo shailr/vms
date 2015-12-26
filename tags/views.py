@@ -17,7 +17,8 @@ class TagViewSet(viewsets.ModelViewSet):
             return (permissions.AllowAny(),)
 
     def perform_create(self, serializer):
-        instance = serializer.save(applicant=self.request.data['applicant'])
+        if 'applicant' in  self.request.data.keys():
+            instance = serializer.save(applicant=self.request.data['applicant'])
 
         return super(TagViewSet, self).perform_create(serializer)
 

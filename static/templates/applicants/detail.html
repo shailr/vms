@@ -16,8 +16,11 @@
 	<tr>
 	  <td><span>Tags</span></td>
 	  <td>
+            <select name="tags" ng-model="vm.tag" ng-change="vm.addTag()" ng-options="tag.tag as tag.tag for tag in vm.system_tags">
+	      <option value="" disabled selected>Add a tag</option>
+	    </select>
 	    <tags tags="vm.tags"></tags>
-	    <a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/tags/new">Add a tag</a>
+	    <!-- <a href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/tags/new">Add a tag</a> -->
 	  </td>
 	</tr>
 	<tr>

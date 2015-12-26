@@ -12,6 +12,7 @@
 
     vm.applicant = undefined;
     vm.tags = [];
+    vm.system_tags = [];
     vm.messages = [];
     vm.notes = [];
     vm.todos = [];
@@ -23,14 +24,32 @@
     vm.start_time = undefined;
     vm.end_time = undefined;
     vm.rating = 0;
+    vm.tag = undefined;
 
     vm.changeStage = changeStage;
     vm.changeAssignee = changeAssignee;
     vm.startCall = startCall;
+    vm.addTag = addTag;
 
     $rootScope.current_call = undefined;
 
     activate();
+
+    function addTag() {
+      console.log(vm.tag);
+
+      Tags.create(vm.applicant, vm.tag)
+        .then(tagAddSuccessFn, tagAddErrorFn);
+
+      function tagAddSuccessFn(data, status, headers, config) {
+        console.log(data.data);
+        vm.tags.push(data.data);
+      }
+
+      function tagAddErrorFn(data, status, headers, config) {
+        console.log('Error while creating tag in ApplicantDetailController');
+      }
+    }
 
     function startCall() {
       vm.start_time = vm.end_time = Date.now();
@@ -202,6 +221,16 @@
 	  vm.applicant.info = {};
 	}
 
+        Tags.all()
+          .then(tagsAllSuccessFn, tagsAllErrorFn);
+
+        function tagsAllSuccessFn(data, status, headers, config) {
+          vm.system_tags = data.data.results;
+        }
+
+        function tagsAllErrorFn(data, status, headers, config) {
+          console.log('Error while getting all tags in ApplicantDetailController');
+        }
 
         Stages.all(app_id)
           .then(stagesAllSuccessFn, stagesAllErrorFn);

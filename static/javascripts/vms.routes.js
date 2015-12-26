@@ -30,6 +30,10 @@
       controller: 'MessageTemplatesListController',
       controllerAs:'vm',
       templateUrl: '/static/templates/message_templates/list.html'
+    }).when('/settings/tags', {
+      controller: 'TagsListController',
+      controllerAs:'vm',
+      templateUrl: '/static/templates/tags/tags.html'
     }).when('/inbox', {
       controller: 'InboxMessagesListController',
       controllerAs: 'vm',
@@ -91,6 +95,10 @@
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/applicant-list.html'
     }).when('/applications/:app_id/applicants/:id/tags/new', {
+      controller: 'NewTagController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/tags/new-tag.html'
+    }).when('/tags/new', {
       controller: 'NewTagController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/tags/new-tag.html'

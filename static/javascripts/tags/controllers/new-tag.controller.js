@@ -21,40 +21,54 @@
     vm.submit = submit;
 
     function submit() {
-      Applicants.get(vm.id)
-        .then(applicantGetSuccessFn, applicantGetErrorFn);
+      if (vm.id) {
+        Applicants.get(vm.id)
+          .then(applicantGetSuccessFn, applicantGetErrorFn);
 
-      function applicantGetSuccessFn(data, status, headers, config) {
-        vm.applicant = data.data;
+        function applicantGetSuccessFn(data, status, headers, config) {
+          vm.applicant = data.data;
 
-        Tags.create(vm.applicant, vm.tag)
-          .then(tagCreateSuccessFn, tagCreateErrorFn);
+          Tags.create(vm.applicant, vm.tag)
+            .then(tagCreateSuccessFn, tagCreateErrorFn);
 
-        function tagCreateSuccessFn(data, status, headers, config) {
-          console.log('tag created = ', data.data);
+          function tagCreateSuccessFn(data, status, headers, config) {
+            console.log('tag created = ', data.data);
 
-          History.create(vm.applicant, "A tag was added at " + data.data.created_at)
-            .then(historyCreateSuccessFn, historyCreateErrorFn);
+            History.create(vm.applicant, "A tag was added at " + data.data.created_at)
+              .then(historyCreateSuccessFn, historyCreateErrorFn);
 
-          function historyCreateSuccessFn(data, status, headers, config) {
-            console.log('history = ', data.data);
+            function historyCreateSuccessFn(data, status, headers, config) {
+              console.log('history = ', data.data);
+            }
+
+            function historyCreateErrorFn(data, status, headers, config) {
+              console.log('History creation failed');
+            }
+            $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id);
           }
 
-          function historyCreateErrorFn(data, status, headers, config) {
-            console.log('History creation failed');
+          function tagCreateErrorFn(data, status, headers, config) {
+            console.log('error while creating tag in NewTagController');
+            $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id);
           }
-          $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id);
         }
 
-        function tagCreateErrorFn(data, status, headers, config) {
-          console.log('error while creating tag in NewTagController');
+        function applicantGetErrorFn(data, status, headers, config) {
+          console.log('Error while fetching applicant');
           $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id);
         }
-      }
+      } else {
+        Tags.create(undefined, vm.tag)
+          .then(tagsCreateSuccessFn, tagsCreateErrorFn);
 
-      function applicantGetErrorFn(data, status, headers, config) {
-        console.log('Error while fetching applicant');
-        $location.url('/applications/' + vm.app_id + '/applicants/' + vm.id);
+        function tagsCreateSuccessFn(data, status, headers, config) {
+          console.log('SUccess in tags creation', data.data);
+          $location.url('/settings/tags');
+        }
+
+        function tagsCreateErrorFn(data, status, headers, config) {
+          console.log('Error while creating tag in NewTagController');
+        }
       }
     }
   }

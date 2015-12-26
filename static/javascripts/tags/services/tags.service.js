@@ -10,10 +10,15 @@
   function Tags($http) {
     var Tags = {
       allFromApplicant: allFromApplicant,
-      create: create
+      create: create,
+      all: all
     };
 
     return Tags;
+
+    function all() {
+      return $http.get('/api/v1/tags/');
+    }
 
     function allFromApplicant(id) {
       return $http.get('/api/v1/applicants/' + id + '/tags/');

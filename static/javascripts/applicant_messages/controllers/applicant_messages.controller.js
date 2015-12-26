@@ -22,7 +22,7 @@
     }
 
     function applicantGetErrorFn(data, status, headers, config) {
-
+      console.log('Error while getting applicant in ApplicantMessagesController');
     }
 
     activate();
