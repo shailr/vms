@@ -5,9 +5,9 @@
     .module('vms.authentication.services')
     .factory('Authentication', Authentication);
 
-  Authentication.$inject = ['$cookies', '$http']
+  Authentication.$inject = ['$localStorage', '$cookies', '$http']
 
-  function Authentication($cookies, $http) {
+  function Authentication($localStorage, $cookies, $http) {
     var Authentication = {
       register: register,
       login: login,
@@ -94,7 +94,9 @@
         return;
       }
 
-      return JSON.parse($cookies.get('authenticatedAccount'));
+      if ($localStorage.authenticatedAccount) {
+        return $localStorage.authenticatedAccount;
+      }
     }
 
     function isAuthenticated() {
@@ -102,7 +104,9 @@
     }
 
     function setAuthenticatedAccount(account) {
-      $cookies.put('authenticatedAccount', JSON.stringify(account));
+      $cookies.put('authenticatedAccount', account.id);
+
+      $localStorage.authenticatedAccount = account;
     }
 
     function unauthenticate() {

@@ -16,7 +16,8 @@ angular
     'vms.inboxmessages',
     'vms.message_templates',
     'vms.calls',
-    'vms.locations'
+    'vms.locations',
+    'ngStorage'
   ]);
 
 angular

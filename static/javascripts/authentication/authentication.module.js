@@ -4,7 +4,8 @@
   angular
     .module('vms.authentication', [
       'vms.authentication.controllers',
-      'vms.authentication.services'
+      'vms.authentication.services',
+      'ngStorage'
     ]);
 
   angular
