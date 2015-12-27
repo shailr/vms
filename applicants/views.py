@@ -83,16 +83,20 @@ class ApplicationApplicantsViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-class StageApplicantsViewSet(viewsets.ViewSet):
+class StageApplicantsViewSet(viewsets.ModelViewSet):
     queryset = Applicant.objects.all()
     serializer_class = ApplicantSerializer
 
     def list(self, request, stage_pk=None):
         queryset = self.queryset.filter(stage__pk=stage_pk)
-        serializer = self.serializer_class(queryset, many=True)
+        applicants = self.paginate_queryset(queryset)
 
+        if applicants is not None:
+            serializer = self.get_serializer(applicants, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-
 
 class TagApplicantsViewSet(viewsets.ViewSet):
     queryset = Applicant.objects.all()

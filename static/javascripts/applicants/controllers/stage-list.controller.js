@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('StageApplicantsListController', StageApplicantListController);
 
-  StageApplicantListController.$inject = ['$routeParams', 'Applicants', 'Stages'];
+  StageApplicantListController.$inject = ['$location', '$routeParams', 'Applicants', 'Stages'];
 
-  function StageApplicantListController($routeParams, Applicants, Stages) {
+  function StageApplicantListController($location, $routeParams, Applicants, Stages) {
     var vm = this;
 
     vm.applicants = [];
@@ -16,10 +16,18 @@
 
     vm.stages = [];
 
+    vm.page = 1;
+
     activate();
 
     function activate() {
-      var id = $routeParams.stage_id;
+      var id = $routeParams.stage_id,
+          page = $location.url();
+
+      if (page.indexOf('=') > -1) {
+        page = page.substr(page.indexOf("=") + 1);
+        vm.page = page;
+      }
 
       Stages.all(vm.id)
         .then(stagesGetSuccessFn, stagesGetErrorFn);
@@ -33,11 +41,21 @@
       }
 
 
-      Applicants.allFromStage(id)
+      Applicants.allFromStage(id, vm.page)
         .then(applicantListSuccessFn, applicantListErrorFn);
 
       function applicantListSuccessFn(data, status, headers, config) {
         vm.applicants = data.data;
+
+        if (vm.applicants.previous) {
+          vm.applicants.previous = vm.applicants.previous.replace('api/v1/', 'applications/1/');
+          vm.applicants.previous = vm.applicants.previous.replace('/?', '?');
+        }
+
+        if (vm.applicants.next) {
+          vm.applicants.next = vm.applicants.next.replace('api/v1/', 'applications/1/');
+          vm.applicants.next = vm.applicants.next.replace('/?', '?');
+        }
       }
 
       function applicantListErrorFn(data, status, headers, config) {

@@ -50,8 +50,8 @@
       return $http.get('/api/v1/applications/' + id + '/applicants/?page=' + page);
     }
 
-    function allFromStage(id) {
-      return $http.get('/api/v1/stages/' + id + '/applicants/');
+    function allFromStage(id, page) {
+      return $http.get('/api/v1/stages/' + id + '/applicants/?page=' +  page);
     }
 
     function allFromTag(id) {

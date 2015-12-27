@@ -88,13 +88,6 @@
           vm.applicants.next = vm.applicants.next.replace('api/v1/', '');
           vm.applicants.next = vm.applicants.next.replace('/?', '?');
         }
-
-        for (var applicant in vm.applicants.results) {
-          var stage_id = vm.applicants.results[applicant].stage,
-              account_id = vm.applicants.results[applicant].assignee;
-        }
-
-        console.log(vm.applicants);
       }
 
       function applicantListErrorFn(data, status, headers, config) {
