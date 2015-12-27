@@ -40,8 +40,8 @@
         vm.stage = data.data;
 
         for (var applicant in vm.applicants) {
-          vm.applicants[applicant].stage = vm.stage;
-          vm.applicants[applicant].assginee = vm.stage.assignee;
+          vm.applicants[applicant].stage = vm.stage.id;
+          vm.applicants[applicant].assignee = vm.stage.assignee;
 
           if (typeof vm.applicants[applicant].data === "string") {
             vm.applicants[applicant].data = JSON.parse(vm.applicants[applicant].data);
@@ -55,6 +55,7 @@
             vm.applicants[applicant].info = JSON.parse(vm.applicants[applicant].info);
 	  }
 
+          console.log(vm.applicants[applicant]);
 
           Applicants.update(vm.applicants[applicant])
             .then(applicantUpdateSuccessFn, applicantUpdateErrorFn);

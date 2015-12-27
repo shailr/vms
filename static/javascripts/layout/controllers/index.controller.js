@@ -50,11 +50,11 @@
       }
 
       function applicantsGetSuccessFn(data, status, headers, config) {
-        var applicants = data.data, 
+        var applicants = data.data,
 	  applicants_in_calling = [];
 
         for (var applicant in applicants) {
-          if (applicants[applicant].stage.name === "Calling") {
+          if (applicants[applicant].stage === 2) {
 	      applicants_in_calling.push(applicants[applicant]);
           }
         }

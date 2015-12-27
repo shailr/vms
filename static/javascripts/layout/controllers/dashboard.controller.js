@@ -20,6 +20,25 @@
 
     vm.starred_applicants = [];
 
+    vm.stage_names = {
+      "1": "Incoming",
+      "2": "Calling",
+      "3": "Eligible - documentation",
+      "4": "Eligible - Application",
+      "5": "Admitted",
+      "6": "Ineligible applicant",
+      "7": "Call Done - Not responsding",
+      "8": "Call Done - Call cut",
+      "9": "Call Done - Volunteer/NGO",
+      "10": "EWS Last Year",
+      "11": "Wrong no - No child",
+      "12": "Wrong no - Did not call",
+      "13": "Call Done - Switched off",
+      "14": "Call Done - Not reachable",
+      "15": "Call Done - Busy",
+      "16": "Community Champ"
+    };
+
     $scope.labels = [];
 
     $scope.data = [];
@@ -87,15 +106,15 @@
           vm.applicants = data.data;
 
           for (var i = 0; i < vm.applicants.length; i++) {
-            if (!vm.stagedApplicants[vm.applicants[i].stage.name]) {
-              vm.stagedApplicants[vm.applicants[i].stage.name] = [];
+            if (!vm.stagedApplicants[vm.applicants[i].stage]) {
+              vm.stagedApplicants[vm.applicants[i].stage] = [];
             }
 
-            vm.stagedApplicants[vm.applicants[i].stage.name].push(vm.applicants[i]);
+            vm.stagedApplicants[vm.applicants[i].stage].push(vm.applicants[i]);
           }
 
           for (var stage in vm.stagedApplicants) {
-            $scope.labels.push(stage);
+            $scope.labels.push(vm.stage_names[stage]);
             bar_data.push(vm.stagedApplicants[stage].length);
           }
 

@@ -12,8 +12,6 @@ from applications.serializers import ApplicationSerializer
 
 
 class StageSerializer(serializers.ModelSerializer):
-    application = ApplicationSerializer(read_only=True, required=False)
-
     class Meta:
         model = Stage
         fields = ('id', 'name', 'assignee', 'created_at', 'updated_at',

@@ -10,9 +10,6 @@ from applicants.models import Applicant
 
 
 class InboxMessageSerializer(serializers.ModelSerializer):
-    applicant = ApplicantSerializer(read_only=True, required=False)
-    user = AccountSerializer(read_only=True, required=False)
-
     class Meta:
         model = InboxMessage
 

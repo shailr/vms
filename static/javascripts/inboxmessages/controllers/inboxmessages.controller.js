@@ -31,8 +31,8 @@
     }
 
     function read(inboxmessage) {
-      var application_id = inboxmessage.applicant.application.id,
-          applicant_id = inboxmessage.applicant.id;
+      var application_id = 1,
+          applicant_id = inboxmessage.applicant;
 
       if (!inboxmessage.read) {
         inboxmessage.read = true;

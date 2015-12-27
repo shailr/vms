@@ -14,7 +14,7 @@
 	      <span ng-show="applicant.starred"><img src="/static/images/star_glow.png"></span>
 	    </a>
 	  </td>
-	  <td class="col-md-8"><applicant applicant="applicant"></applicant></td>
+	  <td class="col-md-8"><applicant applicant="applicant"></applicant> Assignee: {{ vm.users[applicant.assignee] }} Stage: {{ vm.stage_names[applicant.stage] }}</td>
 	  <td class="col-md-2">
 	    <a href="javascript:void(0)" ng-click="vm.archive(applicant)">
 	      <span ng-show="!applicant.archived"><img src="/static/images/archive.png"></span>

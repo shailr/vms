@@ -19,7 +19,7 @@
     function activate() {
       vm.assignee = Authentication.getAuthenticatedAccount();
 
-      Todos.allCreatedByAccount(vm.creator.id)
+      Todos.allCreatedByAccount(vm.assignee.id)
         .then(todosGetSuccessFn, todosGetErrorFn);
 
       function todosGetSuccessFn(data, status, headers, config) {

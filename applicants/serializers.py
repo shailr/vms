@@ -12,10 +12,6 @@ from stages.models import Stage
 from stages.serializers import StageSerializer
 
 class ApplicantSerializer(serializers.ModelSerializer):
-    application = ApplicationSerializer(read_only=True, required=False)
-    created_by = AccountSerializer(read_only=True, required=False)
-    stage = StageSerializer(required=False)
-
     class Meta:
         model = Applicant
 
@@ -54,7 +50,7 @@ class ApplicantSerializer(serializers.ModelSerializer):
         if 'archived' in validated_data.keys():
             instance.archived = validated_data['archived']
         if 'stage' in validated_data.keys():
-            instance.stage = Stage.objects.get(name=validated_data['stage']['name'])
+            instance.stage = Stage.objects.get(name=validated_data['stage'])
         if 'assignee' in validated_data.keys():
             instance.assignee = validated_data['assignee']
 
