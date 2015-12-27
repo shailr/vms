@@ -109,14 +109,19 @@ class TagApplicantsViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 
-class AccountApplicantsViewSet(viewsets.ViewSet):
+class AccountApplicantsViewSet(viewsets.ModelViewSet):
     queryset = Applicant.objects.all()
     serializer_class = ApplicantSerializer
 
     def list(self, request, account_pk=None):
         queryset = self.queryset.filter(assignee__pk=account_pk)
-        serializer = self.serializer_class(queryset, many=True)
+        applicants = self.paginate_queryset(queryset)
 
+        if applicants is not None:
+            serializer = self.get_serializer(applicants, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
     @list_route()

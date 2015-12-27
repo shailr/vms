@@ -58,8 +58,8 @@
       return $http.get('/api/v1/tags/' + id + '/applicants/');
     }
 
-    function allForAccount(id) {
-      return $http.get('/api/v1/accounts/' + id + '/applicants/');
+    function allForAccount(id, page) {
+      return $http.get('/api/v1/accounts/' + id + '/applicants/?page=' + page);
     }
 
     function allFromStageForAccount(id, stage_id) {

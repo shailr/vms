@@ -5,9 +5,9 @@
     .module('vms.applicants.controllers')
     .controller('AccountApplicantsListController', AccountApplicantsListController);
 
-  AccountApplicantsListController.$inject = ['Authentication', 'Applicants', 'Stages'];
+  AccountApplicantsListController.$inject = ['$location', 'Authentication', 'Applicants', 'Stages'];
 
-  function AccountApplicantsListController(Authentication, Applicants, Stages) {
+  function AccountApplicantsListController($location, Authentication, Applicants, Stages) {
     var vm = this;
 
     vm.assignee = undefined;
@@ -42,7 +42,16 @@
     };
 
     if (vm.assignee) {
-      Applicants.allForAccount(vm.assignee.id)
+      vm.page = 1;
+
+      var page = $location.url();
+
+      if (page.indexOf('=') > -1) {
+        page = page.substr(page.indexOf("=") + 1);
+        vm.page = page;
+      }
+
+      Applicants.allForAccount(vm.assignee.id, vm.page)
         .then(applicantListSuccessFn, applicantListErrorFn);
 
       Stages.allAcrossApplications()
@@ -59,7 +68,17 @@
       function applicantListSuccessFn(data, status, headers, config) {
         vm.applicants = data.data;
 
-        vm.total = vm.applicants.length;
+        vm.total = vm.applicants.count;
+
+        if (vm.applicants.previous) {
+          vm.applicants.previous = vm.applicants.previous.replace(/\/api\/v1\/accounts\/\d+/, '');
+          vm.applicants.previous = vm.applicants.previous.replace('/?', '?');
+        }
+
+        if (vm.applicants.next) {
+          vm.applicants.next = vm.applicants.next.replace(/\/api\/v1\/accounts\/\d+/, '');
+          vm.applicants.next = vm.applicants.next.replace('/?', '?');
+        }
       }
 
       function applicantListErrorFn(data, status, headers, config) {
