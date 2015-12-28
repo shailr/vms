@@ -60,13 +60,13 @@
       function callCreateSuccessFn(data, status, headers, config) {
         $rootScope.current_call = data.data;
 
-        $location.url('/applications/' + vm.applicant.application.id + '/applicants/' + vm.applicant.id + '/update');
+        $location.url('/applications/' + vm.applicant.application + '/applicants/' + vm.applicant.id + '/update');
       }
 
       function callCreateErrorFn(data, status, headers, config) {
         console.log('Error while creating call in ApplicantDetailController');
 
-        $location.url('/applications/' + vm.applicant.application.id + '/applicants/' + vm.applicant.id + '/update');
+        $location.url('/applications/' + vm.applicant.application + '/applicants/' + vm.applicant.id + '/update');
       }
     }
 

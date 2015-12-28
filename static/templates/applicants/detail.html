@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row vms-appl-details-heading"><span class="h1">Application Details</span></div>
-  <div class="row vms-application-details-update"><a class="col-md-12 btn btn-default btn-update" href="/applications/{{ vm.applicant.application.id }}/applicants/{{ vm.applicant.id }}/update">Update Application</a></div>
+  <div class="row vms-application-details-update"><a class="col-md-12 btn btn-default btn-update" href="/applications/{{ vm.applicant.application }}/applicants/{{ vm.applicant.id }}/update">Update Application</a></div>
   <div class="row vms-application-details-update">
     <a class="col-md-12 btn btn-default btn-update" href="javascript:void(0)" ng-click="vm.startCall()" ng-show="!$root.current_call">
       {{ $root.current_call }}
