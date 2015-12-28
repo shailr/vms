@@ -90,7 +90,7 @@
           vm.applicant.info = JSON.parse(vm.applicant.info);
 	}
 
-        vm.applicant.stage = vm.stage;
+        vm.applicant.stage = vm.stage.id;
         vm.applicant.assignee = vm.stage.assignee;
 
         console.log('Success in getting the stage', data.data);
