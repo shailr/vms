@@ -8,8 +8,6 @@ from applicants.serializers import ApplicantSerializer
 
 
 class TagSerializer(serializers.ModelSerializer):
-    applicants = ApplicantSerializer(read_only=True, required=False, many=True)
-
     class Meta:
         model = Tag
 
