@@ -13,6 +13,7 @@
       allFromStage: allFromStage,
       allFromTag: allFromTag,
       allForAccount: allForAccount,
+      allForAccountWithoutPagination: allForAccountWithoutPagination,
       allFromStageForAccount: allFromStageForAccount,
       allStarred: allStarred,
       allArchived: allArchived,
@@ -60,6 +61,10 @@
 
     function allForAccount(id, page) {
       return $http.get('/api/v1/accounts/' + id + '/applicants/?page=' + page);
+    }
+
+    function allForAccountWithoutPagination(id) {
+      return $http.get('/api/v1/accounts/' + id + '/applicants/nopage/');
     }
 
     function allFromStageForAccount(id, stage_id) {

@@ -36,7 +36,8 @@
       "13": "Call Done - Switched off",
       "14": "Call Done - Not reachable",
       "15": "Call Done - Busy",
-      "16": "Community Champ"
+      "16": "Community Champ",
+      "17": "Last Year Applicants"
     };
 
     $scope.labels = [];
@@ -99,7 +100,7 @@
       }
 
       if (vm.user) {
-        Applicants.allForAccount(vm.user.id)
+        Applicants.allForAccountWithoutPagination(vm.user.id)
           .then(applicantsGetSuccessFn, applicantsGetErrorFn);
 
         function applicantsGetSuccessFn(data, status, headers, config) {

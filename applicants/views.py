@@ -125,6 +125,13 @@ class AccountApplicantsViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @list_route()
+    def nopage(self, request, account_pk=None):
+        queryset = self.queryset.filter(assignee__pk=account_pk)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)
+
+    @list_route()
     def stage(self, request, account_pk=None):
         stage = request.GET.get('stage')
 

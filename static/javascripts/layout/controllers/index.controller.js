@@ -44,7 +44,7 @@
         vm.number_of_accounts = vm.accounts.length;
 
         for (var account in vm.accounts) {
-          Applicants.allForAccount(vm.accounts[account].id)
+          Applicants.allFromStageForAccount(vm.accounts[account].id, 2)
             .then(applicantsGetSuccessFn, applicantsGetErrorFn);
         }
       }
