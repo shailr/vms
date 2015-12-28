@@ -11,9 +11,8 @@
     <div class="col-md-2"></div>
     <div class="col-md-8 vms-applicants-stages-bar">
       <a class="btn btn-default btn-stage btn-lg" href="/applicants">All {{ vm.total }}</a>
-      <div ng-repeat="(name, stage) in vm.stages">
-        <!-- TODO FIX APPLICATION ID LATER CURRENTLY THERE WILL BE ONLY ONE APPLICATION -->
-	<a class="btn btn-default btn-stage btn-lg" href="/applications/1/stages/{{ stage.id }}/applicants">{{ name }} {{ stage.count }}</a>
+      <div ng-repeat="stage in vm.stages.results">
+	<a class="btn btn-default btn-stage btn-lg" href="/accounts/{{ vm.assignee.id }}/applicants/stage?stage={{ stage.id }}">{{ stage.name }}</a>
       </div>
 
     </div>

@@ -58,7 +58,9 @@
         .then(stageListGetSuccessFn, stageListGetErrorFn);
 
       function stageListGetSuccessFn(data, status, headers, config) {
-        vm.stage_list = data.data;
+        vm.stages = data.data;
+
+        console.log(vm.stages);
       }
 
       function stageListGetErrorFn(data, status, headers, config) {
@@ -67,8 +69,6 @@
 
       function applicantListSuccessFn(data, status, headers, config) {
         vm.applicants = data.data;
-
-        vm.total = vm.applicants.count;
 
         if (vm.applicants.previous) {
           vm.applicants.previous = vm.applicants.previous.replace(/\/api\/v1\/accounts\/\d+/, '');
@@ -87,24 +87,3 @@
     }
   }
 })();
-
-        // for (var applicant in vm.applicants) {
-        //   Applicants.get(vm.applicants[applicant].id)
-        //     .then(applicantGetSuccessFn, applicantGetErrorFn);
-
-        //   function applicantGetSuccessFn(data, status, headers, config) {
-        //     applicant = data.data;
-
-        //     if (!vm.stages[applicant.stage.name]) {
-        //       vm.stages[applicant.stage.name] = {};
-        //       vm.stages[applicant.stage.name].count = 0;
-        //       vm.stages[applicant.stage.name].id = applicant.stage.id;
-        //     }
-        //     vm.stages[applicant.stage.name].count++;
-        //     vm.total++;
-        //   }
-
-        //   function applicantGetErrorFn(data, status, headers, config) {
-        //     console.log('Error while getting applicant');
-        //   }
-        // }

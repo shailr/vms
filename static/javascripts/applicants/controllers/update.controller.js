@@ -55,7 +55,7 @@
 
       applicant = applicant[0]
 
-      $location.url('/applications/' + applicant.application.id + '/applicants/' + applicant.id);
+      $location.url('/applications/' + applicant.application + '/applicants/' + applicant.id);
     }
 
     function searchedApplicantGetErrorFn(data, status, headers, config) {

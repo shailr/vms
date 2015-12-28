@@ -20,6 +20,10 @@
       controller: 'AccountApplicantsListController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/applicants/account-applicants-list.html'
+    }).when('/accounts/:account_id/applicants/stage', {
+      controller: 'AccountsStageApplicantController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/applicants/account-applicants-list.html'
     }).when('/settings', {
       templateUrl: '/static/templates/authentication/settings.html'
     }).when('/settings/profile', {

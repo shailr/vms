@@ -67,8 +67,8 @@
       return $http.get('/api/v1/accounts/' + id + '/applicants/nopage/');
     }
 
-    function allFromStageForAccount(id, stage_id) {
-      return $http.get('/api/v1/accounts/' + id + '/applicants/stage/?stage=' + stage_id);
+    function allFromStageForAccount(id, stage_id, page) {
+      return $http.get('/api/v1/accounts/' + id + '/applicants/stage/?stage=' + stage_id + '&page=' + page);
     }
 
     function create(application, data, query, info) {

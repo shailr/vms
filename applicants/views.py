@@ -138,8 +138,13 @@ class AccountApplicantsViewSet(viewsets.ModelViewSet):
     @list_route()
     def stage(self, request, account_pk=None):
         stage = request.GET.get('stage')
-
         queryset = self.queryset.filter(Q(assignee__pk=account_pk) & Q(stage=stage))
-        serializer = self.serializer_class(queryset, many=True)
 
+        applicants = self.paginate_queryset(queryset)
+
+        if applicants is not None:
+            serializer = self.get_serializer(applicants, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
