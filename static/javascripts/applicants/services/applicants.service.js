@@ -15,6 +15,7 @@
       allForAccount: allForAccount,
       allForAccountWithoutPagination: allForAccountWithoutPagination,
       allFromStageForAccount: allFromStageForAccount,
+      allFromStageForAccountWithoutPagination: allFromStageForAccountWithoutPagination,
       allStarred: allStarred,
       allArchived: allArchived,
       create: create,
@@ -69,6 +70,10 @@
 
     function allFromStageForAccount(id, stage_id, page) {
       return $http.get('/api/v1/accounts/' + id + '/applicants/stage/?stage=' + stage_id + '&page=' + page);
+    }
+
+    function allFromStageForAccountWithoutPagination(id, stage_id) {
+      return $http.get('/api/v1/accounts/' + id + '/applicants/stagenopage/?stage=' + stage_id);
     }
 
     function create(application, data, query, info) {
